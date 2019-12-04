@@ -106,10 +106,10 @@
     <licenseversion></licenseversion>
   </library>
   <library>
-    <location>scss/fontawesome</location>
-    <name>Font Awesome by Dave Gandy - http://fontawesome.io</name>
+    <location>scss/forkawesome</location>
+    <name>Fork Awesome - https://forkaweso.me/</name>
     <license>(MIT)</license>
-    <version>4.7.0</version>
+    <version>1.1.0</version>
     <licenseversion></licenseversion>
   </library>
 </libraries>

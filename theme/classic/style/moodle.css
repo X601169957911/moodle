@@ -1,18 +1,26 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'FontAwesome';
-  src: url("[[font:core|fontawesome-webfont.eot]]?v=4.7.0");
-  src: url("[[font:core|fontawesome-webfont.eot]]?#iefix&v=4.7.0") format("embedded-opentype"), url("[[font:core|fontawesome-webfont.woff2]]?v=4.7.0") format("woff2"), url("[[font:core|fontawesome-webfont.woff]]?v=4.7.0") format("woff"), url("[[font:core|fontawesome-webfont.ttf]]?v=4.7.0") format("truetype"), url("[[font:core|fontawesome-webfont.svg]]?v=4.7.0#fontawesomeregular") format("svg");
+  font-family: 'ForkAwesome';
+  src: url("[[font:core|forkawesome-webfont.eot]]?v=1.1.0");
+  src: url("[[font:core|forkawesome-webfont.eot]]?#iefix&v=1.1.0") format("embedded-opentype"), url("[[font:core|forkawesome-webfont.woff2]]?v=1.1.0") format("woff2"), url("[[font:core|forkawesome-webfont.woff]]?v=1.1.0") format("woff"), url("[[font:core|forkawesome-webfont.ttf]]?v=1.1.0") format("truetype"), url("[[font:core|forkawesome-webfont.svg]]?v=1.1.0#forkawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 /*!
- *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+Fork Awesome 1.1.7
+License - https://forkaweso.me/Fork-Awesome/license
+
+Copyright 2018 Dave Gandy & Fork Awesome
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 .fa {
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 ForkAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -266,6 +274,7 @@
 .fa-repeat:before {
   content: ""; }
 
+.fa-sync:before,
 .fa-refresh:before {
   content: ""; }
 
@@ -351,6 +360,7 @@
 .fa-indent:before {
   content: ""; }
 
+.fa-video:before,
 .fa-video-camera:before {
   content: ""; }
 
@@ -642,7 +652,7 @@
 .fa-bullhorn:before {
   content: ""; }
 
-.fa-bell:before {
+.fa-bell-o:before {
   content: ""; }
 
 .fa-certificate:before {
@@ -675,6 +685,12 @@
 .fa-globe:before {
   content: ""; }
 
+.fa-globe-e:before {
+  content: ""; }
+
+.fa-globe-w:before {
+  content: ""; }
+
 .fa-wrench:before {
   content: ""; }
 
@@ -690,6 +706,7 @@
 .fa-arrows-alt:before {
   content: ""; }
 
+.fa-community:before,
 .fa-group:before,
 .fa-users:before {
   content: ""; }
@@ -757,6 +774,7 @@
 .fa-google-plus-square:before {
   content: ""; }
 
+.fa-google-plus-g:before,
 .fa-google-plus:before {
   content: ""; }
 
@@ -849,12 +867,13 @@
 .fa-suitcase:before {
   content: ""; }
 
-.fa-bell-o:before {
+.fa-bell:before {
   content: ""; }
 
 .fa-coffee:before {
   content: ""; }
 
+.fa-utensils:before,
 .fa-cutlery:before {
   content: ""; }
 
@@ -1126,6 +1145,7 @@
 .fa-eur:before {
   content: ""; }
 
+.fa-pound:before,
 .fa-gbp:before {
   content: ""; }
 
@@ -1162,21 +1182,27 @@
 .fa-file-text:before {
   content: ""; }
 
+.fa-sort-alpha-down:before,
 .fa-sort-alpha-asc:before {
   content: ""; }
 
+.fa-sort-alpha-up:before,
 .fa-sort-alpha-desc:before {
   content: ""; }
 
+.fa-sort-amount-down:before,
 .fa-sort-amount-asc:before {
   content: ""; }
 
+.fa-sort-amount-up:before,
 .fa-sort-amount-desc:before {
   content: ""; }
 
+.fa-sort-numeric-down:before,
 .fa-sort-numeric-asc:before {
   content: ""; }
 
+.fa-sort-numeric-up:before,
 .fa-sort-numeric-desc:before {
   content: ""; }
 
@@ -1375,12 +1401,6 @@
 .fa-digg:before {
   content: ""; }
 
-.fa-pied-piper-pp:before {
-  content: ""; }
-
-.fa-pied-piper-alt:before {
-  content: ""; }
-
 .fa-drupal:before {
   content: ""; }
 
@@ -1402,6 +1422,7 @@
 .fa-paw:before {
   content: ""; }
 
+.fa-utensil-spoon:before,
 .fa-spoon:before {
   content: ""; }
 
@@ -1544,6 +1565,7 @@
 .fa-circle-thin:before {
   content: ""; }
 
+.fa-heading:before,
 .fa-header:before {
   content: ""; }
 
@@ -1674,6 +1696,7 @@
 .fa-angellist:before {
   content: ""; }
 
+.fa-closed-captioning:before,
 .fa-cc:before {
   content: ""; }
 
@@ -1718,6 +1741,7 @@
 .fa-cart-arrow-down:before {
   content: ""; }
 
+.fa-gem:before,
 .fa-diamond:before {
   content: ""; }
 
@@ -1809,6 +1833,9 @@
 
 .fa-medium:before {
   content: ""; }
+
+.fa-medium-square:before {
+  content: ""; }
 
 .fa-yc:before,
 .fa-y-combinator:before {
@@ -2009,6 +2036,7 @@
 .fa-houzz:before {
   content: ""; }
 
+.fa-vimeo-v:before,
 .fa-vimeo:before {
   content: ""; }
 
@@ -2105,6 +2133,7 @@
 .fa-audio-description:before {
   content: ""; }
 
+.fa-phone-volume:before,
 .fa-volume-control-phone:before {
   content: ""; }
 
@@ -2150,9 +2179,6 @@
 
 .fa-snapchat-square:before {
   content: ""; }
-
-.fa-pied-piper:before {
-  content: ""; }
 
 .fa-first-order:before {
   content: ""; }
@@ -2308,7 +2334,231 @@
 .fa-meetup:before {
   content: ""; }
 
+<<<<<<< HEAD
 .sr-only {
+=======
+.fa-mastodon:before {
+  content: ""; }
+
+.fa-mastodon-alt:before {
+  content: ""; }
+
+.fa-fork-circle:before,
+.fa-fork-awesome:before {
+  content: ""; }
+
+.fa-peertube:before {
+  content: ""; }
+
+.fa-diaspora:before {
+  content: ""; }
+
+.fa-friendica:before {
+  content: ""; }
+
+.fa-gnu-social:before {
+  content: ""; }
+
+.fa-liberapay-square:before {
+  content: ""; }
+
+.fa-liberapay:before {
+  content: ""; }
+
+.fa-ssb:before,
+.fa-scuttlebutt:before {
+  content: ""; }
+
+.fa-hubzilla:before {
+  content: ""; }
+
+.fa-social-home:before {
+  content: ""; }
+
+.fa-artstation:before {
+  content: ""; }
+
+.fa-discord:before {
+  content: ""; }
+
+.fa-discord-alt:before {
+  content: ""; }
+
+.fa-patreon:before {
+  content: ""; }
+
+.fa-snowdrift:before {
+  content: ""; }
+
+.fa-activitypub:before {
+  content: ""; }
+
+.fa-ethereum:before {
+  content: ""; }
+
+.fa-keybase:before {
+  content: ""; }
+
+.fa-shaarli:before {
+  content: ""; }
+
+.fa-shaarli-o:before {
+  content: ""; }
+
+.fa-cut-key:before,
+.fa-key-modern:before {
+  content: ""; }
+
+.fa-xmpp:before {
+  content: ""; }
+
+.fa-archive-org:before {
+  content: ""; }
+
+.fa-freedombox:before {
+  content: ""; }
+
+.fa-facebook-messenger:before {
+  content: ""; }
+
+.fa-debian:before {
+  content: ""; }
+
+.fa-mastodon-square:before {
+  content: ""; }
+
+.fa-tipeee:before {
+  content: ""; }
+
+.fa-react:before {
+  content: ""; }
+
+.fa-dogmazic:before {
+  content: ""; }
+
+.fa-zotero:before {
+  content: ""; }
+
+.fa-nodejs:before {
+  content: ""; }
+
+.fa-nextcloud:before {
+  content: ""; }
+
+.fa-nextcloud-square:before {
+  content: ""; }
+
+.fa-hackaday:before {
+  content: ""; }
+
+.fa-laravel:before {
+  content: ""; }
+
+.fa-signalapp:before {
+  content: ""; }
+
+.fa-gnupg:before {
+  content: ""; }
+
+.fa-php:before {
+  content: ""; }
+
+.fa-ffmpeg:before {
+  content: ""; }
+
+.fa-joplin:before {
+  content: ""; }
+
+.fa-syncthing:before {
+  content: ""; }
+
+.fa-inkscape:before {
+  content: ""; }
+
+.fa-matrix-org:before {
+  content: ""; }
+
+.fa-pixelfed:before {
+  content: ""; }
+
+.fa-bootstrap:before {
+  content: ""; }
+
+.fa-dev-to:before {
+  content: ""; }
+
+.fa-hashnode:before {
+  content: ""; }
+
+.fa-jirafeau:before {
+  content: ""; }
+
+.fa-emby:before {
+  content: ""; }
+
+.fa-wikidata:before {
+  content: ""; }
+
+.fa-gimp:before {
+  content: ""; }
+
+.fa-c:before {
+  content: ""; }
+
+.fa-digitalocean:before {
+  content: ""; }
+
+.fa-att:before {
+  content: ""; }
+
+.fa-gitea:before {
+  content: ""; }
+
+.fa-file-epub:before {
+  content: ""; }
+
+.fa-python:before {
+  content: ""; }
+
+.fa-archlinux:before {
+  content: ""; }
+
+.fa-pleroma:before {
+  content: ""; }
+
+.fa-unsplash:before {
+  content: ""; }
+
+.fa-hackster:before {
+  content: ""; }
+
+.fa-spell-check:before {
+  content: ""; }
+
+.fa-moon:before {
+  content: ""; }
+
+.fa-sun:before {
+  content: ""; }
+
+.fa-f-droid:before {
+  content: ""; }
+
+.fa-biometric:before {
+  content: ""; }
+
+.sr-only, .path-mod-forum .nested-v2-display-mode .alert.discussionlocked, .path-mod-forum .nested-v2-display-mode #page-admin-index .discussionlocked.releasenoteslink, #page-admin-index .path-mod-forum .nested-v2-display-mode .discussionlocked.releasenoteslink,
+.path-mod-forum .nested-v2-display-mode #page-admin-index .discussionlocked.adminwarning, #page-admin-index .path-mod-forum .nested-v2-display-mode .discussionlocked.adminwarning,
+.path-mod-forum .nested-v2-display-mode #page-admin-index .discussionlocked.adminerror, #page-admin-index .path-mod-forum .nested-v2-display-mode .discussionlocked.adminerror, .path-mod-forum .nested-v2-display-mode .que .discussionlocked.formulation, .que .path-mod-forum .nested-v2-display-mode .discussionlocked.formulation,
+.path-mod-forum .nested-v2-display-mode .que .discussionlocked.outcome, .que .path-mod-forum .nested-v2-display-mode .discussionlocked.outcome,
+.path-mod-forum .nested-v2-display-mode .que .discussionlocked.comment, .que .path-mod-forum .nested-v2-display-mode .discussionlocked.comment, .path-mod-forum .nested-v2-display-mode .assignfeedback_editpdf_widget .discussionlocked.label, .assignfeedback_editpdf_widget .path-mod-forum .nested-v2-display-mode .discussionlocked.label,
+.path-mod-forum.nested-v2-display-mode .alert.discussionlocked, .path-mod-forum.nested-v2-display-mode #page-admin-index .discussionlocked.releasenoteslink, #page-admin-index .path-mod-forum.nested-v2-display-mode .discussionlocked.releasenoteslink,
+.path-mod-forum.nested-v2-display-mode #page-admin-index .discussionlocked.adminwarning, #page-admin-index .path-mod-forum.nested-v2-display-mode .discussionlocked.adminwarning,
+.path-mod-forum.nested-v2-display-mode #page-admin-index .discussionlocked.adminerror, #page-admin-index .path-mod-forum.nested-v2-display-mode .discussionlocked.adminerror, .path-mod-forum.nested-v2-display-mode .que .discussionlocked.formulation, .que .path-mod-forum.nested-v2-display-mode .discussionlocked.formulation,
+.path-mod-forum.nested-v2-display-mode .que .discussionlocked.outcome, .que .path-mod-forum.nested-v2-display-mode .discussionlocked.outcome,
+.path-mod-forum.nested-v2-display-mode .que .discussionlocked.comment, .que .path-mod-forum.nested-v2-display-mode .discussionlocked.comment, .path-mod-forum.nested-v2-display-mode .assignfeedback_editpdf_widget .discussionlocked.label, .assignfeedback_editpdf_widget .path-mod-forum.nested-v2-display-mode .discussionlocked.label, .path-mod-forum .nested-v2-display-mode .tag_list > b,
+.path-mod-forum.nested-v2-display-mode .tag_list > b {
+>>>>>>> 0b2926877df... MDL-67448 core: Remove Font Awesome
   position: absolute;
   width: 1px;
   height: 1px;
@@ -12971,7 +13221,7 @@ input[disabled] {
   content: "";
   margin-right: 0;
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 ForkAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -12984,7 +13234,7 @@ input[disabled] {
   content: "";
   margin-right: 0;
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 ForkAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;

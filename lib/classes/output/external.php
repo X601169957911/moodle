@@ -208,14 +208,15 @@ class external extends external_api {
      */
     public static function load_fontawesome_icon_map() {
         global $PAGE;
-
-        return load_fontawesome_map::execute($PAGE->theme->name);
+        debugging('\core\output\external::load_fontawesome_icon_map() is deprecated. ' .
+            'Please use \core\output\external::load_forkawesome_icon_map() instead.', DEBUG_DEVELOPER);
+        return self::load_forkawesome_icon_map();
     }
 
     /**
      * Returns description of load_icon_map() result value.
      *
-     * @return external_description
+     * @return external_multiple_structure
      */
     public static function load_fontawesome_icon_map_returns() {
         return load_fontawesome_map::execute_returns();

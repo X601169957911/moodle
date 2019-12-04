@@ -90,8 +90,8 @@ if (!$out) {
 fwrite($out, $sourcevariables);
 
 fwrite($out, '
-// Import FontAwesome.
-@import "fontawesome";
+// Import ForkAwesome.
+@import "forkawesome";
 
 // Import All of Bootstrap
 @import "bootstrap";
