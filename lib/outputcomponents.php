@@ -623,6 +623,18 @@ class pix_icon_fontawesome extends pix_icon_font {
 }
 
 /**
+ * Data structure representing an icon subtype.
+ *
+ * @copyright 2016 Damyon Wiese
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package core
+ * @category output
+ */
+class pix_icon_forkawesome extends pix_icon_font {
+
+}
+
+/**
  * Data structure representing an icon.
  *
  * @copyright 2010 Petr Skoda

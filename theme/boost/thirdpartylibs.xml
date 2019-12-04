@@ -112,4 +112,11 @@
     <version>1.1.0</version>
     <licenseversion></licenseversion>
   </library>
+  <library>
+    <location>scss/forkawesome</location>
+    <name>Fork Awesome - https://forkaweso.me/</name>
+    <license>(MIT)</license>
+    <version>1.1.0</version>
+    <licenseversion></licenseversion>
+  </library>
 </libraries>

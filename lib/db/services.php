@@ -1548,9 +1548,10 @@ $functions = array(
         'loginrequired' => false,
         'ajax' => true,
     ),
-    'core_output_load_fontawesome_icon_system_map' => array(
-        'classname' => 'core\external\output\icon_system\load_fontawesome_map',
-        'description' => 'Load the mapping of moodle pix names to fontawesome icon names',
+    'core_output_load_forkawesome_icon_map' => array(
+        'classname' => 'core\output\external',
+        'methodname' => 'load_forkawesome_icon_map',
+        'description' => 'Load the mapping of pix_icon names to Fork Awesome icons',
         'type' => 'read',
         'loginrequired' => false,
         'ajax' => true,

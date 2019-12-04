@@ -94,6 +94,7 @@ $theme-colors: map-merge((
 ), $theme-colors);
 // stylelint-enable
 
+
 $spacer: 1rem !default;
 $spacers: (
     0: 0,
@@ -104,6 +105,9 @@ $spacers: (
     5: ($spacer * 2),
     6: ($spacer * 3)
 ) !default;
+
+// Import ForkAwesome.
+@import "forkawesome";
 
 // Import All of Bootstrap
 @import "bootstrap";

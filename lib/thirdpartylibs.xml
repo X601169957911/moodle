@@ -350,4 +350,11 @@
     <license>MIT</license>
     <version>1.0.1</version>
   </library>
+  <library>
+    <location>fonts</location>
+    <name>Fork Awesome</name>
+    <license>SIL OFL</license>
+    <version>1.1.7</version>
+    <licenseversion>1.1</licenseversion>
+  </library>
 </libraries>

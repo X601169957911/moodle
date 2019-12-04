@@ -359,6 +359,15 @@ $definitions = array(
         'staticaccelerationsize' => 1
     ),
 
+    // Caches Fork Awesome icons.
+    'forkawesomeiconmapping' => array(
+        'mode' => cache_store::MODE_APPLICATION,
+        'simplekeys' => true,
+        'simpledata' => true,
+        'staticacceleration' => true,
+        'staticaccelerationsize' => 1
+    ),
+
     // Caches processed CSS.
     'postprocessedcss' => array(
         'mode' => cache_store::MODE_APPLICATION,

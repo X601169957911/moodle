@@ -223,6 +223,53 @@ class external extends external_api {
     }
 
     /**
+     * Returns description of load_icon_map() parameters.
+     *
+     * @return external_function_parameters
+     */
+    public static function load_forkawesome_icon_map_parameters() {
+        return new external_function_parameters([]);
+    }
+
+    /**
+     * Return a mapping of pix_icon names to Fork Awesome icons.
+     *
+     * @return array the mapping
+     */
+    public static function load_forkawesome_icon_map() {
+        $instance = icon_system::instance(icon_system::FORKAWESOME);
+
+        $map = $instance->get_icon_name_map();
+
+        $result = [];
+
+        foreach ($map as $from => $to) {
+            list($component, $pix) = explode(':', $from);
+            $one = [];
+            $one['component'] = $component;
+            $one['pix'] = $pix;
+            $one['to'] = $to;
+            $result[] = $one;
+        }
+        return $result;
+    }
+
+    /**
+     * Returns description of load_icon_map() result value.
+     *
+     * @return external_multiple_structure
+     */
+    public static function load_forkawesome_icon_map_returns() {
+        return new external_multiple_structure(new external_single_structure(
+            array(
+                'component' => new external_value(PARAM_COMPONENT, 'The component for the icon.'),
+                'pix' => new external_value(PARAM_RAW, 'Value to map the icon from.'),
+                'to' => new external_value(PARAM_RAW, 'Value to map the icon to.')
+            )
+        ));
+    }
+
+    /**
      * The `load_fontawesome_icon_map` function has been replaced with
      * @see load_fontawesome_map::execute()
      *
