@@ -16,3 +16,9 @@
         }
     }
 }
+.modal-dialog-scrollable .modal-content {
+    overflow: initial;
+    .modal-body {
+        position: static;
+    }
+}

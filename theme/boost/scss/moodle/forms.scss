@@ -413,6 +413,7 @@ textarea[data-auto-rows] {
 .form-inline[data-fieldtype="autocomplete"],
 .form-inline[data-fieldtype="tags"] {
     display: block;
+    position: static;
 }
 
 // Show editor at 100% width by default.

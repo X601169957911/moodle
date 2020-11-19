@@ -16931,7 +16931,8 @@ textarea[data-auto-rows] {
 
 .form-inline[data-fieldtype="autocomplete"],
 .form-inline[data-fieldtype="tags"] {
-  display: block; }
+  display: block;
+  position: static; }
 
 [data-fieldtype="editor"] > div {
   flex-grow: 1; }
@@ -19475,6 +19476,11 @@ span[data-flexitour="container"][x-placement="right"], span[data-flexitour="cont
     /*rtl:ignore*/
     left: 50%;
     transform: translate(-50%, -50%); }
+
+.modal-dialog-scrollable .modal-content {
+  overflow: initial; }
+  .modal-dialog-scrollable .modal-content .modal-body {
+    position: static; }
 
 .layout.fullscreen {
   height: 100vh;
