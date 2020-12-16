@@ -114,6 +114,7 @@ class behat_partial_named_selector extends \Behat\Mink\Selector\PartialNamedSele
         'region' => 'region',
         'section' => 'section',
         'select' => 'select',
+        'singleimage' => 'singleimage',
         'table' => 'table',
         'table_row' => 'table_row',
         'text' => 'text',
@@ -270,6 +271,10 @@ XPATH
         ,
             'date_time' => <<<XPATH
 .//fieldset[(%idMatch% or ./legend[%exactTagTextMatch%]) and (@data-fieldtype='date' or @data-fieldtype='date_time')]
+XPATH
+        ,
+            'singleimage' => <<<XPATH
+.//fieldset[(%idMatch% or ./legend[%exactTagTextMatch%]) and (@data-fieldtype='singleimage')]
 XPATH
         ],
     ];
