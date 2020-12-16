@@ -425,6 +425,35 @@ class user_picture implements renderable {
 
         return $defaulturl;
     }
+
+    /**
+     * Gets the user file if uploaded manually.
+     *
+     * @return stored_file
+     */
+    public function get_file() {
+        if ($this->user->picture > 0) {
+            $fs = get_file_storage();
+            $context = context_user::instance($this->user->id, IGNORE_MISSING);
+            // Usually we have a png.
+            $file = $fs->get_file($context->id, 'user', 'icon', 0, '/', 'f3.png');
+            if (!$file) {
+                $file = $fs->get_file($context->id, 'user', 'icon', 0, '/', 'f3.jpg');
+            }
+            return $file;
+        } else {
+            return new stored_file(get_file_storage(), (object)[
+                'component' => 'user',
+                'filearea' => 'icon',
+                'filename' => null,
+                'timemodified' => null,
+                'filepath' => null,
+                'pathnamehash' => null,
+                'contextid' => null,
+                'mimetype' => null
+            ]);
+        }
+    }
 }
 
 /**

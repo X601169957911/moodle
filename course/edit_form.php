@@ -27,6 +27,7 @@ class course_edit_form extends moodleform {
         $editoroptions = $this->_customdata['editoroptions'];
         $returnto = $this->_customdata['returnto'];
         $returnurl = $this->_customdata['returnurl'];
+        $singleimageoptions = $this->_customdata['singleimageoptions'];
 
         $systemcontext   = context_system::instance();
         $categorycontext = context_coursecat::instance($category->id);
@@ -189,11 +190,7 @@ class course_edit_form extends moodleform {
         $mform->setType('summary_editor', PARAM_RAW);
         $summaryfields = 'summary_editor';
 
-        if ($overviewfilesoptions = course_overviewfiles_options($course)) {
-            $mform->addElement('filemanager', 'overviewfiles_filemanager', get_string('courseoverviewfiles'), null, $overviewfilesoptions);
-            $mform->addHelpButton('overviewfiles_filemanager', 'courseoverviewfiles');
-            $summaryfields .= ',overviewfiles_filemanager';
-        }
+        $mform->addElement('singleimage', 'courseimage', get_string('courseoverviewfiles'), null, $singleimageoptions);
 
         if (!empty($course->id) and !has_capability('moodle/course:changesummary', $coursecontext)) {
             // Remove the description header it does not contain anything any more.
