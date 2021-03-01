@@ -90,12 +90,12 @@ class running_tasks_table extends \table_sql {
             if (class_exists($row->classname)) {
                 $task = new $row->classname;
                 if ($task instanceof \core\task\scheduled_task) {
-                    $output .= \html_writer::tag('div', $task->get_name(), ['class' => 'task-class']);
+                    $output .= \html_writer::tag('div', $task->get_name(), ['class' => 'small']);
                 }
             }
         } else if ($row->type == 'adhoc') {
             $output .= \html_writer::tag('div',
-                get_string('adhoctaskid', 'tool_task', $row->id), ['class' => 'task-class']);
+                get_string('adhoctaskid', 'tool_task', $row->id), ['class' => 'small']);
         }
         return $output;
     }

@@ -291,22 +291,19 @@ class manager {
         ];
 
         echo \html_writer::start_tag('div', [
-                'class' => 'tour-actions',
+                'class' => 'd-flex justify-content-center my-3',
             ]);
 
-        echo \html_writer::start_tag('ul');
         foreach ($actions as $config) {
-            $action = \html_writer::start_tag('li');
             $linkproperties = $config->linkproperties;
             $linkproperties['href'] = $config->link;
-            $action .= \html_writer::start_tag('a', $linkproperties);
+            $linkproperties['class'] = 'btn btn-light border mx-1 rounded tour-action';
+            $action = \html_writer::start_tag('a', $linkproperties);
             $action .= $OUTPUT->pix_icon($config->img, $config->title, 'tool_usertours');
             $action .= \html_writer::div($config->title);
             $action .= \html_writer::end_tag('a');
-            $action .= \html_writer::end_tag('li');
             echo $action;
         }
-        echo \html_writer::end_tag('ul');
         echo \html_writer::end_tag('div');
 
         // JS for Tour management.

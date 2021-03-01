@@ -81,8 +81,14 @@ class tool_filetypes_renderer extends plugin_renderer_base {
                 $row->cells = array();
 
                 // First cell has icon and extension.
-                $icon = $this->pix_icon('f/' . $filetype['icon'], '');
-                $row->cells[] = new html_table_cell($icon . ' ' . html_writer::span(s($extension)));
+                $iconname = html_writer::span(s($extension));
+                $iconclass = ['class' => 'mr-1'];
+                if (!empty($filetype['deleted'])) {
+                    $iconclass['class'] .= ' img-muted';
+                    $iconname = html_writer::tag('del', $iconname);
+                }
+                $icon = $this->pix_icon('f/' . $filetype['icon'], '', '', $iconclass);
+                $row->cells[] = new html_table_cell($icon . ' ' . $iconname);
 
                 // Reset URL and button if needed.
                 $reverturl = new \moodle_url('/admin/tool/filetypes/revert.php',
@@ -101,7 +107,7 @@ class tool_filetypes_renderer extends plugin_renderer_base {
                     }
                     $source = new html_table_cell(get_string('source_deleted', 'tool_filetypes') .
                             ' ' . $revertbutton);
-                    $source->attributes = array('class' => 'nonstandard');
+                    $source->attributes = array('class' => 'nonstandard d-flex font-weight-bold');
                     $row->cells[] = $source;
 
                     // Other cells are blank.
@@ -121,7 +127,9 @@ class tool_filetypes_renderer extends plugin_renderer_base {
                                 array('extension' => $extension));
                         $deletebutton = html_writer::link($deleteurl, $this->pix_icon('t/delete',
                                 get_string('deletea', 'tool_filetypes', s($extension))));
-                        $row->cells[] = new html_table_cell($editbutton . '&nbsp;' . $deletebutton);
+                        $controls = new html_table_cell($editbutton . '&nbsp;' . $deletebutton);
+                        $controls->attributes['class'] = 'd-flex';
+                        $row->cells[] = $controls;
                     }
 
                     // Source.
@@ -136,7 +144,7 @@ class tool_filetypes_renderer extends plugin_renderer_base {
                     $source = new html_table_cell(get_string($sourcestring, 'tool_filetypes') .
                             ($sourcestring === 'source_modified' ? ' ' . $revertbutton : ''));
                     if ($sourcestring !== 'source_standard') {
-                        $source->attributes = array('class' => 'nonstandard');
+                        $source->attributes = array('class' => 'nonstandard d-flex font-weight-bold');
                     }
                     $row->cells[] = $source;
 

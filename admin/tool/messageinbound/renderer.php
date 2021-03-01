@@ -43,13 +43,13 @@ class tool_messageinbound_renderer extends plugin_renderer_base {
 
         $table = new html_table();
         $handlername = new html_table_cell(get_string('name', 'tool_messageinbound') . "\n" .
-                html_writer::tag('span', get_string('classname', 'tool_messageinbound'), array('class' => 'handler-function')));
+                html_writer::tag('div', get_string('classname', 'tool_messageinbound'), array('class' => 'small')));
 
         // Prepare some of the rows with additional styling.
         $enabled = new html_table_cell(get_string('enabled', 'tool_messageinbound'));
-        $enabled->attributes['class'] = 'state';
+        $enabled->attributes['class'] = 'state text-center';
         $edit = new html_table_cell(get_string('edit', 'tool_messageinbound'));
-        $edit->attributes['class'] = 'edit';
+        $edit->attributes['class'] = 'edit text-center';
         $table->head  = array(
                 $handlername,
                 get_string('description', 'tool_messageinbound'),
@@ -76,7 +76,7 @@ class tool_messageinbound_renderer extends plugin_renderer_base {
         $editurlbase = new moodle_url('/admin/tool/messageinbound/index.php');
         foreach ($handlers as $handler) {
             $handlername = new html_table_cell($handler->name . "\n" .
-                    html_writer::tag('span', $handler->classname, array('class' => 'handler-function')));
+                    html_writer::tag('div', $handler->classname, array('class' => 'small')));
             $handlername->header = true;
 
             $editurl = new moodle_url($editurlbase, array('classname' => $handler->classname));
@@ -85,9 +85,9 @@ class tool_messageinbound_renderer extends plugin_renderer_base {
 
             // Prepare some of the rows with additional styling.
             $enabled = new html_table_cell($handler->enabled ? $yes : $no);
-            $enabled->attributes['class'] = 'state';
+            $enabled->attributes['class'] = 'state text-center';
             $edit = new html_table_cell($editlink);
-            $edit->attributes['class'] = 'edit';
+            $edit->attributes['class'] = 'edit text-center';
 
             // Add the row.
             $row = new html_table_row(array(
