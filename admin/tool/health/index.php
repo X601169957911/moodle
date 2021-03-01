@@ -32,10 +32,10 @@
 
     admin_externalpage_setup('toolhealth');
 
-    define('SEVERITY_NOTICE',      'notice');
-    define('SEVERITY_ANNOYANCE',   'annoyance');
-    define('SEVERITY_SIGNIFICANT', 'significant');
-    define('SEVERITY_CRITICAL',    'critical');
+    define('SEVERITY_NOTICE',      'alert-info');
+    define('SEVERITY_ANNOYANCE',   'alert-warning');
+    define('SEVERITY_SIGNIFICANT', 'alert-danger');
+    define('SEVERITY_CRITICAL',    'alert-danger');
 
     $solution = optional_param('solution', 0, PARAM_PLUGIN);
 
@@ -92,19 +92,21 @@ function health_find_problems() {
         echo '</div>';
     }
     else {
-        echo $OUTPUT->heading(get_string('healthproblemsdetected', 'tool_health'));
+        echo $OUTPUT->heading(get_string('healthproblemsdetected', 'tool_health'), 5);
         $severities = array(SEVERITY_CRITICAL, SEVERITY_SIGNIFICANT, SEVERITY_ANNOYANCE, SEVERITY_NOTICE);
         foreach($severities as $severity) {
             if(!empty($issues[$severity])) {
-                echo '<dl class="healthissues '.$severity.'">';
+
                 foreach($issues[$severity] as $classname => $data) {
-                    echo '<dt id="'.$classname.'">'.$data['title'].'</dt>';
-                    echo '<dd>'.$data['description'];
+                    echo '<div class="alert '.$severity.'">';
+                    echo '<h3>'.$data['title'].'</h3>';
+                    echo '<div>'.$data['description'];
                     echo '<form action="index.php#solution" method="get">';
-                    echo '<input type="hidden" name="solution" value="'.$classname.'" /><input type="submit" value="'.get_string('viewsolution').'" />';
-                    echo '</form></dd>';
+                    echo '<input type="hidden" name="solution" value="' . $classname .
+                        '" /><input type="submit" class="btn btn-primary mt-2" value="'.get_string('viewsolution').'" />';
+                    echo '</form></div>';
+                    echo '</div>';
                 }
-                echo '</dl>';
             }
         }
     }
@@ -121,15 +123,18 @@ function health_print_solution($classname) {
     );
 
     echo $OUTPUT->heading(get_string('pluginname', 'tool_health'));
-    echo $OUTPUT->heading(get_string('healthproblemsolution', 'tool_health'));
-    echo '<dl class="healthissues '.$data['severity'].'">';
-    echo '<dt>'.$data['title'].'</dt>';
-    echo '<dd>'.$data['description'].'</dd>';
-    echo '<dt id="solution" class="solution">'.get_string('healthsolution', 'tool_health').'</dt>';
-    echo '<dd class="solution">'.$data['solution'].'</dd></dl>';
+    echo $OUTPUT->heading(get_string('healthproblemsolution', 'tool_health'), 5);
+    echo '<div class="alert '.$data['severity'].'">';
+    echo '<h3>'.$data['title'].'</h3>';
+    echo '<div>'.$data['description'].'</div>';
+    echo '</div>';
+    echo '<div class="alert alert-success">';
+    echo '<h4 id="solution">'.get_string('healthsolution', 'tool_health').'</h4>';
+    echo '<div class="solution">'.$data['solution'].'</div>';
     echo '<form id="healthformreturn" action="index.php#'.$classname.'" method="get">';
-    echo '<input type="submit" value="'.get_string('healthreturntomain', 'tool_health').'" />';
+    echo '<input type="submit" class="btn btn-primary" value="'.get_string('healthreturntomain', 'tool_health').'" />';
     echo '</form>';
+    echo '</div>';
 }
 
 class problem_base {
@@ -519,7 +524,7 @@ class problem_000015 extends problem_base {
                 LEFT JOIN {context} con ON qc.contextid = con.id
             WHERE con.id IS NULL
             ORDER BY numquestions DESC, qc.name");
-        $table = '<table><thead><tr><th>Cat id</th><th>Category name</th>' .
+        $table = '<table class="table" class="table"><thead><tr><th>Cat id</th><th>Category name</th>' .
         "<th>Context id</th><th>Num Questions</th></tr></thead><tbody>\n";
         foreach ($problemcategories as $cat) {
             $table .= "<tr><td>$cat->id</td><td>" . s($cat->name) . "</td><td>" .
@@ -568,7 +573,7 @@ class problem_000016 extends problem_base {
             FROM {question_categories} child_qc
                 JOIN {question_categories} parent_qc ON child_qc.parent = parent_qc.id
             WHERE child_qc.contextid <> parent_qc.contextid");
-        $table = '<table><thead><tr><th colspan="3">Child category</th><th colspan="3">Parent category</th></tr><tr>' .
+        $table = '<table class="table"><thead><tr><th colspan="3">Child category</th><th colspan="3">Parent category</th></tr><tr>' .
         '<th>Id</th><th>Name</th><th>Context id</th>' .
         '<th>Id</th><th>Name</th><th>Context id</th>' .
         "</tr></thead><tbody>\n";

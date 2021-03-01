@@ -1,0 +1,62 @@
+.path-admin-tool-capability .comparisontable {
+    margin-top: 150px;
+    th {
+        vertical-align: middle;
+        padding: 0.4em 0.5em 0.3em;
+    }
+    td {
+        vertical-align: middle;
+        padding: 0.4em 0.5em 0.3em;
+    }
+    tbody {
+        th {
+            background-color: $light;
+            text-align: right;
+            border: $border-width solid $border-color;
+            span {
+                display: block;
+                color: $gray-700;
+                font-size: 80%;
+            }
+        }
+        td {
+            border: $border-width solid $border-color;
+        }
+    }
+    .inherit {
+        color: $gray-700;
+    }
+    .allow {
+        background-color: $success;
+        font-weight: bold;
+        color: $white;
+    }
+    .prevent {
+        background-color: $warning;
+        font-weight: bold;
+        color: $white;
+    }
+    .prohibit {
+        background-color: $danger;
+        font-weight: bold;
+        color: $white;
+    }
+    thead th {
+        vertical-align: bottom;
+        background: none;
+        div {
+            position: relative;
+            > a {
+                position: absolute;
+                top: -1.75em;
+                left: 1em;
+                width: 150px;
+                text-align: left;
+                margin-bottom: 1em;
+                text-indent: -1.45em;
+                transform-origin: top left;
+                transform: rotate(315deg);
+            }
+        }
+    }
+}

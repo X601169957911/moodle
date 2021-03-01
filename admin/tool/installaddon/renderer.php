@@ -210,7 +210,7 @@ class tool_installaddon_renderer extends plugin_renderer_base {
         $out = $this->box(
             $this->output->single_button($url, get_string('installfromrepo', 'tool_installaddon'), 'get').
             $this->output->help_icon('installfromrepo', 'tool_installaddon'),
-            'generalbox', 'installfromrepobox'
+            'generalbox text-center', 'installfromrepobox'
         );
 
         return $out;

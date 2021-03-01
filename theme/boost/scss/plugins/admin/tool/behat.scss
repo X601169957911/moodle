@@ -1,0 +1,33 @@
+// admin/tool/behat/index.php
+
+#page-admin-tool-behat-index .steps-definitions {
+    margin: 1rem auto;
+
+    .step {
+        margin: 1rem 0 0 0;
+        border: $border-width solid $border-color;
+        padding: 1rem;
+    }
+
+    .stepdescription {
+        font-style: italic;
+    }
+
+    .stepcontent {
+        margin: 1rem 0;
+    }
+
+    .steptype {
+        color: $primary;
+        margin-right: 0.5rem;
+    }
+
+    .stepapipath {
+        font-family: monospace;
+        font-size: smaller;
+    }
+
+    .stepregex {
+        color: $success;
+    }
+}

@@ -101,7 +101,7 @@ class tool_task_renderer extends plugin_renderer_base {
             }
 
             $namecellcontent = $task->get_name() . "\n" .
-                html_writer::span('\\' . $classname, 'task-class text-ltr');
+                html_writer::div('\\' . $classname, 'small');
             if ($task->is_overridden()) {
                 // Let the user know the scheduled task is defined in config.
                 $namecellcontent .= "\n" . html_writer::div(get_string('configoverride', 'admin'), 'alert-info');
@@ -190,7 +190,7 @@ class tool_task_renderer extends plugin_renderer_base {
             $componentname .= ' ' . html_writer::span(
                             get_string('disabled', 'tool_task'), 'badge badge-secondary');
         }
-        $componentname .= "\n" . html_writer::span($plugininfo->component, 'task-class text-ltr');
+        $componentname .= html_writer::div($plugininfo->component, 'small');
 
         return $componentname;
     }
@@ -261,8 +261,8 @@ class tool_task_renderer extends plugin_renderer_base {
 
         // Otherwise, highlight and show the default.
         $cell->attributes['class'] .= ' table-warning';
-        $cell->text .= ' ' . html_writer::span(
-                get_string('defaultx', 'tool_task', $default), 'task-class');
+        $cell->text .= ' ' . html_writer::div(
+                get_string('defaultx', 'tool_task', $default), 'small');
         return $cell;
     }
 

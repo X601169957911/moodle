@@ -108,6 +108,9 @@ $spacers: (
 // Import Core moodle CSS
 @import "moodle";
 
+// Import Plugin CSS
+@import "plugins";
+
 // Preset CSS
 
 body {

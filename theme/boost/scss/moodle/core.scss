@@ -2511,6 +2511,10 @@ body.h5p-embed {
     @include img-fluid();
 }
 
+.img-muted {
+    opacity: 0.2;
+}
+
 input[disabled] {
     cursor: not-allowed;
 }

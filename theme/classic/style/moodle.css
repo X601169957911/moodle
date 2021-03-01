@@ -11896,6 +11896,9 @@ body.h5p-embed .h5pmessages {
   max-width: 100%;
   height: auto; }
 
+.img-muted {
+  opacity: 0.2; }
+
 input[disabled] {
   cursor: not-allowed; }
 
@@ -19369,6 +19372,7 @@ span[data-flexitour="container"],
 div[data-flexitour="step-background-fader"],
 [data-flexitour="step-backdrop"] > td,
 [data-flexitour="step-backdrop"] {
+  position: relative;
   z-index: 1042; }
 
 span[data-flexitour="container"] .modal-dialog {
