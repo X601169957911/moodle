@@ -86,7 +86,7 @@ if ($mform && ($mform->is_cancelled() || !empty($CFG->preventscheduledtaskchange
     } else {
         echo $OUTPUT->header();
         echo $OUTPUT->heading(get_string('edittaskschedule', 'tool_task', $task->get_name()));
-        echo html_writer::div('\\' . get_class($task), 'task-class text-ltr');
+        echo html_writer::div('\\' . get_class($task), 'small mb-2');
         echo html_writer::div(get_string('fromcomponent', 'tool_task',
                 $renderer->component_name($task->get_component())));
         $mform->display();

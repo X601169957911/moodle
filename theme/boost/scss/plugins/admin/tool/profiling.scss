@@ -1,0 +1,27 @@
+.path-admin-tool-profiling {
+    .profilingruntable .label {
+        font-weight: bold;
+    }
+
+    .profiling_worse {
+        color: $red;
+    }
+
+    .profiling_better {
+        color: $green;
+    }
+
+    .profiling_same {
+        color: $gray-600;
+    }
+
+    .profiling_important,
+    .flexible .referencerun {
+        font-weight: bold;
+    }
+
+    .flexible {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
