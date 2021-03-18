@@ -3399,41 +3399,13 @@
       }
     },
     "cli": {
-      "version": "0.6.6",
-      "resolved": "https://registry.npmjs.org/cli/-/cli-0.6.6.tgz",
-      "integrity": "sha1-Aq1Eo4Cr8nraxebwzdewQ9dMU+M=",
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/cli/-/cli-1.0.1.tgz",
+      "integrity": "sha1-IoF1NPJL+klQw01TLUjsvGIbjBQ=",
       "dev": true,
       "requires": {
         "exit": "0.1.2",
-        "glob": "~ 3.2.1"
-      },
-      "dependencies": {
-        "glob": {
-          "version": "3.2.11",
-          "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.11.tgz",
-          "integrity": "sha1-Spc/Y1uRkPcV0QmH1cAP0oFevj0=",
-          "dev": true,
-          "requires": {
-            "inherits": "2",
-            "minimatch": "0.3"
-          }
-        },
-        "lru-cache": {
-          "version": "2.7.3",
-          "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-2.7.3.tgz",
-          "integrity": "sha1-bUUk6LlV+V1PW1iFHOId1y+06VI=",
-          "dev": true
-        },
-        "minimatch": {
-          "version": "0.3.0",
-          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-0.3.0.tgz",
-          "integrity": "sha1-J12O2qxPG7MyZHIInnlJyDlGmd0=",
-          "dev": true,
-          "requires": {
-            "lru-cache": "2",
-            "sigmund": "~1.0.0"
-          }
-        }
+        "glob": "^7.1.1"
       }
     },
     "cli-cursor": {
@@ -4712,6 +4684,16 @@
           "integrity": "sha1-7mXsdymML/FFa8RBigUtDwZDURI=",
           "dev": true
         },
+        "cli": {
+          "version": "0.6.6",
+          "resolved": "https://registry.npmjs.org/cli/-/cli-0.6.6.tgz",
+          "integrity": "sha1-Aq1Eo4Cr8nraxebwzdewQ9dMU+M=",
+          "dev": true,
+          "requires": {
+            "exit": "0.1.2",
+            "glob": "~ 3.2.1"
+          }
+        },
         "glob": {
           "version": "3.2.11",
           "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.11.tgz",
@@ -5883,9 +5865,9 @@
           }
         },
         "handlebars": {
-          "version": "4.7.6",
-          "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.6.tgz",
-          "integrity": "sha512-1f2BACcBfiwAfStCKZNrUCgqNZkGsAT7UM3kkYtXuLo0KnaVfjKOyf7PRzB6++aK9STyT1Pd2ZCPe3EGOXleXA==",
+          "version": "4.7.7",
+          "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.7.tgz",
+          "integrity": "sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==",
           "dev": true,
           "requires": {
             "minimist": "^1.2.5",
@@ -6074,30 +6056,26 @@
       "dev": true
     },
     "jshint": {
-      "version": "2.11.0",
-      "resolved": "https://registry.npmjs.org/jshint/-/jshint-2.11.0.tgz",
-      "integrity": "sha512-ooaD/hrBPhu35xXW4gn+o3SOuzht73gdBuffgJzrZBJZPGgGiiTvJEgTyxFvBO2nz0+X1G6etF8SzUODTlLY6Q==",
+      "version": "2.13.0",
+      "resolved": "https://registry.npmjs.org/jshint/-/jshint-2.13.0.tgz",
+      "integrity": "sha512-Nd+md9wIeyfDK+RGrbOBzwLONSTdihGMtyGYU/t7zYcN2EgUa4iuY3VK2oxtPYrW5ycTj18iC+UbhNTxe4C66g==",
       "dev": true,
       "requires": {
         "cli": "~1.0.0",
         "console-browserify": "1.1.x",
         "exit": "0.1.x",
         "htmlparser2": "3.8.x",
-        "lodash": "~4.17.11",
+        "lodash": "~4.17.21",
         "minimatch": "~3.0.2",
         "shelljs": "0.3.x",
         "strip-json-comments": "1.0.x"
       },
       "dependencies": {
-        "cli": {
-          "version": "1.0.1",
-          "resolved": "https://registry.npmjs.org/cli/-/cli-1.0.1.tgz",
-          "integrity": "sha1-IoF1NPJL+klQw01TLUjsvGIbjBQ=",
-          "dev": true,
-          "requires": {
-            "exit": "0.1.2",
-            "glob": "^7.1.1"
-          }
+        "lodash": {
+          "version": "4.17.21",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
+          "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+          "dev": true
         },
         "strip-json-comments": {
           "version": "1.0.4",
