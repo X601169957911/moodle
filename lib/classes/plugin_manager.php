@@ -2002,7 +2002,7 @@ class core_plugin_manager {
             ),
 
             'tool' => array(
-                'analytics', 'availabilityconditions', 'behat', 'capability', 'cohortroles', 'customlang',
+                'analytics', 'availabilityconditions', 'behat', 'capability', 'cohortroles', 'componentlibrary', 'customlang',
                 'dataprivacy', 'dbtransfer', 'filetypes', 'generator', 'health', 'httpsreplace', 'innodb',
                 'installaddon', 'langimport', 'licensemanager', 'log', 'lp', 'lpimportcsv', 'lpmigrate', 'messageinbound',
                 'mobile', 'moodlenet', 'multilangupgrade', 'monitor', 'oauth2', 'phpunit', 'policy', 'profiling', 'recyclebin',
