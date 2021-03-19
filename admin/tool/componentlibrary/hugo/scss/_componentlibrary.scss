@@ -1,0 +1,26 @@
+.path-admin-tool-componentlibrary {
+    #maincontent {
+        display: none;
+    }
+    #page {
+        margin-top: 0;
+    }
+    #page,
+    .embedded-main,
+    div[role="main"],
+    div[role="main"] > .container-fluid > .row {
+        height: 100%;
+    }
+    div[role="main"] > .container-fluid {
+        height: calc(100% - 50px);
+    }
+    .navbar-componentlibrary {
+        z-index: 2;
+    }
+
+    [data-region="docsearch"] .dropdown-menu {
+        a {
+            text-transform: capitalize;
+        }
+    }
+}

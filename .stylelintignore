@@ -4,6 +4,8 @@ theme/boost/style/moodle.css
 theme/classic/style/moodle.css
 node_modules/
 vendor/
+admin/tool/componentlibrary/amd/src/lunr.js
+admin/tool/componentlibrary/amd/src/clipboard.js
 admin/tool/policy/amd/src/jquery-eu-cookie-law-popup.js
 auth/cas/CAS/
 cache/stores/mongodb/MongoDB/

@@ -1,0 +1,139 @@
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Interface to the Lunr search engines.
+ *
+ * @module     tool_componentlibrary/search
+ * @package    tool_componentlibrary
+ * @copyright  2021 Bas Brands <bas@moodle.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+import LunrJs from 'tool_componentlibrary/lunr';
+import selectors from 'tool_componentlibrary/selectors';
+import Log from 'core/log';
+
+let lunrIndex = null;
+let pagesIndex = null;
+
+/**
+ * Get the jsonFile that is generated when the component library is build
+ * @param {String} jsonFile the URL to the json file.
+ * @retrun {Object}
+ */
+const fetchJson = async(jsonFile) => {
+    const response = await fetch(jsonFile);
+
+    if (!response.ok) {
+        Log.debug(`Error getting Hugo index file: ${response.status}`);
+    }
+
+    const jsondata = await response.json();
+    return jsondata;
+};
+
+/**
+ * Initiate lunr on the data in the jsonFile
+ * and add the jsondata to the pagesIndex
+ * @param {String} jsonFile the URL to the json file.
+ */
+const initLunr = (jsonFile) => {
+    fetchJson(jsonFile).then((jsondata) => {
+        pagesIndex = jsondata;
+        // Using an arrow function here will break lunr on compile.
+        lunrIndex = LunrJs(function() {
+            this.ref('uri');
+            this.field('title', { boost: 10 });
+            this.field('content');
+            this.field('tags', { boost: 5 });
+            jsondata.forEach(p => {
+              this.add(p);
+            });
+        });
+    });
+};
+
+
+/**
+ * Setup the eventlistener to listen on user input on the search field.
+ */
+const initUI = () => {
+    const searchInput = document.querySelector(selectors.searchinput);
+    searchInput.addEventListener('keyup', (e) => {
+        let query = e.currentTarget.value;
+        if (query.length < 2) {
+            return;
+        }
+        renderResults(search(query));
+    });
+};
+
+/**
+ * Trigger a search in lunr and transform the result
+ *
+ * @param  {String} query
+ * @return {Array}  results
+ */
+const search = (query) => {
+    // Find the item in our index corresponding to the lunr one to have more info
+    // Lunr result:
+    //  {ref: "/section/page1", score: 0.2725657778206127}
+    // Our result:
+    //  {title:"Page1", href:"/section/page1", ...}
+    return lunrIndex.search(query).map((result) => {
+        return pagesIndex.filter((page) => {
+            return page.uri === result.ref;
+        })[0];
+    });
+};
+
+/**
+ * Display the 10 first results
+ *
+ * @param  {Array} results to display
+ */
+const renderResults = (results) => {
+    if (!results.length) {
+        return;
+    }
+
+    const dropdownMenu = document.querySelector(selectors.dropdownmenu);
+    // Clear out the results.
+    dropdownMenu.innerHTML = '';
+
+    const baseUrl = M.cfg.wwwroot + '/admin/tool/componentlibrary/docspage.php';
+
+    // Only show the ten first results
+    results.slice(0, 10).forEach(function(result) {
+        const link = document.createElement("a");
+        const chapter = result.uri.split('/')[1];
+        link.appendChild(document.createTextNode(`${chapter} > ${result.title}`));
+        link.classList.add('dropdown-item');
+        link.href = baseUrl + result.uri;
+
+        const listItem = document.createElement("li");
+        listItem.appendChild(link);
+
+        dropdownMenu.appendChild(listItem);
+    });
+
+    dropdownMenu.classList.add('show');
+};
+
+export const init = (jsonFile) => {
+    initLunr(jsonFile);
+    initUI();
+};

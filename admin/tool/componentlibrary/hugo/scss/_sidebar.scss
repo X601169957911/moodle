@@ -1,0 +1,83 @@
+// stylelint-disable declaration-no-important
+.sidebar {
+    line-height: 1.8;
+    font-size: 90%;
+    border-right: 1px solid $border-color;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: $body-color;
+    text-decoration: none;
+    padding: .3rem 0.5rem;
+    border-left: solid 4px $light;
+    border-bottom: solid 1px $border-color;
+    &.dropdown-toggle::after {
+        margin-left: auto;
+        font-size: 14px;
+        color: $gray-400;
+    }
+}
+
+.sidebar a:hover {
+    background-color: $gray-200;
+    border-left: solid 4px $border-color;
+}
+
+.sidebar nav > ul > li li a {
+    padding-left: 1rem;
+}
+
+.sidebar nav > ul ul > li li a {
+    padding-left: 2rem;
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar nav > ul > li:first-child a {
+        border-top: solid 1px $border-color;
+    }
+}
+
+.sidebar .active > a {
+    background: $border-color;
+    border-left: solid 4px $border-color;
+    font-weight: bold;
+}
+
+.sidebar .slide-menu .has-sub-menu:not(.parent) ul {
+    display: none;
+}
+
+.sticky-top.secondnav {
+    z-index: 0;
+}
+
+#TableOfContents > ul {
+    font-size: 90%;
+    padding-left: 0;
+    border-left: 1px solid $border-color;
+    ul {
+        padding-left: 1rem;
+    }
+    li {
+        display: block;
+        a {
+            display: block;
+            padding: .125rem 1.5rem;
+            color: $body-color;
+            &:hover {
+                color: $primary;
+                text-decoration: none;
+            }
+        }
+    }
+}
+

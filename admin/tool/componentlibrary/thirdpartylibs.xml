@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<libraries>
+  <library>
+    <location>amd/src/lunr.js</location>
+    <name>lunr - http://lunrjs.com</name>
+    <license>MIT</license>
+    <version>2.3.8</version>
+    <licenseversion></licenseversion>
+  </library>
+  <library>
+    <location>amd/src/clipboard.js</location>
+    <name>Clipboard.JS - http://clipboardjs.com</name>
+    <license>MIT</license>
+    <version>2.0.8</version>
+    <licenseversion></licenseversion>
+  </library>
+</libraries>

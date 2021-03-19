@@ -1,0 +1,26 @@
+# Update config.yml:
+# Update config.yml:
+-publishDir:             "./docs"
+-
+-archetypeDir:           "./hugo/archetypes"
+-assetDir:               "./hugo/assets"
+-contentDir:             "./content"
+-dataDir:                "./hugo/site/data"
+-layoutDir:              "./hugo/site/layouts"
+-staticDir:              "./content/static"
++publishDir:             "./admin/tool/componentlibrary/docs"
++archetypeDir:           "./admin/tool/componentlibrary/hugo/archetypes"
++assetDir:               "./admin/tool/componentlibrary/hugo/assets"
++contentDir:             "./admin/tool/componentlibrary/content"
++dataDir:                "./admin/tool/componentlibrary/hugo/site/data"
++layoutDir:              "./admin/tool/componentlibrary/hugo/site/layouts"
++staticDir:              "./admin/tool/componentlibrary/content/static"
+```
+# Update all uses of `readFile` in the markdown files to be relative to the Moodle project root.
+```
+{{- $pl8 := readFile "admin/tool/componentlibrary/content/static/moodle/components/coursecards/placeholder-8.txt" -}}
+```
+# Update all uses of `@import` in the hugo/scss/**/*.scss files to be relative to the Moodle project root.
+```
+@import "theme/boost/scss/bootstrap/functions";
+```
