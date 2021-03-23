@@ -320,17 +320,20 @@ class block_tag_youtube extends block_base {
             }
 
             $text .= html_writer::start_tag('li');
+            $text .= html_writer::start_tag('div', array('class' => 'media position-relative'));
 
-            $imgattrs = array('class' => 'youtube-thumb', 'src' => $thumbnail->url, 'alt' => $video->snippet->title);
-            $thumbhtml = html_writer::empty_tag('img', $imgattrs);
-            $link = html_writer::tag('a', $thumbhtml, array('href' => $url));
-            $text .= html_writer::tag('div', $link, array('class' => 'clearfix'));
+            $imgattrs = array('class' => 'youtube-thumb p-1 mb-2 mr-1', 'src' => $thumbnail->url, 'alt' => $video->snippet->title);
+            $text .= html_writer::empty_tag('img', $imgattrs);
+            $text .= html_writer::start_tag('div', array('class' => 'media-body'));
 
-            $text .= html_writer::tag('span', html_writer::tag('a', $video->snippet->title, array('href' => $url)));
-
+            $text .= html_writer::tag('p', html_writer::tag('a', $video->snippet->title, array('href' => $url,
+                'class' => 'stretched-link')));
             if (!empty($seconds)) {
-                $text .= html_writer::tag('div', format_time($seconds));
+                $text .= html_writer::tag('div', format_time($seconds), array('class' => 'small'));
             }
+            $text .= html_writer::end_tag('div');
+            $text .= html_writer::end_tag('div');
+
             $text .= html_writer::end_tag('li');
         }
         $text .= html_writer::end_tag('ul');

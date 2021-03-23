@@ -37,15 +37,15 @@
 }}
 <div>
     {{#hasplans}}
-        <h3>{{#str}}myplans, block_lp{{/str}}</h3>
-        <div class="sub-content">
+        <h6>{{#str}}myplans, block_lp{{/str}}</h6>
+        <div class="sub-content mb-3">
             {{#hasactiveplans}}
-                <ul>
+                <ul class="list-unstyled m-0">
                     {{#activeplans}}
                         <li><a href="{{url}}">{{{name}}}</a></li>
                     {{/activeplans}}
                     {{#hasmoreplans}}
-                        <li class="more"><a href="{{plansurl}}">{{#str}}viewmore, block_lp{{/str}}</a></li>
+                        <li class="more pt-2"><a href="{{plansurl}}">{{#str}}viewmore, block_lp{{/str}}</a></li>
                     {{/hasmoreplans}}
                 </ul>
             {{/hasactiveplans}}
@@ -55,22 +55,22 @@
         </div>
     {{/hasplans}}
     {{#hascompstoreview}}
-        <h3>{{#str}}competenciestoreview, block_lp{{/str}}</h3>
-        <div class="sub-content">
-            <ul>
+        <h6>{{#str}}competenciestoreview, block_lp{{/str}}</h6>
+        <div class="sub-content mb-3">
+            <ul class="list-unstyled m-0">
                 {{#compstoreview}}
                     <li>
                         <a href="{{usercompetency.url}}">{{{competency.shortname}}}</a> ({{user.fullname}}) - {{usercompetency.statusname}}
                     </li>
                 {{/compstoreview}}
                 {{#hasmorecompstoreview}}
-                    <li class="more"><a href="{{pluginbaseurl}}/competencies_to_review.php">{{#str}}viewmore, block_lp{{/str}}</a></li>
+                    <li class="more pt-2"><a href="{{pluginbaseurl}}/competencies_to_review.php">{{#str}}viewmore, block_lp{{/str}}</a></li>
                 {{/hasmorecompstoreview}}
             </ul>
         </div>
     {{/hascompstoreview}}
     {{#hasplanstoreview}}
-        <h3>{{#str}}planstoreview, block_lp{{/str}}</h3>
+        <h6>{{#str}}planstoreview, block_lp{{/str}}</h6>
         <div class="sub-content">
             <ul>
                 {{#planstoreview}}
@@ -79,7 +79,7 @@
                     </li>
                 {{/planstoreview}}
                 {{#hasmoreplanstoreview}}
-                    <li class="more"><a href="{{pluginbaseurl}}/plans_to_review.php">{{#str}}viewmore, block_lp{{/str}}</a></li>
+                    <li class="more pt-2"><a href="{{pluginbaseurl}}/plans_to_review.php">{{#str}}viewmore, block_lp{{/str}}</a></li>
                 {{/hasmoreplanstoreview}}
             </ul>
         </div>

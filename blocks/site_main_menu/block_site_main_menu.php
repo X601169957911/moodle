@@ -75,7 +75,7 @@ class block_site_main_menu extends block_list {
                         $content = $courserenderer->course_section_cm_text($cm);
                     }
 
-                    $this->content->items[] = $indent . html_writer::div($content, 'main-menu-content');
+                    $this->content->items[] = html_writer::div($indent . $content, 'd-flex mb-1');
                 }
             }
             return $this->content;
@@ -117,7 +117,7 @@ class block_site_main_menu extends block_list {
 
                     $editbuttons = html_writer::tag('div',
                         $courserenderer->course_section_cm_edit_actions($actions, $mod, array('donotenhance' => true)),
-                        array('class' => 'buttons')
+                        array('class' => 'ml-auto buttons')
                     );
                 } else {
                     $editbuttons = '';
@@ -142,7 +142,7 @@ class block_site_main_menu extends block_list {
                     } else {
                         $content = html_writer::div($courserenderer->course_section_cm_name($mod), ' activity');
                     }
-                    $this->content->items[] = $indent . html_writer::div($content . $editbuttons, 'main-menu-content');
+                    $this->content->items[] = html_writer::div($indent . $content . $editbuttons, 'd-flex mb-1');
                 }
             }
         }
@@ -153,8 +153,8 @@ class block_site_main_menu extends block_list {
             $this->content->icons[] = '';
         }
 
-        $this->content->footer = $courserenderer->course_section_add_cm_control($course,
-                0, null, array('inblock' => true));
+        $this->content->footer = html_writer::tag('div', $courserenderer->course_section_add_cm_control($course,
+                0, null, array('inblock' => true)), array('class' => 'mt-3'));
 
         return $this->content;
     }

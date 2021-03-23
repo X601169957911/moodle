@@ -49,8 +49,9 @@ class block_navigation_renderer extends plugin_renderer_base {
             'data-ajax-loader' => 'block_navigation/nav_loader');
         $content = $this->navigation_node(array($navigation), $navigationattrs, $expansionlimit, $options);
         if (isset($navigation->id) && !is_numeric($navigation->id) && !empty($content)) {
-            $content = $this->output->box($content, 'block_tree_box', $navigation->id);
+            $content = html_writer::tag('div', $content, ['id' => $navigation->id]);
         }
+
         return $content;
     }
     /**

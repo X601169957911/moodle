@@ -149,7 +149,7 @@ class block_blog_tags extends block_base {
             $totaltags  = count($tags);
             $currenttag = 0;
 
-            $size = 20;
+            $size = 10;
             $lasttagct = -1;
 
             $etags = array();
@@ -159,10 +159,10 @@ class block_blog_tags extends block_base {
 
                 if ($currenttag == 1) {
                     $lasttagct = $tag->ct;
-                    $size = 20;
+                    $size = 10;
                 } else if ($tag->ct != $lasttagct) {
                     $lasttagct = $tag->ct;
-                    $size = 20 - ( (int)((($currenttag - 1) / $totaltags) * 20) );
+                    $size = 10 - ( (int)((($currenttag - 1) / $totaltags) * 10) );
                 }
 
                 $tag->class = ($tag->isstandard ? "standardtag " : "") . "s$size";
@@ -176,7 +176,7 @@ class block_blog_tags extends block_base {
 
         /// Finally we create the output
         /// Accessibility: markup as a list.
-            $this->content->text .= "\n<ul class='inline-list'>\n";
+            $this->content->text .= "\n<ul class='inline-list tag_cloud'>\n";
             foreach ($etags as $tag) {
                 $blogurl = new moodle_url('/blog/index.php');
 

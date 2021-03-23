@@ -1,0 +1,8 @@
+/* RSS Feeds
+-------------------------*/
+.block_rss_client .list li {
+    border-top: $border-width solid $border-color;
+    &:first-child {
+        border-top-width: 0;
+    }
+}

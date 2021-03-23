@@ -86,7 +86,7 @@ class block_online_users extends block_base {
             $usercount = get_string('numusers', 'block_online_users', $usercount);
         }
 
-        $this->content->text = '<div class="info">'.$usercount.' ('.$periodminutes.')</div>';
+        $this->content->text = '<div class="info text-center">'.$usercount.' ('.$periodminutes.')</div>';
 
         // Verify if we can see the list of users, if not just print number of users.
         // If the current user is not logged in OR it's a guest then don't show any users.
@@ -125,7 +125,7 @@ class block_online_users extends block_base {
                 $canshowicon = false;
             }
             foreach ($users as $user) {
-                $this->content->text .= '<li class="listentry">';
+                $this->content->text .= '<li class="listentry mb-1 d-flex align-items-center">';
                 $timeago = format_time($now - $user->lastaccess); //bruno to calculate correctly on frontpage
 
                 if (isguestuser($user)) {
@@ -147,7 +147,7 @@ class block_online_users extends block_base {
                                 array('title' => get_string('online_status:' . $action, 'block_online_users'),
                                     'data-action' => $action, 'data-userid' => $user->id, 'id' => 'change-user-visibility'));
 
-                            $this->content->text .= '<div class="uservisibility">' . $anchortag . '</div>';
+                            $this->content->text .= '<div class="ml-auto uservisibility">' . $anchortag . '</div>';
                         }
                     } else {
                         if ($canshowicon) {  // Only when logged in and messaging active etc.
@@ -156,14 +156,14 @@ class block_online_users extends block_base {
                             $anchortag = html_writer::link($anchorurl, $anchortagcontents,
                                 array('title' => get_string('messageselectadd')));
 
-                            $this->content->text .= '<div class="message">'.$anchortag.'</div>';
+                            $this->content->text .= '<div class="ml-auto message">'.$anchortag.'</div>';
                         }
                     }
                 }
                 $this->content->text .= "</li>\n";
             }
             if ($initialcount - count($users) > 0) {
-                $this->content->text .= '<li class="listentry"><div class="otherusers">';
+                $this->content->text .= '<li class="listentry mb-1"><div class="otherusers ml-4">';
                 $this->content->text .= html_writer::span(
                     get_string('otherusers', 'block_online_users', $initialcount - count($users))
                 );
