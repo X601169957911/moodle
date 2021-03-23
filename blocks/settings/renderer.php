@@ -37,9 +37,7 @@ class block_settings_renderer extends plugin_renderer_base {
             'role' => 'tree',
             'data-ajax-loader' => 'block_navigation/site_admin_loader');
         $content = $this->navigation_node($navigation, $navigationattrs);
-        if (isset($navigation->id) && !is_numeric($navigation->id) && !empty($content)) {
-            $content = $this->output->box($content, 'block_tree_box', $navigation->id);
-        }
+
         return $content;
     }
 

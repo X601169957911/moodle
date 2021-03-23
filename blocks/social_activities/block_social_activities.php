@@ -70,7 +70,7 @@ class block_social_activities extends block_list {
                         $this->content->items[] = $content;
                         $this->content->icons[] = '';
                     } else {
-                        $this->content->items[] = html_writer::div($courserenderer->course_section_cm_name($cm), 'activity');
+                        $this->content->items[] = html_writer::div($courserenderer->course_section_cm_name($cm), 'activity mb-1');
                     }
                 }
             }
@@ -113,7 +113,7 @@ class block_social_activities extends block_list {
 
                     $editbuttons = html_writer::tag('div',
                         $courserenderer->course_section_cm_edit_actions($actions, $mod, array('donotenhance' => true)),
-                        array('class' => 'buttons')
+                        array('class' => 'buttons ml-auto')
                     );
                 } else {
                     $editbuttons = '';
@@ -130,12 +130,11 @@ class block_social_activities extends block_list {
                     }
                     if (!$mod->url) {
                         $content = $courserenderer->course_section_cm_text($mod);
-                        $this->content->items[] = $content . $editbuttons;
                         $this->content->icons[] = '';
                     } else {
-                        $this->content->items[] = html_writer::div($courserenderer->course_section_cm_name($mod), 'activity') .
-                            $editbuttons;
+                        $content = html_writer::div($courserenderer->course_section_cm_name($mod), 'activity mb-1');
                     }
+                    $this->content->items[] = html_writer::div($content . $editbuttons, 'd-flex mb-3');
                 }
             }
         }

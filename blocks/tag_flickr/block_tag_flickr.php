@@ -134,7 +134,7 @@ class block_tag_flickr extends block_base {
         $text = '<ul class="inline-list">';
          foreach ($photos as $photo) {
             $text .= '<li><a href="http://www.flickr.com/photos/' . $photo['owner'] . '/' . $photo['id'] . '/" title="'.s($photo['title']).'">';
-            $text .= '<img alt="'.s($photo['title']).'" class="flickr-photos" src="'. $this->build_photo_url($photo, 'square') ."\" /></a></li>\n";
+            $text .= '<img alt="'.s($photo['title']).'" class="flickr-photos p-1" src="'. $this->build_photo_url($photo, 'square') ."\" /></a></li>\n";
          }
         $text .= "</ul>\n";
 

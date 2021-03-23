@@ -69,111 +69,109 @@
         "userlastip": "0:0:0:0:0:0:0:1"
     }
 }}
-<div>
-    {{#userpicture}}
-    <div class="myprofileitem picture">
-        {{{ userpicture }}}
-    </div>
-    {{/userpicture}}
-</div>
-<div class="w-100 no-overflow">
-    <div class="myprofileitem fullname">
+<div class="media">
+{{#userpicture}}
+    {{{ userpicture }}}
+{{/userpicture}}
+<div class="media-body ml-3">
+    <div class="myprofileitem fullname font-weight-bold h5">
         {{ userfullname }}
     </div>
     {{#usercountry}}
     <div class="myprofileitem country">
-        <span>{{#str}} country {{/str}}:</span>
+        <span class="font-weight-bold">{{#str}} country {{/str}}:</span>
         {{ usercountry }}
     </div>
     {{/usercountry}}
     {{#usercity}}
     <div class="myprofileitem city">
-         <span>{{#str}} city {{/str}}:</span>
+         <span class="font-weight-bold">{{#str}} city {{/str}}:</span>
          {{ usercity }}
     </div>
     {{/usercity}}
     {{#useremail}}
         <div class="myprofileitem city">
-             <span>{{#str}} email {{/str}}:</span>
+             <span class="font-weight-bold">{{#str}} email {{/str}}:</span>
              {{{ useremail }}}
         </div>
     {{/useremail}}
     {{#usericq}}
     <div class="myprofileitem icq">
-         <span>ICQ:</span>
+         <span class="font-weight-bold">ICQ:</span>
          {{ usericq }}
     </div>
     {{/usericq}}
     {{#userskype}}
     <div class="myprofileitem skype">
-         <span>Skype:</span>
+         <span class="font-weight-bold">Skype:</span>
          {{ userskype }}
     </div>
     {{/userskype}}
     {{#useryahoo}}
     <div class="myprofileitem yahoo">
-         <span>Yahoo:</span>
+         <span class="font-weight-bold">Yahoo:</span>
          {{ useryahoo }}
     </div>
     {{/useryahoo}}
     {{#useraim}}
     <div class="myprofileitem aim">
-         <span>AIM:</span>
+         <span class="font-weight-bold">AIM:</span>
          {{ useraim }}
     </div>
     {{/useraim}}
     {{#usermsn}}
     <div class="myprofileitem msn">
-         <span>MSN:</span>
+         <span class="font-weight-bold">MSN:</span>
          {{ usermsn }}
     </div>
     {{/usermsn}}
     {{#userphone1}}
     <div class="myprofileitem phone1">
-         <span>{{#str}} phone1 {{/str}}:</span>
+         <span class="font-weight-bold">{{#str}} phone1 {{/str}}:</span>
          {{ userphone1 }}
     </div>
     {{/userphone1}}
     {{#userphone2}}
     <div class="myprofileitem phone2">
-         <span>{{#str}} phone2 {{/str}}:</span>
+         <span class="font-weight-bold">{{#str}} phone2 {{/str}}:</span>
          {{ userphone2 }}
     </div>
     {{/userphone2}}
     {{#userinstitution}}
     <div class="myprofileitem institution">
-        <span>{{#str}} institution {{/str}}:</span>
+        <span class="font-weight-bold">{{#str}} institution {{/str}}:</span>
         {{ userinstitution }}
     </div>
     {{/userinstitution}}
     {{#useraddress}}
     <div class="myprofileitem address">
-        <span>{{#str}} address {{/str}}:</span>
+        <span class="font-weight-bold">{{#str}} address {{/str}}:</span>
         {{ useraddress }}
     </div>
     {{/useraddress}}
     {{#userfirstaccess}}
     <div class="myprofileitem firstaccess">
-         <span>{{#str}} firstaccess {{/str}}: </span>
+         <span class="font-weight-bold">{{#str}} firstaccess {{/str}}: </span>
          {{ userfirstaccess }}
     </div>
     {{/userfirstaccess}}
     {{#userlastaccess}}
     <div class="myprofileitem lastaccess">
-         <span>{{#str}} lastaccess {{/str}}:</span>
+         <span class="font-weight-bold">{{#str}} lastaccess {{/str}}:</span>
          {{ userlastaccess }}
     </div>
     {{/userlastaccess}}
     {{#usercurrentlogin}}
     <div class="myprofileitem currentlogin">
-         <span>{{#str}} login {{/str}}:</span>
+         <span class="font-weight-bold">{{#str}} login {{/str}}:</span>
          {{ usercurrentlogin }}
     </div>
     {{/usercurrentlogin}}
     {{#userlastip}}
     <div class="myprofileitem lastip">
-         <span>IP:</span>
+         <span class="font-weight-bold">IP:</span>
          {{ userlastip }}
     </div>
     {{/userlastip}}
+    </div>
 </div>

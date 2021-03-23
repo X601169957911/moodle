@@ -12504,18 +12504,9 @@ input[disabled] {
   position: relative;
   left: initial; }
 
-.block:target {
-  padding-top: 0 !important;
-  /* stylelint-disable declaration-no-important */
-  margin-top: 0 !important; }
-
 .block_search_forums .searchform {
   /* Override plugin's default. */
   text-align: left; }
-
-.block.block_navigation .block_tree ul,
-.block_settings .block_tree ul {
-  margin-left: 0; }
 
 .block .block-controls .dropdown-toggle {
   /* So that the caret takes the colour of the icon. */
@@ -12694,7 +12685,8 @@ input[disabled] {
     margin-left: 0;
     margin-right: 0; }
     #block-region-side-pre .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
-      width: calc(100% - 0.5rem) !important; } }
+      width: calc(100% - 0.5rem) !important;
+      /* stylelint-disable-line declaration-no-important */ } }
 
 .block_recentlyaccessedcourses .paging-bar-container {
   margin-top: -2.4rem;
@@ -12718,50 +12710,59 @@ input[disabled] {
 .block_myoverview .paged-content-page-container {
   min-height: 13rem; }
 
-.block_settings .block_tree [aria-expanded="true"],
-.block_settings .block_tree [aria-expanded="true"].emptybranch,
-.block_settings .block_tree [aria-expanded="false"],
-.block_navigation .block_tree [aria-expanded="true"],
-.block_navigation .block_tree [aria-expanded="true"].emptybranch,
-.block_navigation .block_tree [aria-expanded="false"] {
-  background-image: none; }
+.block_tree.list .tree_item {
+  cursor: pointer;
+  margin: 3px 0;
+  word-wrap: break-word; }
+  .block_tree.list .tree_item.branch {
+    margin-left: 5px;
+    padding-left: 0.75rem; }
+    .block_tree.list .tree_item.branch.root_node, .block_tree.list .tree_item.branch.navigation_node {
+      margin-left: 0;
+      padding-left: 0; }
+  .block_tree.list .tree_item.hasicon {
+    padding-left: 0.75rem; }
+    .block_tree.list .tree_item.hasicon .icon {
+      margin-right: 5px; }
+  .block_tree.list .tree_item[aria-expanded="true"]:before {
+    content: "";
+    margin-right: 0;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    width: 16px; }
+  .block_tree.list .tree_item[aria-expanded="false"]:before {
+    content: "";
+    margin-right: 0;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    width: 16px; }
 
-.block_settings .block_tree [aria-expanded="true"]:before,
-.block_navigation .block_tree [aria-expanded="true"]:before {
-  content: "";
-  margin-right: 0;
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
-  width: 16px; }
+.block_tree.list ul {
+  margin-left: 0.25rem;
+  padding-left: 1rem; }
+  .block_tree.list ul[aria-hidden="false"] {
+    display: block; }
+  .block_tree.list ul[aria-hidden="true"]:not(.icon) {
+    display: none; }
 
-.block_settings .block_tree [aria-expanded="false"]:before,
-.block_navigation .block_tree [aria-expanded="false"]:before {
-  content: "";
-  margin-right: 0;
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
-  width: 16px; }
+.block_tree.list .active_tree_node {
+  font-weight: bold; }
 
-.dir-rtl .block_settings .block_tree [aria-expanded="false"]:before,
-.dir-rtl .block_navigation .block_tree [aria-expanded="false"]:before {
+.block_tree.list > li > ul {
+  padding-left: 0; }
+
+.dir-rtl .block_tree.list [aria-expanded="false"]:before {
   content: ""; }
-
-.block_navigation .block_tree p.hasicon,
-.block_settings .block_tree p.hasicon {
-  text-indent: -3px; }
-  .block_navigation .block_tree p.hasicon .icon,
-  .block_settings .block_tree p.hasicon .icon {
-    margin-right: 2px; }
 
 .block.invisibleblock .card-title {
   color: #6c757d; }
@@ -13233,9 +13234,6 @@ table.calendartable caption {
 
 .section-modchooser {
   clear: both; }
-
-.block_tree .tree_item.branch {
-  margin-left: 8px; }
 
 .section_add_menus .horizontal div,
 .section_add_menus .horizontal form {
@@ -20157,6 +20155,35 @@ span[data-flexitour="container"][x-placement="right"], span[data-flexitour="cont
 
 .path-admin-tool-usertours .tour-action {
   width: 10rem; }
+
+.block_activity_results table.grades .name {
+  width: 77%; }
+
+.block_course_list .content li {
+  margin-bottom: .3em; }
+
+/* Hide the first dropdown-divider if no filter option element is listed before it.
+   This can happen for some subset configurations of the block_myoverview course filter. */
+.block_myoverview button#groupingdropdown + .dropdown-menu li:first-of-type.dropdown-divider:first-of-type {
+  display: none; }
+
+/* Rule so that the table tree view works with word-wrap: break-word. */
+.block_private_files .content table {
+  table-layout: fixed;
+  width: 100%; }
+
+.block_recent_activity .unlist li {
+  margin-bottom: 1em; }
+
+.block_recent_activity li .head .date {
+  float: right; }
+
+/* RSS Feeds
+-------------------------*/
+.block_rss_client .list li {
+  border-top: 1px solid #dee2e6; }
+  .block_rss_client .list li:first-child {
+    border-top-width: 0; }
 
 body {
   -webkit-font-smoothing: antialiased;

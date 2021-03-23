@@ -64,7 +64,7 @@ class myprofile implements renderable, templatable {
         $data = new \stdClass();
 
         if (!isset($this->config->display_picture) || $this->config->display_picture == 1) {
-            $data->userpicture = $OUTPUT->user_picture($USER, array('class' => 'userpicture'));
+            $data->userpicture = $OUTPUT->user_picture($USER, array('class' => 'userpicture', 'size' => 50));
         }
 
         $data->userfullname = fullname($USER);
