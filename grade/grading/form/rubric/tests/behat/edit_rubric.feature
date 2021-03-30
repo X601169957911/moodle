@@ -119,7 +119,6 @@ Feature: Rubrics can be created and edited
     # Regrade student.
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I follow "Test assignment 1 name"
     And I go to "Student 1" "Test assignment 1 name" activity advanced grading page
     And I should see "The rubric definition was changed after this student had been graded. The student can not see this rubric until you check the rubric and update the grade."
     And I save the advanced grading form
