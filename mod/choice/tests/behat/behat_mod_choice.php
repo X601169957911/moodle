@@ -47,7 +47,7 @@ class behat_mod_choice extends behat_base {
      */
     public function I_choose_option_from_activity($option, $choiceactivity) {
 
-        $this->execute("behat_general::click_link", $this->escape($choiceactivity));
+        $this->execute("behat_navigation::go_to_breadcrumb_location", $this->escape($choiceactivity));
 
         $this->execute('behat_forms::i_set_the_field_to', array( $this->escape($option), 1));
 
