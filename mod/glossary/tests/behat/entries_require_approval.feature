@@ -48,6 +48,7 @@ Feature: A teacher can choose whether glossary entries require approval
     And I follow "Waiting approval"
     Then I should see "(this entry is currently hidden)"
     And I follow "Approve"
+    And I am on "Course 1" course homepage
     And I follow "Test glossary name"
     Then I should see "Concept definition"
     And I log out
