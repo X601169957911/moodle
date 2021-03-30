@@ -96,7 +96,6 @@ Feature: Setting grades to pass via workshop editing form
     And I set the field "Assessment grade to pass" to ""
     And I press "Save and display"
     Then I should not see "Adding a new Workshop"
-    And I follow "Super awesome workshop"
     And I navigate to "Edit settings" in current page administration
     And the field "Submission grade to pass" matches value "0.00"
     And the field "Assessment grade to pass" matches value "0.00"

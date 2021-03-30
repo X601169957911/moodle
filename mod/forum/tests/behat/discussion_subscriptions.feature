@@ -268,7 +268,6 @@ Feature: A user can control their own subscription preferences for a discussion
     When I log in as "student1"
     And I am on "Course 1" course homepage
     And I follow "Test forum name"
-    And I should see "Unsubscribe from this forum"
     And I reply "Test post subject one" post from "Test forum name" forum with:
       | Subject | Reply 1 to discussion 1 |
       | Message | Discussion contents 1, second message |
@@ -364,7 +363,6 @@ Feature: A user can control their own subscription preferences for a discussion
     And I follow "You are not subscribed to this discussion. Click to subscribe"
     And I should see "Student One will be notified of new posts in 'Test post subject one' of 'Test forum name'"
     And "Unsubscribe from this discussion" "checkbox" should exist in the "Test post subject one" "table_row"
-    And I follow "Test forum name"
     And I navigate to "Subscribe to this forum" in current page administration
     And I should see "Student One will be notified of new posts in 'Test forum name'"
     And "Unsubscribe from this forum" "link" should exist in current page administration
