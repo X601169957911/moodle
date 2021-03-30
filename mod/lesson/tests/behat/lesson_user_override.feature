@@ -116,6 +116,7 @@ Feature: Lesson user override
     And I press "Submit"
     And I press "Continue"
     And I should see "Congratulations - end of lesson reached"
+    And I am on "Course 1" course homepage
     And I follow "Test lesson name"
     Then I should not see "You are not allowed to retake this lesson."
     And I should see "Cat is an amphibian"
@@ -129,6 +130,7 @@ Feature: Lesson user override
     And I press "Submit"
     And I press "Continue"
     And I should see "Congratulations - end of lesson reached"
+    And I am on "Course 1" course homepage
     And I follow "Test lesson name"
     And I should see "You are not allowed to retake this lesson."
 
