@@ -476,8 +476,7 @@ class behat_mod_forum extends behat_base {
      */
     protected function add_new_discussion($forumname, TableNode $table, $buttonstr) {
 
-        // Navigate to forum.
-        $this->execute('behat_general::click_link', $this->escape($forumname));
+        $this->execute("behat_navigation::go_to_breadcrumb_location", $this->escape($forumname));
         $this->execute('behat_general::click_link', $buttonstr);
         $this->execute('behat_forms::press_button', get_string('showadvancededitor'));
 
