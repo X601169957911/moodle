@@ -68,7 +68,6 @@ Feature: File types of the submission and feedback attachments can be limitted
       | id_description__idx_0_editor | Aspect1 |
       | id_description__idx_1_editor | Aspect2 |
       | id_description__idx_2_editor |         |
-    And I follow "TestWorkshop"
     And I navigate to "Edit settings" in current page administration
     And I expand all fieldsets
     And I set the field "Maximum number of overall feedback attachments" to "2"
