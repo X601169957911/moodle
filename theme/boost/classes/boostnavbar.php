@@ -34,7 +34,7 @@ class boostnavbar implements \renderable {
      * @param \navbar $navbar The navigation bar.
      */
     public function __construct(\navbar $navbar) {
-        foreach ($navbar->get_items() as $item) {
+        foreach ($navbar->get_items() as $key => $item) {
             $this->items[] = $item;
         }
         $this->prepare_nodes_for_boost();
@@ -93,7 +93,7 @@ class boostnavbar implements \renderable {
      * Retrieve a single navbar item.
      *
      * @param  string|int $key The identifier of the navbar item to return.
-     * @return \breadcrumb_navigation_node|null The navbar item.
+     * @return \breadcrumb_navigation_node The navbar item.
      */
     protected function get_item($key): ?\breadcrumb_navigation_node {
         foreach ($this->items as $item) {
@@ -119,29 +119,23 @@ class boostnavbar implements \renderable {
      * @param  string|int $itemkey An identifier for the boostnavbaritem
      */
     protected function remove($itemkey): void {
-
-        $itemfound = false;
-        foreach ($this->items as $key => $item) {
-            if ($item->key === $itemkey) {
+        foreach ($this->items as $key => $value) {
+            if ($value->key === $itemkey) {
                 unset($this->items[$key]);
-                $itemfound = true;
                 break;
             }
         }
-        if (!$itemfound) {
-            return;
-        }
 
-        $itemcount = $this->item_count();
-        if ($itemcount <= 0) {
-            return;
-        }
+        if ($this->item_count() > 1) {
 
-        $this->items = array_values($this->items);
-        // Set the last item to last item if it is not.
-        $lastitem = $this->items[$itemcount - 1];
-        if (!$lastitem->is_last()) {
-            $lastitem->set_last(true);
+            // Set the last item to last item if it is not.
+            $lastitem = array_pop($this->items);
+            if (!$lastitem->is_last()) {
+                $lastitem->set_last();
+            }
+            array_push($this->items, $lastitem);
+
+            $this->items = array_values($this->items);
         }
     }
 
@@ -149,20 +143,19 @@ class boostnavbar implements \renderable {
      * Removes the action from the last item of the boostnavbaritem.
      */
     protected function remove_last_item_action(): void {
-        $item = end($this->items);
+        $item = array_pop($this->items);
         $item->action = null;
-        reset($this->items);
+        array_push($this->items, $item);
     }
 
     /**
-     * Returns the second last navbar item. This is for use in the mobile view where we are showing just the second
-     * last item in the breadcrumb navbar.
+     * Returns the second last navbar item.
      *
-     * @return breakcrumb_navigation_node|null The second last navigation node.
+     * @return breakcrumb_navigation_node The second last navigation node.
      */
-    public function get_penultimate_item(): ?\breadcrumb_navigation_node {
+    public function get_penultimate_item(): \breadcrumb_navigation_node {
         $number = $this->item_count() - 2;
-        return ($number >= 0) ? $this->items[$number] : null;
+        return $this->items[$number];
     }
 
     /**

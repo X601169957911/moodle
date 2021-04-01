@@ -48,6 +48,7 @@ $headings-font-weight:   300 !default;
 $navbar-dark-hover-color:           rgba($white, 1) !default;
 $navbar-light-color:                rgba($black, 0.6) !default;
 $navbar-light-hover-color:          rgba($black, .9) !default;
+$navbar-brand-padding-y:            0 !default;
 
 // Breadcrumbs
 $breadcrumb-padding-y:              .25rem !default;
@@ -115,13 +116,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.navbar {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
-}
-
 // Rounded user pictures
 .userpicture {
     border-radius: 50%;
+}
+
+#page-admin-search .settingslinkstabs {
+    display: none;
 }
 
 // Reset the default styling back to the bootstrap defaults for

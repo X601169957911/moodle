@@ -1,0 +1,38 @@
+<nav class="mobilemenu">
+    <ul class="nav navbar-nav">
+        {{# primarymenu.primary }}
+            {{> theme_boost/primarymobile_menuitem}}
+        {{/ primarymenu.primary }}
+        {{# primarymenu.custom }}
+            {{> theme_boost/primarymobile_menuitem}}
+        {{/ primarymenu.custom }}
+        <li class="nav-item">
+            <a href="#"
+                data-toggle="collapse"
+                data-target="#mobilelanguagemenu"
+                aria-expanded="true"
+                aria-controls="mobilelanguagemenu"
+                class="nav-link dropdown-toggle"
+            >{{#str}}language{{/str}}</a>
+            <ul id="mobilelanguagemenu" class="submenu unlist collapse">
+                {{# primarymenu.lang }}
+                    {{> theme_boost/primarymobile_menuitem}}
+                {{/ primarymenu.lang }}
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#"
+                data-toggle="collapse"
+                data-target="#mobilelanguagemenu"
+                aria-expanded="true"
+                aria-controls="mobilelanguagemenu"
+                class="nav-link dropdown-toggle"
+            >{{#str}}user{{/str}}</a>
+            <ul id="mobilelanguagemenu" class="submenu unlist collapse">
+                {{# primarymenu.user }}
+                    {{> theme_boost/primarymobile_menuitem}}
+                {{/ primarymenu.user }}
+            </ul>
+        </li>
+    </ul>
+</nav>

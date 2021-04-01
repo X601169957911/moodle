@@ -1,0 +1,21 @@
+{{#secondarynavigation}}
+    <div class="secondarynavcontainer drawer-sm" data-region="secondary-navigation">
+        <div class="drawerheader">
+            <div class="drawertitle">Secondary navigation</div>
+            <button class="btn drawertoggle icon-no-margin icon-size-4" data-action="closedrawer">
+                <div class="iconcross"><i><i></i></i></div>
+            </button>
+        </div>
+        {{{ secondarynavigation }}}
+    </div>
+    <div class="d-flex secondary-mobile">
+        <button class="d-md-none regiontoggle mobiletoggle btn " data-action="view-secondary-nav">
+            Secondary
+        </button>
+    </div>
+{{/secondarynavigation}}
+{{#js}}
+require(['theme_boost/drawer'], function(drawer) {
+    drawer.region('[data-region="secondary-navigation"]', '[data-action="view-secondary-nav"]' );
+});
+{{/js}}
