@@ -43,7 +43,7 @@ $iconsizes: map-merge((
     }
 }
 
-.navbar-dark a .icon {
+.navbar-dark .nav-link .icon {
     color: $navbar-dark-color !important; /* stylelint-disable-line declaration-no-important */
 }
 
@@ -99,4 +99,27 @@ $iconsizes: map-merge((
 
 .helplink .icon {
     margin-left: 0.5rem;
+}
+
+$icon-cross-size: 2rem !default;
+.iconcross {
+    width: $icon-cross-size;
+    height: $icon-cross-size;
+    & > i {
+        display: block;
+        height: $icon-cross-size;
+        width: 2px;
+        margin-left: 12px;
+        background-color: $body-color;
+        transform: rotate(45deg);
+        z-index: 1;
+        & > i {
+            display: block;
+            height: $icon-cross-size;
+            width: 2px;
+            background-color: $body-color;
+            transform: rotate(90deg);
+            z-index: 2;
+        }
+    }
 }

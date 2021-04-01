@@ -18,3 +18,12 @@ $state-warning-border: theme-color-level("warning", -10) !default;
 
 $state-danger-bg: theme-color-level("danger", -10) !default;
 $state-danger-border: theme-color-level("danger", -9) !default;
+
+$primary-nav-padding-y: 4px !default;
+$primary-nav-padding-x: 8px !default;
+
+$navbar-height: 60px !default;
+$moremenu-height: $navbar-height - ($primary-nav-padding-y * 2);
+
+$nav-underline-border-width: 3px !default;
+$nav-underline-border-color: $body-color !default;

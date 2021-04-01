@@ -28,24 +28,27 @@
         "sitename": "Moodle Site"
     }
 }}
-<nav class="fixed-top navbar navbar-light bg-white navbar-expand moodle-has-zindex" aria-label="{{#str}}navigation{{/str}}">
-
+<nav id="moodlenavbar" class="navbar navbar-secure" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+    <div class="brand">
         {{# output.should_display_navbar_logo }}
-            <span class="logo d-none d-sm-inline">
+            <span class="logo">
                 <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
             </span>
         {{/ output.should_display_navbar_logo }}
-        <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+        {{^ output.should_display_navbar_logo }}
+            <span class="site-name">{{{ sitename }}}</span>
+        {{/ output.should_display_navbar_logo }}
+    </div>
 
-        {{# output.secure_layout_language_menu }}
-        <ul class="navbar-nav d-none d-md-flex">
-            <!-- language_menu -->
-            {{{ . }}}
-        </ul>
-        {{/ output.secure_layout_language_menu }}
-        {{# output.secure_layout_login_info }}
-        <div class="ml-auto">
-            {{{ . }}}
-        </div>
-        {{/ output.secure_layout_login_info }}
+    {{# output.secure_layout_language_menu }}
+    <ul class="nav language-menu">
+        {{{ output.render_language_menu }}}
+    </ul>
+    {{/ output.secure_layout_language_menu }}
+
+    {{# output.secure_layout_login_info }}
+    <div class="ml-auto">
+        {{{ . }}}
+    </div>
+    {{/ output.secure_layout_login_info }}
 </nav>
