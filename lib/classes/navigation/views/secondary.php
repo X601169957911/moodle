@@ -161,10 +161,12 @@ class secondary extends view {
         $nodesordered += $this->get_leaf_nodes($navigation, $nodes['navigation']);
         $this->add_ordered_nodes($nodesordered);
 
-        // All additional nodes will be available under the 'Course admin' page.
-        $text = get_string('courseadministration');
-        $url = new \moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-        $this->add($text, $url, null, null, 'courseadmin', new \pix_icon('t/edit', $text));
+        // All additional nodes will be available under the 'Course admin'.
+        if ($settingsnav->find('courseadmin', self::TYPE_COURSE)) {
+            $text = get_string('courseadministration');
+            $url = new \moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
+            $this->add($text, $url, null, null, 'courseadmin', new \pix_icon('t/edit', $text));
+        }
     }
 
     /**
@@ -179,8 +181,8 @@ class secondary extends view {
         $mainnode = $settingsnav->find('modulesettings', self::TYPE_SETTING);
         $nodes = $this->get_default_module_mapping();
 
+        $this->add(get_string('modulename', $this->page->cm->modname), $this->page->cm->url, null, null, 'modulepage');
         if ($mainnode) {
-            $this->add(get_string('module', 'course'), $this->page->url, null, null, 'modulepage');
             // Add the initial nodes.
             $nodesordered = $this->get_leaf_nodes($mainnode, $nodes);
             $this->add_ordered_nodes($nodesordered);
@@ -264,7 +266,7 @@ class secondary extends view {
         $existingkeys = $completenode->get_children_key_list();
         $leftover = array_diff($existingkeys, $populatedkeys);
         foreach ($leftover as $key) {
-            if (!in_array($key, $flattenednodes) && $leftovernode = $completenode->get($key)) {
+            if (!in_array($key, $flattenednodes, true) && $leftovernode = $completenode->get($key)) {
                 $this->add_node($leftovernode);
             }
         }
