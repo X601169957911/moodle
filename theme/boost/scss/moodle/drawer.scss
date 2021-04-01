@@ -1,16 +1,103 @@
-/* Anchor link offset fix. This makes hash links scroll 60px down to account for the fixed header. */
-$fixed-header-y: $navbar-height;
 
-$drawer-width: 285px !default;
-$drawer-padding-x: 20px !default;
-$drawer-padding-y: 20px !default;
-$drawer-offscreen-gutter: 20px !default;
+$box-shadow-drawer-left: -0.25rem .25rem .8rem rgba($black, .025) !default;
+$box-shadow-drawer-right: 0 .25rem .8rem rgba($black, .025) !default;
+
+@mixin drawer() {
+    transition: left 0.5s ease, right 0.5s ease, top 0.5s ease, bottom 0.5s ease;
+    background-color: $body-bg;
+    z-index: $zindex-popover;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+}
+
+@mixin drawertypes() {
+    &.drawer-left,
+    &.drawer-right {
+        width: 350px;
+        max-width: 350px;
+    }
+    &.drawer-right {
+        right: -360px;
+        @include box-shadow($box-shadow-drawer-right);
+        &.show {
+            right: 0;
+        }
+    }
+    &.drawer-left {
+        left: -360px;
+        @include box-shadow($box-shadow-drawer-left);
+        &.show {
+            left: 0;
+        }
+    }
+    &.drawer-bottom {
+        bottom: -110%;
+        &.show {
+            bottom: 0;
+        }
+    }
+}
+
+.drawer {
+    @include drawer();
+    @include drawertypes();
+}
+
+@include media-breakpoint-up(lg) {
+    .drawer {
+        z-index: $zindex-modal-backdrop + 1;
+    }
+}
+
+.drawer-md,
+.drawer-sm {
+    display: none;
+}
+
+@include media-breakpoint-down(md) {
+    .drawer-md {
+        display: block;
+        @include drawer();
+        @include drawertypes();
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .drawer-sm {
+        display: block;
+        @include drawer();
+        @include drawertypes();
+    }
+}
+
+.drawerheader {
+    padding: 0 0.75rem;
+    height: $navbar-height;
+    display: flex;
+    align-items: center;
+    border-bottom: $border-width solid $border-color;
+    .drawertoggle {
+        margin-left: auto;
+    }
+    .drawerlogo img {
+        max-height: calc(#{$navbar-height} - 10px);
+    }
+}
+.drawercontent {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+}
+
 
 :target::before {
     content: " ";
     display: block;
-    height: ($fixed-header-y + 10px); /* fixed header height*/
-    margin-top: -($fixed-header-y + 10px); /* negative fixed header height */
+    height: ($navbar-height + 10px); /* fixed header height*/
+    margin-top: -($navbar-height + 10px); /* negative fixed header height */
     width: 1px;
     pointer-events: none;
 }
@@ -18,90 +105,6 @@ $drawer-offscreen-gutter: 20px !default;
 .pagelayout-embedded :target {
     padding-top: initial;
     margin-top: initial;
-}
-
-#nav-drawer.closed {
-    left: -($drawer-width + $drawer-offscreen-gutter);
-}
-
-#nav-drawer[aria-hidden=true] .list-group-item {
-    display: none;
-}
-
-/* Use a variable for the drawer background colors. */
-$drawer-bg: darken($body-bg, 5%) !default;
-
-[data-region="drawer"] {
-    position: fixed;
-    width: $drawer-width;
-    top: $fixed-header-y;
-    height: calc(100% - #{$navbar-height});
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    z-index: $zindex-dropdown - 1;
-    background-color: $drawer-bg;
-    -webkit-transition: right 0.5s ease, left 0.5s ease;
-    -moz-transition: right 0.5s ease, left 0.5s ease;
-    transition: right 0.5s ease, left 0.5s ease;
-}
-
-@include media-breakpoint-up(sm) {
-    [data-region="drawer"] {
-        padding: $drawer-padding-x $drawer-padding-y;
-    }
-}
-#nav-drawer {
-    right: auto;
-    left: 0;
-
-    /* Override the z-indexes defined in bootstrap/_list-group.scss that
-       lead to side effects on the user tours positioning. */
-    .list-group-item-action.active,
-    .list-group-item.active {
-        z-index: inherit;
-    }
-    .list-group-item-action.active + .list-group-item,
-    .list-group-item.active + .list-group-item {
-        border-top: none;
-    }
-
-    .list-group {
-        // Remove default list styling in nav menus.
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        // Add margin to be consistent with `.list-group-item` spacing.
-        li {
-            margin-bottom: -1px;
-        }
-        li:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-#page {
-    margin-top: $fixed-header-y;
-}
-.pagelayout-embedded #page {
-    margin-top: 0;
-}
-body.drawer-ease {
-    -webkit-transition: margin-left 0.5s ease, margin-right 0.5s ease;
-    -moz-transition: margin-left 0.5s ease, margin-right 0.5s ease;
-    transition: margin-left 0.5s ease, margin-right 0.5s ease;
-}
-
-body.drawer-open-left {
-    @include media-breakpoint-up(md) {
-        margin-left: $drawer-width;
-    }
-}
-body.drawer-open-right {
-    @include media-breakpoint-up(md) {
-        margin-right: $drawer-width;
-    }
 }
 
 $right-drawer-width: 320px;
@@ -112,7 +115,7 @@ $right-drawer-width: 320px;
     @include transition(right .2s ease-in-out);
 
     &.drawer {
-        z-index: $zindex-sticky;
+        z-index: 1041;
         position: fixed;
         top: $navbar-height;
         right: 0;

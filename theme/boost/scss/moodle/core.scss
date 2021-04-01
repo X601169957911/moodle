@@ -378,10 +378,12 @@ img.resize {
 
 .action-menu .dropdown-toggle {
     text-decoration: none;
+    display: inline-block;
 }
 
 .action-menu {
     white-space: nowrap;
+    display: inline;
 }
 
 .block img.resize {
@@ -2029,20 +2031,6 @@ img#persona_signin {
         img {
             max-height: 75px;
         }
-    }
-}
-
-/** Navbar logo. */
-nav.navbar .logo img {
-    max-height: 35px;
-}
-
-.nav.usernav {
-    .nav-item {
-        display: flex;
-    }
-    .usermenu .dropdown-toggle {
-        padding: 0 0.5rem;
     }
 }
 

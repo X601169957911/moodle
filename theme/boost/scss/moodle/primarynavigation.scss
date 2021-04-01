@@ -1,0 +1,38 @@
+.mobilenavcontainer {
+    .drawerheader {
+        display: none;
+    }
+    .primary-nav-close {
+        height: $navbar-height;
+        display: none;
+        .navlogo img {
+            max-height: calc(#{$navbar-height} - 10px);
+        }
+    }
+}
+.mobilemenu {
+    display: none;
+}
+.topnavbar .moremenu {
+    height: $navbar-height;
+    .navbar-nav .nav-link {
+        height: $navbar-height;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .topnavbar .moremenu {
+        display: none;
+    }
+    .mobilemenu {
+        display: block;
+        height: calc(100% - #{$navbar-height});
+        @include mobilemoremenu();
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .topnavbar .moremenu > .nav {
+        @include navunderline($nav-underline-border-width, $nav-underline-border-color);
+    }
+}

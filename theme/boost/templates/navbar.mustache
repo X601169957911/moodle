@@ -37,43 +37,55 @@
         "sitename": "Moodle Site"
     }
 }}
-<nav class="fixed-top navbar navbar-light bg-white navbar-expand moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+<div class="navbar topnavbar {{# navbardark }}navbar-dark bg-dark{{/ navbardark }}{{^ navbardark }}navbar-light bg-white{{/ navbardark }} navbar-expand" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+    <nav id="mobilenav" class="nav navbar-nav">
+        <button id="primarynavtoggle" class="navbar-toggler btn nav-link d-lg-none" data-action="primary" aria-controls="primarynav" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+            <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
+        </button>
+    </nav>
+    <a href="{{{ config.wwwroot }}}" class="navbar-brand nav-link">
+        {{# output.should_display_navbar_logo }}
+            <span class="logo">
+                <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+            </span>
+        {{/ output.should_display_navbar_logo }}
+        {{^ output.should_display_navbar_logo }}
+            <span class="site-name">{{{ sitename }}}</span>
+        {{/ output.should_display_navbar_logo }}
+    </a>
 
-        <div data-region="drawer-toggle" class="d-inline-block mr-3">
-            <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
-        </div>
+    {{{ primarymoremenu }}}
 
-        <a href="{{{ config.wwwroot }}}" class="navbar-brand aabtn {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
-            {{^ output.should_display_navbar_logo }}
-                d-none d-sm-inline
-            {{/ output.should_display_navbar_logo }}
-                ">
+    {{< theme_boost/drawer }}
+        {{$drawertype}}drawer-md drawer-left{{/drawertype}}
+        {{$drawertrigger}}primary{{/drawertrigger}}
+        {{$drawerheading}}
             {{# output.should_display_navbar_logo }}
-                <span class="logo d-none d-sm-inline">
+                <span class="drawerlogo">
                     <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
                 </span>
             {{/ output.should_display_navbar_logo }}
-            <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
-        </a>
+            {{^ output.should_display_navbar_logo }}
+                <span class="site-name">{{{ sitename }}}</span>
+            {{/ output.should_display_navbar_logo }}
+        {{/drawerheading}}
+        {{$drawercontent}}
+            {{> theme_boost/boost_navigation/primarymobile }}
+        {{/drawercontent}}
+    {{/ theme_boost/drawer}}
 
-        <ul class="navbar-nav d-none d-md-flex">
-            <!-- custom_menu -->
-            {{{ output.custom_menu }}}
-            <!-- page_heading_menu -->
-            {{{ output.page_heading_menu }}}
-        </ul>
-        <div class="ml-auto">
-            {{{ output.search_box }}}
+    <nav id="usernavigation" class="navbar-nav ml-auto">
+        <div class="navlink languagemenu-container" data-region="languagemenu">
+            {{{ output.render_language_menu }}}
         </div>
-        <ul class="nav navbar-nav usernav">
-            <!-- navbar_plugin_output -->
-            <li class="nav-item">
-                {{{ output.navbar_plugin_output }}}
-            </li>
-            <!-- user_menu -->
-            <li class="nav-item align-items-center pl-2">
-                {{{ output.user_menu }}}
-            </li>
-        </ul>
-        <!-- search_box -->
-</nav>
+        <div class="divider border-left h-50 align-self-center mx-1"></div>
+
+        {{{ output.search_box }}}
+
+        {{{ output.navbar_plugin_output }}}
+        <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
+            {{{ output.user_menu }}}
+        </div>
+    </nav>
+</div>

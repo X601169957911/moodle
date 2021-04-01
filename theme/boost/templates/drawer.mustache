@@ -1,0 +1,16 @@
+<div class="{{$drawertype}}{{/drawertype}}" data-trigger="{{$drawertrigger}}{{/drawertrigger}}">
+    <div class="drawerheader">
+        {{$drawerheading}}{{/drawerheading}}
+        <button class="btn drawertoggle icon-no-margin icon-size-4" data-action="closedrawer">
+            <div class="iconcross"><i><i></i></i></div>
+        </button>
+    </div>
+    <div class="drawercontent">
+        {{$drawercontent}}{{/drawercontent}}
+    </div>
+</div>
+{{#js}}
+require(['theme_boost/drawer'], function(drawer) {
+    drawer.region('[data-trigger="{{$drawertrigger}}{{/drawertrigger}}"]', '[data-action="{{$drawertrigger}}{{/drawertrigger}}"]' );
+});
+{{/js}}
