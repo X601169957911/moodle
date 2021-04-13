@@ -156,3 +156,5 @@ enableactivitychooser,core_admin
 coursepreferences,core
 yourprogress,core_completion
 importfrominstructions,core_calendar
+createuserandpass,core
+supplyinfo,core
