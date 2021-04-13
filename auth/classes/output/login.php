@@ -34,6 +34,7 @@ use renderable;
 use renderer_base;
 use stdClass;
 use templatable;
+use custom_menu;
 
 /**
  * Login renderable class.
@@ -70,6 +71,8 @@ class login implements renderable, templatable {
     public $signupurl;
     /** @var string The user name to pre-fill the form with. */
     public $username;
+    /** @var string The language selector menu. */
+    public $languagemenu;
     /** @var string The csrf token to limit login to requests that come from the login form. */
     public $logintoken;
     /** @var string Maintenance message, if Maintenance is enabled. */
@@ -82,10 +85,11 @@ class login implements renderable, templatable {
      * @param string $username The username to display.
      */
     public function __construct(array $authsequence, $username = '') {
-        global $CFG;
+        global $CFG, $OUTPUT;
 
         $this->username = $username;
 
+        $this->languagemenu = $OUTPUT->language_menu();
         $this->canloginasguest = $CFG->guestloginbutton and !isguestuser();
         $this->canloginbyemail = !empty($CFG->authloginviaemail);
         $this->cansignup = $CFG->registerauth == 'email' || !empty($CFG->registerauth);
@@ -152,6 +156,7 @@ class login implements renderable, templatable {
         $data->username = $this->username;
         $data->logintoken = $this->logintoken;
         $data->maintenance = format_text($this->maintenance, FORMAT_MOODLE);
+        $data->languagemenu = $this->languagemenu;
 
         return $data;
     }

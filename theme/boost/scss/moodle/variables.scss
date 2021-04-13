@@ -18,3 +18,13 @@ $state-warning-border: theme-color-level("warning", -10) !default;
 
 $state-danger-bg: theme-color-level("danger", -10) !default;
 $state-danger-border: theme-color-level("danger", -9) !default;
+
+$loginbackground-gradient-from: $gray-100 !default;
+$loginbackground-gradient-to: $gray-300 !default;
+$logincontainer-bg: $white !default;
+$logincontainer-padding: 1.25rem !default;
+$logincontainer-shadow: $box-shadow !default;
+$logindivider-margin-top: 1.5rem !default;
+$logindivider-margin-bottom: 1.5rem !default;
+$logindivider-border: $border-color !default;
+$login-identity-provider-btn-border: $border-color !default;
