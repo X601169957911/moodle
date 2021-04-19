@@ -1,0 +1,21 @@
+// Import bootstrap iconss.
+
+$bi-version: "1.4.1" !default;
+
+@font-face {
+    font-family: "bootstrap-icons";
+    src:
+        url('[[font:core|bootstrap-icons.woff2]]?v=#{$bi-version}') format("woff2"),
+        url('[[font:core|bootstrap-icons.woff]]?v=#{$bi-version}') format("woff");
+}
+
+.icon.bi-icon,
+.bi-icon {
+    font-size: inherit;
+}
+.icon.bi-2x,
+.bi-2x {
+    font-size: $font-size-base * 2;
+}
+
+@import "bootstrapicons/bootstrap-icons";

@@ -112,4 +112,11 @@
     <version>4.7.0</version>
     <licenseversion></licenseversion>
   </library>
+  <library>
+    <location>scss/bootstrapicons</location>
+    <name>Bootstrap icons by Mark Otto- https://icons.getbootstrap.com</name>
+    <license>(MIT)</license>
+    <version>4.7.0</version>
+    <licenseversion></licenseversion>
+  </library>
 </libraries>
