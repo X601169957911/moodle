@@ -48,6 +48,10 @@ if (!$hasblocks) {
 if ($blockdraweropen) {
     $extraclasses[] = 'drawer-open-right';
 }
+$courseindex = $OUTPUT->courseindex();
+if (!$courseindex) {
+    $navdraweropen = false;
+}
 $buildregionmainsettings = !$PAGE->include_region_main_settings_in_header_actions();
 // If the settings menu will be included in the header then don't add it here.
 $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settings_menu() : false;
@@ -71,9 +75,10 @@ $templatecontext = [
     'secondarymoremenu' => $OUTPUT->more_menu($PAGE->secondarynav, 'nav-tabs'),
     'secondarymenu' => $PAGE->secondarynav,
     'courseindex' => $OUTPUT->courseindex(),
+    'debug' => $PAGE->pagelayout
 ];
 
 $nav = $PAGE->flatnav;
 $templatecontext['flatnavigation'] = $nav;
 $templatecontext['firstcollectionlabel'] = $nav->get_collectionlabel();
-echo $OUTPUT->render_from_template('theme_boost/columns2', $templatecontext);
+echo $OUTPUT->render_from_template('theme_boost/default', $templatecontext);

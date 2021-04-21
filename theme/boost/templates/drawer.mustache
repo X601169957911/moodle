@@ -1,11 +1,11 @@
-<div class="{{$drawertype}}{{/drawertype}}" data-trigger="{{$drawertrigger}}{{/drawertrigger}}">
+<div class="{{$drawerclasses}}{{/drawerclasses}}" data-trigger="{{$drawertrigger}}{{/drawertrigger}}">
     <div class="drawerheader">
         {{$drawerheading}}{{/drawerheading}}
-        <button class="btn drawertoggle icon-no-margin icon-size-4" data-action="closedrawer">
-            <div class="iconcross"><i><i></i></i></div>
+        <button class="btn drawertoggle icon-no-margin" data-action="closedrawer">
+            {{#pix}}e/cancel, core{{/pix}}
         </button>
     </div>
-    <div class="drawercontent">
+    <div class="drawercontent nice-scroll">
         {{$drawercontent}}{{/drawercontent}}
     </div>
 </div>

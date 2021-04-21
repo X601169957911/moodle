@@ -23,7 +23,7 @@
     {}
 }}
 {{#secondarymoremenu}}
-    <div class="secondarynavcontainer d-none d-md-block">
+    <div class="secondarynavcontainer d-none d-md-block mb-3">
         {{{ secondarymoremenu }}}
     </div>
     <div class="secondary-drawer-toggle d-md-none">
@@ -32,7 +32,7 @@
         </button>
     </div>
     {{< theme_boost/drawer }}
-        {{$drawertype}}drawer-md drawer-left{{/drawertype}}
+        {{$drawerclasses}}drawer-md drawer-left{{/drawerclasses}}
         {{$drawertrigger}}secondarynav{{/drawertrigger}}
         {{$drawerheading}}
             {{# output.should_display_navbar_logo }}

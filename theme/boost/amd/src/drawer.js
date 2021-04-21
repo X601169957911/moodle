@@ -30,10 +30,12 @@ let backdropPromise = null;
  * Simple object of sizes to respond to so we can easily modify as required.
  */
 const Sizes = {
-    medium: 768
+    medium: 991,
+    large: 1200
 };
 
-const pageWrapper = document.querySelector('#page-wrapper');
+const pageWrapper = document.getElementById('page-wrapper');
+const page = document.getElementById('page');
 
 const getBackdrop = () => {
     if (!backdropPromise) {
@@ -49,11 +51,19 @@ const getBackdrop = () => {
     return backdropPromise;
 };
 
-const closeNav = (navRegion, closeBackdrop = true) => {
-
+const closeNav = (navRegion, toggleButton, closeBackdrop = true) => {
+    const preference = toggleButton.getAttribute('data-preference');
+    const state = toggleButton.getAttribute('data-state');
     classUtil('remove', navRegion, 'show');
 
-    if (isSmall() && closeBackdrop) {
+    if (state) {
+        classUtil('remove', page, state);
+    }
+    if (!isMedium() && preference) {
+        M.util.set_user_preference(preference, 'false');
+    }
+
+    if (isMedium() && closeBackdrop) {
         getBackdrop().then(backdrop => {
             backdrop.hide();
             pageWrapper.style.overflow = 'auto';
@@ -61,11 +71,19 @@ const closeNav = (navRegion, closeBackdrop = true) => {
     }
 };
 
-const showNav = (navRegion) => {
-
+const showNav = (navRegion, toggleButton) => {
+    const preference = toggleButton.getAttribute('data-preference');
+    const state = toggleButton.getAttribute('data-state');
     classUtil('add', navRegion, 'show');
 
-    if (isSmall()) {
+    if (!isMedium() && preference) {
+        M.util.set_user_preference(preference, 'true');
+    }
+    if (state) {
+        classUtil('add', page, state);
+    }
+
+    if (isMedium()) {
         getBackdrop().then(backdrop => {
             backdrop.setZIndex(1020);
             backdrop.show();
@@ -76,14 +94,18 @@ const showNav = (navRegion) => {
         });
     }
 
-    const region = navRegion.getAttribute('data-region');
-    if (region) {
-        navRegion.dispatchEvent(new CustomEvent('show-boost-drawer', { bubbles: true, detail: region }));
+    const trigger = navRegion.getAttribute('data-trigger');
+    if (trigger) {
+        navRegion.dispatchEvent(new CustomEvent('show-boost-drawer', { bubbles: true, detail: trigger }));
     }
 };
 
-const isSmall = () => {
-    return document.body.clientWidth < Sizes.medium;
+const isMedium = () => {
+    return document.body.clientWidth <= Sizes.medium;
+};
+
+const isLarge = () => {
+    return document.body.clientWidth <= Sizes.large;
 };
 
 export const region = (region, toggle) => {
@@ -98,23 +120,28 @@ export const region = (region, toggle) => {
 
     toggleButton.addEventListener('click', () => {
         if (classUtil('has', navRegion, 'show')) {
-            closeNav(navRegion);
+            closeNav(navRegion, toggleButton);
         } else {
-            showNav(navRegion);
+            showNav(navRegion, toggleButton);
         }
     });
 
     if (closeButton) {
         closeButton.addEventListener('click', () => {
-            closeNav(navRegion);
+            closeNav(navRegion, toggleButton);
+        });
+    }
+    if (toggleButton.getAttribute('data-closeonresize')) {
+        window.addEventListener('resize', () => {
+            closeNav(navRegion, toggleButton);
         });
     }
 
     // Close drawer when another drawer opens.
     document.addEventListener('show-boost-drawer', e => {
-        const region = navRegion.getAttribute('data-region');
-        if (region !== e.detail) {
-            closeNav(navRegion, false);
+        const trigger = navRegion.getAttribute('data-trigger');
+        if (trigger != e.detail && isLarge()) {
+            closeNav(navRegion, toggleButton, false);
         }
     });
 

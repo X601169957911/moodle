@@ -30,33 +30,5 @@
         {{# primarymenu.custom }}
             {{> theme_boost/boost_navigation/mobile_menuitem}}
         {{/ primarymenu.custom }}
-        <li class="nav-item">
-            <a href="#"
-                data-toggle="collapse"
-                data-target="#mobilelanguagemenu"
-                aria-expanded="false"
-                aria-controls="mobilelanguagemenu"
-                class="nav-link dropdown-toggle"
-            >{{#str}}language{{/str}}</a>
-            <ul id="mobilelanguagemenu" class="submenu unlist collapse">
-                {{# primarymenu.lang }}
-                    {{> theme_boost/boost_navigation/mobile_menuitem}}
-                {{/ primarymenu.lang }}
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#"
-                data-toggle="collapse"
-                data-target="#mobileusermenu"
-                aria-expanded="false"
-                aria-controls="mobileusermenu"
-                class="nav-link dropdown-toggle"
-            >{{#str}}user{{/str}}</a>
-            <ul id="mobileusermenu" class="submenu unlist collapse">
-                {{# primarymenu.user }}
-                    {{> theme_boost/boost_navigation/mobile_menuitem}}
-                {{/ primarymenu.user }}
-            </ul>
-        </li>
     </ul>
 </nav>

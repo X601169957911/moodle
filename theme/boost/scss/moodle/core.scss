@@ -14,7 +14,7 @@ $font-size-xs: ($font-size-base * .75) !default;
 }
 
 @include media-breakpoint-up(sm) {
-    #region-main {
+    #region-main.bordered {
         border: $card-border-width solid $card-border-color;
         @if $enable-rounded {
             @include border-radius($card-border-radius);
@@ -2294,17 +2294,6 @@ ul {
 // Footer link colour was added to allow the colour of footer links to be changed,
 // but really in bootstrap we want the colour of links on .bg-inverse to be changed
 // rather than being specific to the footer. This is kept for backwards compatibility.
-$footer-link-color: $bg-inverse-link-color !default;
-#page-footer a {
-    color: $footer-link-color;
-    text-decoration: underline;
-    .icon {
-        color: $footer-link-color;
-    }
-    &:focus .icon {
-        color: $body-color;
-    }
-}
 
 .bg-inverse a {
     color: $bg-inverse-link-color;

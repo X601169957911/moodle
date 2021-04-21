@@ -1,12 +1,13 @@
 .moremenu {
     opacity: 0;
-    height: $moremenu-height;
+    margin-top: 10px;
+    height: 40px;
     box-shadow: none;
     &.observed {
         opacity: 1;
     }
-    .navbar-nav .nav-link {
-        height: $moremenu-height;
+    .nav-link {
+        height: 40px;
         display: flex;
         align-items: center;
     }
@@ -40,7 +41,6 @@
     .navbar-nav {
         flex-direction: column;
         flex-wrap: nowrap;
-        overflow-y: auto;
         height: 100%;
         margin: 0;
     }
@@ -100,4 +100,3 @@
         }
     }
 }
-

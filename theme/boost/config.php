@@ -38,43 +38,43 @@ $THEME->scss = function($theme) {
 $THEME->layouts = [
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(
-        'file' => 'columns2.php',
+        'file' => 'default.php',
         'regions' => array(),
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
-        'file' => 'columns2.php',
+        'file' => 'default.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // Main course page.
     'course' => array(
-        'file' => 'columns2.php',
+        'file' => 'default.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
     ),
     'coursecategory' => array(
-        'file' => 'columns2.php',
+        'file' => 'default.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
-        'file' => 'columns2.php',
+        'file' => 'default.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
     // The site home page.
     'frontpage' => array(
-        'file' => 'columns2.php',
+        'file' => 'default.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => true),
     ),
     // Server administration scripts.
     'admin' => array(
-        'file' => 'columns2.php',
+        'file' => 'default.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
@@ -135,7 +135,7 @@ $THEME->layouts = [
     ),
     // The pagelayout used for reports.
     'report' => array(
-        'file' => 'columns2.php',
+        'file' => 'default.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
@@ -155,5 +155,4 @@ $THEME->precompiledcsscallback = 'theme_boost_get_precompiled_css';
 $THEME->yuicssmodules = array();
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 $THEME->requiredblocks = '';
-$THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;

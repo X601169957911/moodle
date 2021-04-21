@@ -44,21 +44,18 @@
             <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
         </button>
     </nav>
+    {{# output.should_display_navbar_logo }}
     <a href="{{{ config.wwwroot }}}" class="navbar-brand nav-link">
-        {{# output.should_display_navbar_logo }}
-            <span class="logo">
-                <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
-            </span>
-        {{/ output.should_display_navbar_logo }}
-        {{^ output.should_display_navbar_logo }}
-            <span class="site-name">{{{ sitename }}}</span>
-        {{/ output.should_display_navbar_logo }}
+        <span class="logo">
+            <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+        </span>
     </a>
+    {{/ output.should_display_navbar_logo }}
 
     {{{ primarymoremenu }}}
 
     {{< theme_boost/drawer }}
-        {{$drawertype}}drawer-md drawer-left{{/drawertype}}
+        {{$drawerclasses}}drawer-md drawer-left{{/drawerclasses}}
         {{$drawertrigger}}primary{{/drawertrigger}}
         {{$drawerheading}}
             {{# output.should_display_navbar_logo }}
@@ -76,14 +73,11 @@
     {{/ theme_boost/drawer}}
 
     <nav id="usernavigation" class="navbar-nav ml-auto">
-        <div class="navlink languagemenu-container" data-region="languagemenu">
-            {{{ output.render_language_menu }}}
-        </div>
         <div class="divider border-left h-50 align-self-center mx-1"></div>
-
+        {{{ output.editing_button }}}
         {{{ output.search_box }}}
-
         {{{ output.navbar_plugin_output }}}
+        {{{ output.language_menu }}}
         <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
             {{{ output.user_menu }}}
         </div>

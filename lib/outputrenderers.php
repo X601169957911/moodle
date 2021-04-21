@@ -3701,9 +3701,10 @@ EOD;
      * Renders a normal navigation bar into a "more menu" navigation bar
      *
      * @param string/object $content
+     * @param string $navbarstyle navbar-nav or nav-tabs
      * @return string
      */
-    public function more_menu($content) {
+    public function more_menu($content, $navbarstyle) {
         if (is_object($content)) {
             if (!isset($content->children) || count($content->children) == 0) {
                 return false;
@@ -3713,6 +3714,7 @@ EOD;
         if (is_array($content)) {
             $template = (object) ['nodearray' => $content];
         }
+        $template->navbarstyle = $navbarstyle;
         return $this->render_from_template('core/moremenu', $template);
     }
 
@@ -3743,43 +3745,36 @@ EOD;
     }
 
     /**
-     * Renders the language menu.
+     * Returns the language menu if multiple languages are installed.
      *
-     * @return string
+     * @return string html with language selector action menu.
      */
-    public function render_language_menu() {
+    public function language_menu() {
         global $CFG;
 
-        $langs = get_string_manager()->get_list_of_translations();
-        $haslangmenu = $this->lang_menu() != '';
-
-        if (!$haslangmenu) {
-            return '';
-        }
-
-        $menu = new custom_menu('', current_language());
-
-        if ($haslangmenu) {
+        if ($CFG->langmenu) {
             $strlang = get_string('language');
             $currentlang = current_language();
+            $langs = get_string_manager()->get_list_of_translations();
             if (isset($langs[$currentlang])) {
                 $currentlang = $langs[$currentlang];
             } else {
                 $currentlang = $strlang;
             }
-            $this->language = $menu->add($currentlang, new moodle_url('#'), $strlang, 10000);
+            $currentlang = '<i class="fa fa-globe"></i>';
+
+            $languages = [];
             foreach ($langs as $langtype => $langname) {
-                $this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
+                $actionurl = new moodle_url($this->page->url, ['lang' => $langtype]);
+                $languages[] = new action_menu_link_secondary($actionurl, null, $langname);
             }
-        }
 
-        $content = '';
-        foreach ($menu->get_children() as $item) {
-            $context = $item->export_for_template($this);
-            $content .= $this->render_from_template('core/custom_menu_item', $context);
+            $actionsmenu = new action_menu($languages);
+            $actionsmenu->set_menu_trigger($currentlang, 'nav-link');
+            $actionsmenu->set_owner_selector('set-moodle-language');
+            $actionsmenu->set_alignment(\action_menu::TL, \action_menu::BL);
+            return $this->render($actionsmenu);
         }
-
-        return $content;
     }
 
     /**

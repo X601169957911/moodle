@@ -24,30 +24,12 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
-user_preference_allow_ajax_update('drawer-open-block', PARAM_ALPHA);
 require_once($CFG->libdir . '/behat/lib.php');
 
-if (isloggedin()) {
-    $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
-    $blockdraweropen = (get_user_preferences('drawer-open-block', 'true') == 'true');
-} else {
-    $navdraweropen = false;
-    $blockdraweropen = false;
-}
 $extraclasses = [];
-if ($navdraweropen) {
-    $extraclasses[] = 'drawer-open-left';
-}
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
-if (!$hasblocks) {
-    $blockdraweropen = false;
-}
-if ($blockdraweropen) {
-    $extraclasses[] = 'drawer-open-right';
-}
 $buildregionmainsettings = !$PAGE->include_region_main_settings_in_header_actions();
 // If the settings menu will be included in the header then don't add it here.
 $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settings_menu() : false;
@@ -62,18 +44,13 @@ $templatecontext = [
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks,
     'bodyattributes' => $bodyattributes,
-    'navdraweropen' => $navdraweropen,
-    'blockdraweropen' => $blockdraweropen,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'primarymoremenu' => $OUTPUT->more_menu(array_merge($primarymenu['primary'], $primarymenu['custom']), 'navbar-nav'),
     'primarymenu' => $primarymenu,
-    'secondarymoremenu' => $OUTPUT->more_menu($PAGE->secondarynav, 'nav-tabs'),
-    'secondarymenu' => $PAGE->secondarynav,
-    'courseindex' => $OUTPUT->courseindex(),
 ];
 
 $nav = $PAGE->flatnav;
 $templatecontext['flatnavigation'] = $nav;
 $templatecontext['firstcollectionlabel'] = $nav->get_collectionlabel();
-echo $OUTPUT->render_from_template('theme_boost/columns2', $templatecontext);
+echo $OUTPUT->render_from_template('theme_boost/dashboard', $templatecontext);

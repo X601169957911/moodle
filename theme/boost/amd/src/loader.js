@@ -106,6 +106,21 @@ $.fn.dropdown.Constructor.Default.flip = false;
 
 pendingPromise.resolve();
 
+
+const pageContent = document.querySelector('.drawers.nice-scroll');
+let lastScrollTop = 0;
+window.addEventListener("scroll", function () {
+    var st = window.pageYOffset || pageContent.scrollTop;
+    if (st > lastScrollTop) {
+        pageContent.classList.remove('scroll-up');
+        pageContent.classList.add('scroll-down');
+    } else {
+        pageContent.classList.remove('scroll-down');
+        pageContent.classList.add('scroll-up');
+    }
+    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+}, false);
+
 export {
     Bootstrap,
 };

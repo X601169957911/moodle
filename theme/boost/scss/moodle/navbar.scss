@@ -8,14 +8,24 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     align-items: stretch;
     height: $navbar-height;
-    .usermenu,
-    .usermenu .usertext,
     .navbar-brand.nav-link,
     .usermenu .dropdown-toggle::after {
         display: none;
     }
-    .languagemenu-container {
+    .usermenu {
         display: flex;
+        .action-menu {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .moodle-actionmenu .menubar,
+    .action-menu-trigger .dropdown {
+        height: 100%;
+        display: flex;
+    }
+    .dropdown-toggle::after {
+        display: none;
     }
 
     .navbar-toggler {
@@ -25,13 +35,6 @@
     @include media-breakpoint-up(lg) {
         .navbar-brand.nav-link {
             display: block;
-        }
-        .usermenu {
-            display: flex;
-            .action-menu {
-                display: flex;
-                align-items: center;
-            }
         }
     }
     .logo {
