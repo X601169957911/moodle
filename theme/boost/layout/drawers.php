@@ -59,7 +59,7 @@ if ($blockdraweropen) {
     $extraclasses[] = 'drawer-open-right';
 }
 
-$courseindex = false;
+$courseindex = $OUTPUT->courseindex();
 if (!$courseindex) {
     $courseindexopen = false;
 }

@@ -105,7 +105,6 @@ const showDrawer = (pageDrawer, toggleButton) => {
 
     if (isMedium()) {
         getBackdrop().then(backdrop => {
-            backdrop.setZIndex(1020);
             backdrop.show();
             pageWrapper.style.overflow = 'hidden';
             backdrop.getRoot()[0].addEventListener('click', () => {
