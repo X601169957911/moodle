@@ -18964,6 +18964,9 @@ body.behat-site .custom-control-label::before, body.behat-site .custom-control-l
 body.behat-site [data-region="message-drawer"] {
   padding-right: 10px; }
 
+body.behat-site #theme_boost-drawers-courseindex {
+  display: none; }
+
 .phpinfo table,
 .phpinfo th,
 .phpinfo h2 {
@@ -20020,6 +20023,36 @@ div.editor_atto_toolbar button .icon {
 
 #page {
   margin-top: 50px; }
+
+.courseindex .courseindex-heading {
+  padding: 0.5rem 1rem; }
+
+.courseindex .courseindex-item {
+  padding: 0.5rem 0.2rem 0.5rem 1rem;
+  border: 1px solid transparent; }
+  .courseindex .courseindex-item .courseindex-link {
+    color: #495057; }
+    .courseindex .courseindex-item .courseindex-link:hover, .courseindex .courseindex-item .courseindex-link:focus {
+      color: #495057;
+      text-decoration: none; }
+  .courseindex .courseindex-item:hover, .courseindex .courseindex-item:focus {
+    background-color: #e0f0f2;
+    border-color: #b8dce2; }
+  .courseindex .courseindex-item.active {
+    background-color: #f8f9fa;
+    border-color: #dee2e6; }
+    .courseindex .courseindex-item.active:hover, .courseindex .courseindex-item.active:focus {
+      background-color: #e0f0f2;
+      border-color: #b8dce2; }
+
+.courseindex .courseindex-sectioncontent .courseindex-item {
+  padding-left: calc(1rem * 2 + 0.5rem); }
+
+@media (hover: hover) {
+  .courseindex .courseindex-item .courseindex-menu {
+    display: none; }
+  .courseindex .courseindex-item:hover .courseindex-menu {
+    display: block; } }
 
 body {
   -webkit-font-smoothing: antialiased;
