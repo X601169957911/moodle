@@ -2732,3 +2732,8 @@ $picker-emojis-per-row: 7 !default;
 .core_payment_gateways_modal .custom-control-label::after {
     top: 45%;
 }
+
+.contextheader .bgicon {
+    background-position: center;
+    background-size: cover;
+}
