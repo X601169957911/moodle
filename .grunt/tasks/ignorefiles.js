@@ -49,6 +49,7 @@ module.exports = grunt => {
             '**/yui/build/*',
             'theme/boost/style/moodle.css',
             'theme/classic/style/moodle.css',
+            'admin/tool/componentlibrary/hugo/dist/css/docs.css',
         ].concat(thirdPartyPaths);
         grunt.file.write('.stylelintignore', stylelintIgnores.join('\n') + '\n');
     };

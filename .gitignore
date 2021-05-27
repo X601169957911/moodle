@@ -50,3 +50,5 @@ atlassian-ide-plugin.xml
 moodle-plugin-ci.phar
 .eslintignore
 .stylelintignore
+/admin/tool/componentlibrary/docs
+/admin/tool/componentlibrary/hugo/site/data/my-index.json
