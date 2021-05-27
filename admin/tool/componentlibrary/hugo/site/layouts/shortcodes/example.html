@@ -8,19 +8,20 @@
     show_markup: if the markup should be output in the HTML - default: `true`
 */ -}}
 
-{{- $lang := .Get "lang" | default "html" -}}
 {{- $show_preview := .Get "show_preview" | default true -}}
 {{- $show_markup := .Get "show_markup" | default true -}}
 {{- $input := .Inner -}}
+{{- $inputrendered := replaceRE `{{#js}}` "<div class='hidden' data-action='runjs'>" $input -}}
+{{- $inputrendered = replaceRE `{{/js}}` "</div>" $inputrendered -}}
 
 {{- if eq $show_preview true -}}
 <div{{ with .Get "id" }} id="{{ . }}"{{ end }} class="bd-example{{ with .Get "class" }} {{ . }}{{ end }}">
-  {{- $input -}}
+  {{- $inputrendered | safeHTML -}}
 </div>
 {{- end -}}
 
 {{- if eq $show_markup true -}}
   {{- $content := replaceRE `<svg class="bd\-placeholder\-img(?:\-lg)?(?: *?bd\-placeholder\-img\-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
-  {{- $content = replaceRE ` (class=" *?")` "" $content -}}
-  {{- highlight (trim $content "\n") $lang "" -}}
+  {{- $content = replaceRE `(class=" *?")` "" $content -}}
+  {{- highlight (trim $content "\n") "html" "" -}}
 {{- end -}}

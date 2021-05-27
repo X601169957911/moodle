@@ -1,45 +1,57 @@
-<form role="search" class="bd-search d-flex align-items-center">
-  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="{{ .Site.Params.docs_version }}">
-  <button class="btn bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
-    {{ partial "icons/menu.svg" (dict "width" "30" "height" "30") }}
-  </button>
-</form>
+{{$currentNode := .}}
+<nav id="docssidebar" class="collapse d-md-block docs-sidebar" aria-label="Component Library Navigation">
+<ul>
+{{- if eq .Site.Params.ordersectionsby "title" -}}
+  {{- range .Site.Home.Sections.ByTitle -}}
+{{template "docs-sidebar" dict "sect" . "currentnode" $currentNode}}
+  {{- end -}}
+{{- else -}}
+  {{- range .Site.Home.Sections.ByWeight -}}
+{{template "docs-sidebar" dict "sect" . "currentnode" $currentNode}}
+  {{- end -}}
+{{- end}}
+</ul>
+</nav>
 
-<div class="collapse d-md-block row" id="bd-docs-nav">
-  <nav class="bd-links" aria-label="Main navigation">
-    {{- $url := split .Permalink "/" -}}
-    {{- $page_slug := index $url (sub (len $url) 2) -}}
-
-    {{- range $group := .Site.Data.sidebar -}}
-      {{- $link := $group.title -}}
-      {{- $link_slug := $link | urlize -}}
-
-      {{- if $group.pages -}}
-        {{- $link = index $group.pages 0 -}}
-        {{- $link_slug = $link.title | urlize -}}
+{{define "docs-sidebar"}}
+{{- $currentNode := .currentnode -}}
+{{ with .sect }}
+{{ if .IsSection }}
+{{ if in .Site.Params.menu_exclusion .Section }}
+{{- else -}}
+  {{- safeHTML .Params.head -}}
+  {{- $numberOfPages := (add (len .Pages) (len .Sections)) -}}
+<li class="{{ if .IsAncestor $currentNode }}parent{{ end }}{{ if and .File $currentNode.File }}{{ if eq .File.UniqueID $currentNode.File.UniqueID }} active{{ end }}{{ end }}{{ if .Params.alwaysopen }} parent{{ end }}"><a href="{{ if .IsPage }}{{ .Permalink }}{{ else}}#{{ end }}" data-toggle="collapse" data-target="#collapse{{ .File.UniqueID }}" aria-expanded="true" aria-controls="collapse{{ .File.UniqueID }}" class="dropdown-toggle"><div class="text-truncate">{{ safeHTML .Params.Pre }}{{ .Title }}{{ safeHTML .Params.Post }}</div></a>
+  {{ if ne $numberOfPages 0 }}
+<ul id="collapse{{ .File.UniqueID }}" class="sub-menu collapse {{ if .IsAncestor $currentNode }}show{{ end }}">
+    {{- .Scratch.Set "pages" .Pages -}}
+    {{- if .Sections -}}
+      {{- .Scratch.Set "pages" (.Pages | union .Sections) -}}
+    {{- end -}}
+    {{- $pages := (.Scratch.Get "pages") -}}
+    {{- if eq .Site.Params.ordersectionsby "title" -}}
+      {{- range $pages.ByTitle -}}
+        {{- if and .Params.hidden (not $.showhidden) -}}
+        {{- else -}}
+{{template "docs-sidebar" dict "sect" . "currentnode" $currentNode}}
+        {{- end -}}
       {{- end -}}
-
-      {{- $group_slug := $group.title | urlize -}}
-      {{- $is_active_group := eq $.Page.Params.group $group_slug }}
-
-      <div class="bd-toc-item{{ if $is_active_group }} active{{ end }}">
-        <a class="bd-toc-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
-          {{ $group.title }}
-        </a>
-
-        {{- if and $is_active_group $group.pages }}
-        <ul class="nav bd-sidenav">
-          {{- range $doc := $group.pages -}}
-            {{- $doc_slug := $doc.title | urlize }}
-            <li{{ if and $is_active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
-              <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ $doc_slug }}/">
-                {{- $doc.title -}}
-              </a>
-            </li>
-          {{- end }}
-        </ul>
-        {{- end }}
-      </div>
-    {{- end }}
-  </nav>
-</div>
+    {{- else -}}
+      {{- range $pages.ByWeight -}}
+        {{- if and .Params.hidden (not $.showhidden) -}}
+        {{- else -}}
+{{template "docs-sidebar" dict "sect" . "currentnode" $currentNode}}
+        {{- end -}}
+      {{- end -}}
+    {{- end}}
+</ul>
+  {{end}}
+</li>
+{{- end -}}
+{{- else -}}
+  {{- if not .Params.Hidden -}}
+<li class="{{ if and .File $currentNode.File }}{{ if eq .File.UniqueID $currentNode.File.UniqueID }}active{{ end }}{{ end }}"><a href="{{ if .IsPage }}{{ .Permalink }}{{ end }}">{{ safeHTML .Params.Pre }}{{ .Title }}{{ safeHTML .Params.Post }}</a></li>
+  {{- end -}}
+{{ end -}}
+{{ end -}}
+{{ end }}

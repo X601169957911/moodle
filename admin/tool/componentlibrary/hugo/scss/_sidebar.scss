@@ -1,112 +1,104 @@
-//
-// Left side navigation
-//
+// stylelint-disable declaration-no-important
+$navbar-height: 50px;
 
-.bd-sidebar {
-  order: 0;
-  // background-color: #f5f2f9;
-  border-bottom: 1px solid rgba(0, 0, 0, .1);
+.sidebar {
+    line-height: 1.8;
+    font-size: 90%;
+}
 
-  @include media-breakpoint-up(md) {
-    @supports (position: sticky) {
-      position: sticky;
-      top: 4rem;
-      z-index: 1000;
-      height: subtract(100vh, 4rem);
+@include media-breakpoint-up(sm) {
+    .sidebar {
+        border-right: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
     }
-    border-right: 1px solid rgba(0, 0, 0, .1);
-  }
-
-  @include media-breakpoint-up(xl) {
-    flex: 0 1 320px;
-  }
 }
 
-.bd-links {
-  width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, .05);
-
-  @include media-breakpoint-up(md) {
-    @supports (position: sticky) {
-      max-height: subtract(100vh, 9rem);
-      overflow-y: auto;
-    }
-  }
+.sidebar .dropdown-menu .dropdown-item {
+    white-space: normal;
+    text-transform: capitalize;
 }
 
-.bd-search {
-  position: relative; // To contain the Algolia search
-  padding: 1rem 15px;
-  margin-right: -15px;
-  margin-left: -15px;
-
-  .form-control:focus {
-    border-color: $bd-purple-bright;
-    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
-  }
+.docs-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.bd-search-docs-toggle {
-  color: $gray-900;
+.docs-sidebar > ul {
+    padding: 0 2px;
 }
 
-.bd-sidenav {
-  display: none;
-}
-
-.bd-toc-link {
-  display: block;
-  padding: .25rem 1.5rem;
-  font-weight: 600;
-  color: rgba(0, 0, 0, .65);
-
-  &:hover {
-    color: rgba(0, 0, 0, .85);
+.docs-sidebar a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: $body-color;
     text-decoration: none;
-  }
-}
-
-.bd-toc-item {
-  &.active {
-    margin-bottom: 1rem;
-
-    &:not(:first-child) {
-      margin-top: 1rem;
+    padding: .3rem 0.5rem;
+    border-top: solid 1px $border-color;
+    &.dropdown-toggle::after {
+        margin-left: auto;
+        font-size: 14px;
+        color: $gray-400;
     }
+}
 
-    > .bd-toc-link {
-      color: rgba(0, 0, 0, .85);
+.docs-sidebar a:hover {
+    background-color: $gray-200;
+}
 
-      &:hover {
-        background-color: transparent;
-      }
+.docs-sidebar > ul > li li a {
+    padding-left: 1rem;
+    border-top: solid 1px transparent;
+}
+
+.docs-sidebar > ul ul > li li a {
+    padding-left: 2rem;
+    border-top: solid 1px transparent;
+}
+
+@media screen and (max-width: 480px) {
+    .docs-sidebar > ul > li:last-child a {
+        border-bottom: solid 1px $border-color;
     }
+}
 
-    > .bd-sidenav {
-      display: block;
+.docs-sidebar .active > a {
+    background: $border-color;
+    font-weight: bold;
+}
+
+.docs-sidebar .slide-menu .has-sub-menu:not(.parent) ul {
+    display: none;
+}
+
+.secondnav {
+    z-index: 0;
+    position: fixed;
+    width: 100%;
+    height: calc(100vh - #{$navbar-height});
+    top: $navbar-height;
+    overflow-y: auto;
+}
+
+#TableOfContents > ul {
+    font-size: 90%;
+    padding-left: 0;
+    padding-top: 1rem;
+    border-left: 1px solid $border-color;
+    ul {
+        padding-left: 1rem;
     }
-  }
-}
-
-// All levels of nav
-.bd-sidebar .nav > li > a {
-  display: block;
-  padding: .25rem 1.5rem;
-  @include font-size(90%);
-  color: rgba(0, 0, 0, .65);
-}
-
-.bd-sidebar .nav > li > a:hover {
-  color: rgba(0, 0, 0, .85);
-  text-decoration: none;
-  background-color: transparent;
-}
-
-.bd-sidebar .nav > .active > a,
-.bd-sidebar .nav > .active:hover > a {
-  font-weight: 600;
-  color: rgba(0, 0, 0, .85);
-  background-color: transparent;
+    li {
+        display: block;
+        a {
+            display: block;
+            padding: .125rem 1.5rem;
+            color: $body-color;
+            &:hover {
+                color: $primary;
+                text-decoration: none;
+            }
+        }
+    }
 }
