@@ -10199,10 +10199,12 @@ img.resize {
   width: 1em; }
 
 .action-menu .dropdown-toggle {
-  text-decoration: none; }
+  text-decoration: none;
+  display: inline-block; }
 
 .action-menu {
-  white-space: nowrap; }
+  white-space: nowrap;
+  display: inline; }
 
 .block img.resize {
   height: 0.9em;
@@ -19941,7 +19943,7 @@ div.editor_atto_toolbar button .icon {
   right: 0;
   left: 0;
   z-index: 1030;
-  padding: 4px 8px;
+  padding: 0 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   align-items: stretch;
   height: 60px; }
@@ -19956,8 +19958,6 @@ div.editor_atto_toolbar button .icon {
   .topnavbar .action-menu-trigger .dropdown {
     height: 100%;
     display: flex; }
-  .topnavbar .dropdown-toggle::after {
-    display: none; }
   .topnavbar .navbar-toggler {
     border: 0; }
   .topnavbar .logo img {
@@ -19978,6 +19978,47 @@ div.editor_atto_toolbar button .icon {
 
 #page {
   margin-top: 60px; }
+
+.moremenu {
+  opacity: 0;
+  margin-top: 10px;
+  height: 40px;
+  box-shadow: none; }
+  .moremenu.observed {
+    opacity: 1; }
+  .moremenu .nav-link {
+    height: 40px;
+    display: flex;
+    align-items: center; }
+  .moremenu .dropdownmoremenu > .dropdown-menu > .dropdown-item {
+    padding: 0; }
+  .moremenu .dropdownmoremenu > .dropdown-menu .dropdown-menu {
+    position: static;
+    padding: 0;
+    border: 0; }
+    .moremenu .dropdownmoremenu > .dropdown-menu .dropdown-menu.show {
+      display: block; }
+    .moremenu .dropdownmoremenu > .dropdown-menu .dropdown-menu .dropdown-item {
+      background-color: #f8f9fa; }
+      .moremenu .dropdownmoremenu > .dropdown-menu .dropdown-menu .dropdown-item:hover, .moremenu .dropdownmoremenu > .dropdown-menu .dropdown-menu .dropdown-item:focus {
+        color: #fff;
+        background-color: #0f6fc5; }
+    .moremenu .dropdownmoremenu > .dropdown-menu .dropdown-menu .dropdown-divider {
+      display: none; }
+
+.topnavbar .moremenu {
+  margin-top: 0;
+  height: 60px;
+  flex: 1 1 auto; }
+  .topnavbar .moremenu .navbar-nav .nav-link {
+    height: 60px; }
+  .topnavbar .moremenu > .nav .nav-link {
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent; }
+    .topnavbar .moremenu > .nav .nav-link:hover, .topnavbar .moremenu > .nav .nav-link:focus {
+      border-bottom: 3px solid #212529; }
+    .topnavbar .moremenu > .nav .nav-link.active {
+      border-bottom: 3px solid #212529; }
 
 body {
   -webkit-font-smoothing: antialiased;

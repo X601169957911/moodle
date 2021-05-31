@@ -3809,6 +3809,19 @@ EOD;
     }
 
     /**
+     * Renders a navigation bar into a "more menu" navigation bar
+     *
+     * @param array $content
+     * @param string $navbarstyle navbar-nav or nav-tabs
+     * @return string
+     */
+    public function more_menu($content, $navbarstyle) {
+        $template = (object) ['nodearray' => $content];
+        $template->navbarstyle = $navbarstyle;
+        return $this->render_from_template('core/moremenu', $template);
+    }
+
+    /**
      * Renders theme links for switching between default and other themes.
      *
      * @return string

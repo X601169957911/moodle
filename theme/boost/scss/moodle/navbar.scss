@@ -4,7 +4,7 @@
     right: 0;
     left: 0;
     z-index: $zindex-fixed;
-    padding: $primary-nav-padding-y $primary-nav-padding-x;
+    padding: 0 $primary-nav-padding-x;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     align-items: stretch;
     height: $navbar-height;
@@ -22,9 +22,6 @@
     .action-menu-trigger .dropdown {
         height: 100%;
         display: flex;
-    }
-    .dropdown-toggle::after {
-        display: none;
     }
     .navbar-toggler {
         border: 0;
