@@ -1,0 +1,8 @@
+.topnavbar .moremenu {
+    margin-top: 0;
+    height: $navbar-height;
+    flex: 1 1 auto;
+    .navbar-nav .nav-link {
+        height: $navbar-height;
+    }
+}
