@@ -12818,9 +12818,6 @@ input[disabled] {
   .pagelayout-embedded .embedded-blocks {
     width: 100%; } }
 
-.navbar {
-  max-height: 50px; }
-
 /* calendar.less */
 .calendar_event_category {
   background-color: #e0cbe0; }
@@ -14159,9 +14156,9 @@ span.editinstructions {
 :target::before {
   content: " ";
   display: block;
-  height: 60px;
+  height: 70px;
   /* fixed header height*/
-  margin-top: -60px;
+  margin-top: -70px;
   /* negative fixed header height */
   width: 1px;
   pointer-events: none; }
@@ -14180,8 +14177,8 @@ span.editinstructions {
 [data-region="drawer"] {
   position: fixed;
   width: 285px;
-  top: 50px;
-  height: calc(100% - 50px);
+  top: 60px;
+  height: calc(100% - 60px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 999;
@@ -14215,7 +14212,7 @@ span.editinstructions {
     margin-bottom: 0; }
 
 #page {
-  margin-top: 50px; }
+  margin-top: 60px; }
 
 .pagelayout-embedded #page {
   margin-top: 0; }
@@ -14243,9 +14240,9 @@ body.drawer-ease {
   [data-region=right-hand-drawer].drawer {
     z-index: 1020;
     position: fixed;
-    top: 50px;
+    top: 60px;
     right: 0;
-    height: calc(100% - 50px);
+    height: calc(100% - 60px);
     width: 320px;
     box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
     padding: 0;
@@ -16348,27 +16345,21 @@ body.path-question-type .mform fieldset.hidden {
   transition: none;
   width: inherit; }
 
-@media (max-width: 991.98px) {
-  .simplesearchform .collapse.show,
-  .simplesearchform .collapsing {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    display: flex;
-    background-color: #fff;
-    z-index: 1060;
-    height: 50px; }
-    .simplesearchform .collapse.show .form-inline,
-    .simplesearchform .collapsing .form-inline {
-      width: auto;
-      margin-left: auto;
-      margin-right: auto; } }
-
-.navbar.navbar-light .simplesearchform .btn-open {
-  color: rgba(0, 0, 0, 0.6); }
-  .navbar.navbar-light .simplesearchform .btn-open:hover {
-    color: rgba(0, 0, 0, 0.9); }
+.simplesearchform .collapse.show,
+.simplesearchform .collapsing {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  z-index: 1060;
+  height: 60px; }
+  .simplesearchform .collapse.show .form-inline,
+  .simplesearchform .collapsing .form-inline {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto; }
 
 .search-areas-actions {
   margin-bottom: 1rem; }
@@ -17651,7 +17642,7 @@ div#dock {
   display: none;
   position: sticky;
   justify-content: end;
-  top: 55px;
+  top: 65px;
   z-index: 1020; }
   #quiz-timer-wrapper #quiz-timer {
     border: 1px solid #ca3120;
@@ -18690,7 +18681,7 @@ body:not(.jsenabled) .langmenu:hover > .dropdown-menu,
   overflow-y: auto; }
 
 .navbar.fixed-top .dropdown .dropdown-menu {
-  max-height: calc(100vh - 50px);
+  max-height: calc(100vh - 60px);
   overflow-y: auto; }
 
 .page-item.active .page-link, .page-item.active .page-link:hover, .page-item.active .page-link:focus {
@@ -19007,7 +18998,7 @@ body {
   right: 0; }
 
 .navbar .popover-region-container {
-  top: 1.96875rem; }
+  top: 60px; }
 
 .content-item-container {
   width: 100%;
@@ -19752,6 +19743,50 @@ div.editor_atto_toolbar button .icon {
       content: ""; }
   .toast .close {
     color: inherit; }
+
+.topnavbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  padding: 4px 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  align-items: stretch;
+  height: 60px; }
+  .topnavbar .usermenu .dropdown-toggle::after {
+    display: none; }
+  .topnavbar .usermenu {
+    display: flex; }
+    .topnavbar .usermenu .action-menu {
+      display: flex;
+      align-items: center; }
+  .topnavbar .moodle-actionmenu .menubar,
+  .topnavbar .action-menu-trigger .dropdown {
+    height: 100%;
+    display: flex; }
+  .topnavbar .dropdown-toggle::after {
+    display: none; }
+  .topnavbar .navbar-toggler {
+    border: 0; }
+  .topnavbar .logo img {
+    max-height: calc(60px - 4px); }
+  .topnavbar .site-name,
+  .topnavbar .nav-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; }
+  .topnavbar .divider {
+    width: 1px;
+    height: 28px;
+    background-color: #dee2e6; }
+  .topnavbar #usernavigation.navbar-nav .nav-link {
+    padding-right: 0.7rem;
+    padding-left: 0.7rem; }
+
+#page {
+  margin-top: 60px; }
 
 body {
   -webkit-font-smoothing: antialiased;

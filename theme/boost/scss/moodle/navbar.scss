@@ -1,0 +1,57 @@
+.topnavbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $zindex-fixed;
+    padding: $primary-nav-padding-y $primary-nav-padding-x;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    align-items: stretch;
+    height: $navbar-height;
+    .usermenu .dropdown-toggle::after {
+        display: none;
+    }
+    .usermenu {
+        display: flex;
+        .action-menu {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .moodle-actionmenu .menubar,
+    .action-menu-trigger .dropdown {
+        height: 100%;
+        display: flex;
+    }
+    .dropdown-toggle::after {
+        display: none;
+    }
+    .navbar-toggler {
+        border: 0;
+    }
+
+    .logo {
+        img {
+            max-height: calc(#{$navbar-height} - #{$primary-nav-padding-y});
+        }
+    }
+    .site-name,
+    .nav-link {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+    .divider {
+        width: 1px;
+        height: 28px;
+        background-color: $gray-300;
+    }
+    #usernavigation.navbar-nav .nav-link {
+        padding-right: 0.7rem;
+        padding-left: 0.7rem;
+    }
+}
+#page {
+    margin-top: $navbar-height;
+}
