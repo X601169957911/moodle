@@ -2696,7 +2696,7 @@ $picker-emojis-per-row: 7 !default;
             }
         }
     }
-    .nav-tabs,
+    .nav-tabs:not(.more-nav),
     .nav-pills {
         margin: 0;
         border: 0;
