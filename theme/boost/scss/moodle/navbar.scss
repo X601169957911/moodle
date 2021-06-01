@@ -1,41 +1,15 @@
-.topnavbar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: $zindex-fixed;
-    padding: $primary-nav-padding-y $primary-nav-padding-x;
+.navbar.fixed-top {
+    padding-top: 0;
+    padding-bottom: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     align-items: stretch;
     height: $navbar-height;
-    .usermenu .dropdown-toggle::after {
-        display: none;
-    }
-    .usermenu {
-        display: flex;
-        .action-menu {
-            display: flex;
-            align-items: center;
-        }
-    }
-    .moodle-actionmenu .menubar,
-    .action-menu-trigger .dropdown {
-        height: 100%;
-        display: flex;
-    }
-    .dropdown-toggle::after {
-        display: none;
-    }
-    .navbar-toggler {
-        border: 0;
-    }
 
-    .logo {
-        img {
-            max-height: calc(#{$navbar-height} - #{$primary-nav-padding-y});
+    .navbar-brand {
+        .logo {
+            max-height: calc(#{$navbar-height} - (#{$primary-nav-padding-y} * 2));
         }
     }
-    .site-name,
     .nav-link {
         height: 100%;
         display: flex;
@@ -44,12 +18,26 @@
     }
     .divider {
         width: 1px;
-        height: 28px;
         background-color: $gray-300;
     }
-    #usernavigation.navbar-nav .nav-link {
-        padding-right: 0.7rem;
-        padding-left: 0.7rem;
+
+    #usernavigation .nav-link {
+        padding: 0 $primary-nav-padding-x;
+    }
+    .usermenu {
+        display: flex;
+        .action-menu {
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+    }
+    .moodle-actionmenu .menubar,
+    .action-menu-trigger .dropdown {
+        height: 100%;
+        display: flex;
     }
 }
 #page {

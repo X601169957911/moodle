@@ -28,7 +28,7 @@
         "sitename": "Moodle Site"
     }
 }}
-<div class="navbar topnavbar {{# navbardark }}navbar-dark bg-dark{{/ navbardark }}{{^ navbardark }}navbar-light bg-white{{/ navbardark }} navbar-expand" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+<div class="navbar fixed-top navbar-light bg-white navbar-expand" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     <div class="brand">
         {{# output.should_display_navbar_logo }}
             <span class="logo d-none d-sm-flex">
@@ -41,7 +41,7 @@
     </div>
 
     {{# output.secure_layout_language_menu }}
-    <ul class="nav navbar-nav language-menu">
+    <ul class="nav navbar-nav language-menu my-1">
         {{{ . }}}
     </ul>
     {{/ output.secure_layout_language_menu }}
