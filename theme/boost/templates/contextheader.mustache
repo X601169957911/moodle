@@ -28,17 +28,37 @@
         "courseheader": "course_header_html"
     }
 }}
-
-<div class="media contextheader align-items-center icon-size-7">
+<style>
+.media.contextheader .bgicon {
+    height: 60px;
+    width: 60px;
+}
+.media.contextheader.large .bgicon {
+    height: 120px;
+    width: 120px;
+}
+</style>
+<div class="media contextheader {{#large}}large{{/large}} align-items-end">
+    {{#editimage}}
+        <div class="mr-1 simple">
+            {{{editimage}}}
+        </div>
+    {{/editimage}}
+    {{^editimage}}
     {{#icon}}
-    <img src="{{{ icon }}}" class="icon mr-3" alt="...">
+    <div class="d-flex" style="height: 130px;">
+    <img src="{{{ icon }}}" class="img-fluid mr-3" alt="...">
+    </div>
     {{/icon}}
     {{#bgicon}}
     <div class="bgicon icon rounded" style="background-image: url('{{{bgicon}}}');">
     </div>
     {{/bgicon}}
+    {{/editimage}}
     <div class="media-body">
+        {{^icon}}
         <h1 class="h2 mb-0">{{ pagename }}</h1>
         {{{navbar}}}
+        {{/icon}}
     </div>
 </div>

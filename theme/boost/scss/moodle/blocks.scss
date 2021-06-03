@@ -161,8 +161,11 @@ $card-gutter : $card-deck-margin * 2;
         width: 100%;
         flex-grow: 0;
         flex-shrink: 0;
+        .imagehandler_wrapper {
+            height: 10rem;
+        }
         .dashboard-card-img {
-            height: 7rem;
+            height: 10rem;
             background-position: center;
             background-size: cover;
         }

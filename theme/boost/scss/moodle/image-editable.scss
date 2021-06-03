@@ -6,6 +6,9 @@
         background-size: cover;
         background-position: center center;
 
+        &.round {
+            border-radius: 50%;
+        }
         .uploadimagecontrols {
             opacity: 0;
             transition: all 0.4s ease-in-out;
@@ -95,5 +98,38 @@
         .cr-viewport {
             transform: translateZ(0);
         }
+    }
+}
+
+.simple .imagehandler_wrapper {
+    .imagehandler {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .alert {
+        display: none;
+    }
+    .imagehandler .uploadimagecontrols.js-enabled {
+        position: relative;
+
+        .d-flex {
+            justify-content: center;
+        }
+        div[data-region="editactions"] {
+            opacity: 0;
+        }
+    }
+    .imagehandler:hover .uploadimagecontrols.js-enabled {
+        div[data-region="editactions"] {
+            opacity: 1;
+        }
+    }
+    .deleteimage,
+    button[data-action="cropimage"] {
+        display: none;
+    }
+    .editactions {
+        opacity: 0;
     }
 }

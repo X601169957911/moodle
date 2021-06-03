@@ -133,14 +133,14 @@ class core_output_mustache_template_finder_testcase extends advanced_testcase {
                 'location' => 'theme/boost/templates/core_form/element-float-inline.mustache',
             ],
             'Template overridden by child theme' => [
-                'template' => 'core/full_header',
+                'template' => 'core/',
                 'theme' => 'classic',
-                'location' => 'theme/classic/templates/core/full_header.mustache',
+                'location' => 'theme/classic/templates/core/.mustache',
             ],
             'Template overridden by child theme but tested against defualt theme' => [
-                'template' => 'core/full_header',
+                'template' => 'core/',
                 'theme' => '',
-                'location' => 'lib/templates/full_header.mustache',
+                'location' => 'lib/templates/.mustache',
             ],
             'Standard plugin template' => [
                 'template' => 'mod_assign/grading_panel',

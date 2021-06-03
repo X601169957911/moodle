@@ -220,15 +220,35 @@ class course_renderer extends \core_course_renderer {
     }
 
     protected function coursecat_course_cards($courses) {
-        global $CFG, $OUTPUT;
+        global $CFG, $OUTPUT, $PAGE;
 
         $template = new stdClass;
         $template->courses = [];
         foreach ($courses as $course) {
             $course = get_course($course->id);
             $context = \context_course::instance($course->id);
+            // Make sure we delete the cache image introduced in MDL-66667
+            \cache::make('core', 'course_image')->delete($course->id);
             $exporter = new course_summary_exporter($course, ['context' => $context]);
-            $template->courses[] = $exporter->export($OUTPUT);
+            $coursecard = $exporter->export($OUTPUT);
+
+            if ($PAGE->user_is_editing()) {
+                $data = (object) [
+                    'currentimage' => $coursecard->courseimage,
+                    'defaultimage' => '',
+                    'size' => false,
+                    'rounded' => false,
+                    'component' => 'core_course',
+                    'contextid' => \context_course::instance($course->id)->id,
+                    'filearea' => 'overviewfiles',
+                    'draftitemid' => false,
+                    'formelements' => [],
+                ];
+                $editable = new \core\output\image_editable($data);
+                $coursecard->editimage = $OUTPUT->render($editable);
+            }
+
+            $template->courses[] = $coursecard;
         }
 
         return $this->render_from_template('theme_boost/coursecards', $template);

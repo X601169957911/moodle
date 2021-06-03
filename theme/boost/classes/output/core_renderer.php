@@ -31,16 +31,38 @@ defined('MOODLE_INTERNAL') || die;
 class core_renderer extends \core_renderer {
 
     public function edit_button(moodle_url $url) {
-        $url->param('sesskey', sesskey());
-        if ($this->page->user_is_editing()) {
-            $url->param('edit', 'off');
-            $editstring = get_string('turneditingoff');
-        } else {
-            $url->param('edit', 'on');
-            $editstring = get_string('turneditingon');
+        return null;
+    }
+
+    public function edit_switch() {
+        if (!isloggedin() || isguestuser()) {
+            return;
         }
-        $button = new \single_button($url, $editstring, 'post', ['class' => 'btn btn-primary']);
-        return $this->render_single_button($button);
+        if ($this->page->user_allowed_editing()) {
+            $url = clone($this->page->url);
+            if ($this->page->course->id == 1) {
+                $url = new moodle_url('/course/view.php', ['id' => 1]);
+            }
+            $temp = (object)[];
+            $temp->sesskey = sesskey();
+            if ($this->page->user_is_editing()) {
+                $temp->string = get_string('turneditingoff', 'theme_boost');
+                $url->param('adminedit', 'off');
+                $url->param('edit', 'off');
+                $temp->edit = 'off';
+                $temp->adminedit = 0;
+                $temp->checked = 'checked';
+            } else {
+                $temp->string = get_string('turneditingon', 'theme_boost');
+                $url->param('adminedit', 'on');
+                $url->param('edit', 'on');
+                $temp->edit = 'on';
+                $temp->adminedit = 1;
+                $temp->checked = '';
+            }
+            $temp->url = $url;
+        }
+        return $this->render_from_template('theme_boost/editswitch', $temp);
     }
 
     /**
@@ -49,13 +71,11 @@ class core_renderer extends \core_renderer {
      * @return string HTML to display the main header.
      */
     public function full_header() {
+        global $DB, $USER;
 
         $thiscontext = \context::instance_by_id($this->page->context->id);
         $pageurl = parse_url($this->page->url, PHP_URL_PATH);
 
-        if ($thiscontext->contextlevel == CONTEXT_USER) {
-            return parent::full_header();
-        }
         if ($this->page->include_region_main_settings_in_header_actions() &&
                 !$this->page->blocks->is_block_present('settings')) {
             // Only include the region main settings if the page has requested it and it doesn't already have
@@ -81,6 +101,37 @@ class core_renderer extends \core_renderer {
         // The context header within the page header
         $contextheader = (object)[];
         $contextheader->navbar = $this->navbar();
+
+        if ($thiscontext->contextlevel == CONTEXT_USER) {
+            $user = $DB->get_record('user', array('id' => $thiscontext->instanceid));
+
+            $course = $this->page->course;
+
+            if (user_can_view_profile($user, $course)) {
+
+                $userpicture = new \user_picture($user);
+                $userpicture->size = 400;
+                $contextheader->large = true;
+                $contextheader->pagename = fullname($user);
+                $contextheader->icon = $userpicture->get_url($this->page, $this);
+            }
+
+            if ($USER->id == $user->id) {
+                $data = (object) [
+                    'currentimage' => $contextheader->icon,
+                    'defaultimage' => '',
+                    'size' => 120,
+                    'rounded' => true,
+                    'component' => 'core_user',
+                    'contextid' => \context_user::instance($user->id)->id,
+                    'filearea' => 'icon',
+                    'draftitemid' => false,
+                    'formelements' => [],
+                ];
+                $editable = new \core\output\image_editable($data);
+                $contextheader->editimage = $this->render($editable);
+            }
+        }
 
         // Course Module
         if ($thiscontext->contextlevel == CONTEXT_MODULE) {
@@ -117,8 +168,9 @@ class core_renderer extends \core_renderer {
         // Site home
         if ($thiscontext->contextlevel == CONTEXT_COURSE && $this->page->course->id == 1) {
             $contextheader->pagename = $this->page->heading;
-            $contextheader->bgicon = $this->get_logo_url();
-            $contextheader->navbar = $this->navbar();
+            $contextheader->large = true;
+            $contextheader->icon = $this->get_logo_url();
+            $contextheader->navbar = false;
 
         // Altered page header when visiting a course.
         } else if ($thiscontext->contextlevel == CONTEXT_COURSE) {

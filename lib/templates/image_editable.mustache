@@ -36,10 +36,10 @@
     <div {{#formelements}}id="singleimage_{{ id }}"{{/formelements}} class="imagehandler {{#rounded}}round{{/rounded}} {{classes}}"
         data-region="imagehandler"
         {{#currentimage}}
-            style="background-image: url('{{{currentimage}}}'); width: {{size}}px; height: {{size}}px;"
+            style="background-image: url('{{{currentimage}}}'); {{#size}} width: {{size}}px; height: {{size}}px;{{/size}}"
         {{/currentimage}}
         {{^currentimage}}
-            style="background-image: url('{{{defaultimage}}}'); width: {{size}}px; height: {{size}}px;"
+            style="background-image: url('{{{defaultimage}}}'); {{#size}}width: {{size}}px; height: {{size}}px;{{/size}}"
         {{/currentimage}}
         >
         <div data-region="imagecontrols" class="uploadimagecontrols p-2">

@@ -25,6 +25,8 @@
 
 namespace core_user\imageeditable;
 
+require_once($CFG->libdir .'/filelib.php');
+
 defined('MOODLE_INTERNAL') || die();
 
 /**
@@ -73,7 +75,17 @@ class handler {
         $context = \context::instance_by_id($contextid);
 
         $draftitemid = file_get_unused_draft_itemid();
-        self::store_draftfile($filename, $binary, $draftitemid);
+
+        $filerecord = array(
+            'contextid' => $context->id,
+            'component' => 'user',
+            'filearea'  => 'draft',
+            'itemid'    => $draftitemid,
+            'filepath'  => '/',
+            'filename'  => $filename,
+        );
+        $fs = get_file_storage();
+        $fs->create_file_from_string($filerecord, $binary);
 
         $user = \core_user::get_user($context->instanceid, '*', MUST_EXIST);
         $user->imagefile = $draftitemid;

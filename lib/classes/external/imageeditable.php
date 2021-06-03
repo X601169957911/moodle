@@ -124,7 +124,7 @@ class imageeditable extends external_api {
                 }
                 $success = true;
             } else {
-                throw new coding_exception("$classname not found");
+                throw new \coding_exception("$classname not found");
             }
         }
 

@@ -1,0 +1,18 @@
+<form id="editswitchform" method="post" action="{{{url}}}">
+    <input type="hidden" name="sesskey" value="{{{sesskey}}}">
+    <input type="hidden" name="edit" value="{{{edit}}}">
+    <input type="hidden" name="adminedit" value="{{{adminedit}}}">
+    <div class="custom-control custom-control-right custom-switch text-nowrap">
+        <input type="checkbox" class="custom-control-input" {{{checked}}} id="editingswitch">
+        <label class="custom-control-label" for="editingswitch">
+            <span class="d-none d-sm-inline">{{{string}}}</span>
+        </label>
+    </div>
+</form>
+{{#js}}
+    var editswitch = document.getElementById('editingswitch');
+    var editswitchform = document.getElementById('editswitchform');
+    editswitch.addEventListener('change', function() {
+        editswitchform.submit();
+    })
+{{/js}}

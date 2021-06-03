@@ -25,11 +25,12 @@
     .login-languagemenu {
         display: flex;
         justify-content: flex-end;
-        margin-bottom: 1rem;
     }
     .login-logo {
         display: flex;
         justify-content: center;
+        margin-bottom: 1rem;
+        height: 120px;
     }
     .login-divider {
         margin-top: $logindivider-margin-top;
