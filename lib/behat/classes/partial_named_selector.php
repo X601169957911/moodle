@@ -206,11 +206,7 @@ XPATH
 .//*[self::div | self::section | self::aside | self::header | self::footer][./@id = %locator%]
 XPATH
         , 'section' => <<<XPATH
-.//li[contains(concat(' ', normalize-space(@class), ' '), ' section ')][./descendant::*[self::h3]
-    [normalize-space(.) = %locator%][contains(concat(' ', normalize-space(@class), ' '), ' sectionname ') or
-    contains(concat(' ', normalize-space(@class), ' '), ' section-title ')]] |
-.//div[contains(concat(' ', normalize-space(@class), ' '), ' sitetopic ')]
-    [./descendant::*[self::h2][normalize-space(.) = %locator%] or %locator% = 'frontpage']
+.//*[@data-for='section' and contains(., %locator%)]
 XPATH
         , 'table' => <<<XPATH
 .//table[(./@id = %locator% or contains(.//caption, %locator%) or contains(.//th, %locator%) or contains(concat(' ', normalize-space(@class), ' '), %locator% ))]
