@@ -1,0 +1,45 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+
+    @template theme_boost/editswitch
+
+    This template renders the top navbar.
+
+    Example context (json):
+    {
+        "url": "http://localhost/",
+        "sesskey": "sesskey",
+        "edit": 1,
+        "adminedit": true,
+        "checked": "",
+        "string": "Edit on"
+    }
+}}
+<form action="#" class="d-flex align-items-center editmode-switch-form">
+    <div class="custom-control custom-control-right custom-switch text-nowrap">
+        <input type="checkbox" aria-checked="{{#checked}}true{{/checked}}" class="custom-control-input" {{#checked}}checked{{/checked}} id="editingswitch" data-context={{{pagecontextid}}}>
+        <label class="custom-control-label" for="editingswitch">
+            {{#str}} editmode {{/str}}
+        </label>
+    </div>
+</form>
+{{#js}}
+    require(['core/edit_switch'], function(editSwitch) {
+        editSwitch.init();
+    });
+{{/js}}

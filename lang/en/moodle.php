@@ -577,6 +577,7 @@ $string['editgroupprofile'] = 'Edit group profile';
 $string['editinga'] = 'Editing {$a}';
 $string['editingteachershort'] = 'Editor';
 $string['editlock'] = 'This value cannot be edited!';
+$string['editmode'] = 'Edit mode';
 $string['editmyprofile'] = 'Edit profile';
 $string['editorbgcolor'] = 'Background-color';
 $string['editorcleanonpaste'] = 'Clean Word HTML on paste';
