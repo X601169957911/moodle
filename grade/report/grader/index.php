@@ -86,14 +86,15 @@ if (!isset($USER->gradeediting)) {
     $USER->gradeediting = array();
 }
 
+$buttons = '';
 if (has_capability('moodle/grade:edit', $context)) {
     if (!isset($USER->gradeediting[$course->id])) {
         $USER->gradeediting[$course->id] = 0;
     }
 
-    if (($edit == 1) and confirm_sesskey()) {
+    if ($USER->editing == 1) {
         $USER->gradeediting[$course->id] = 1;
-    } else if (($edit == 0) and confirm_sesskey()) {
+    } else if ($USER->editing == 0) {
         $USER->gradeediting[$course->id] = 0;
     }
 
@@ -101,18 +102,19 @@ if (has_capability('moodle/grade:edit', $context)) {
     $options = $gpr->get_options();
     $options['sesskey'] = sesskey();
 
-    if ($USER->gradeediting[$course->id]) {
-        $options['edit'] = 0;
-        $string = get_string('turneditingoff');
-    } else {
-        $options['edit'] = 1;
-        $string = get_string('turneditingon');
-    }
+    if (!$PAGE->theme->haseditswitch) {
+        if ($USER->gradeediting[$course->id]) {
+            $options['edit'] = 0;
+            $string = get_string('turneditingoff');
+        } else {
+            $options['edit'] = 1;
+            $string = get_string('turneditingon');
+        }
 
-    $buttons = new single_button(new moodle_url('index.php', $options), $string, 'get');
+        $buttons = new single_button(new moodle_url('index.php', $options), $string, 'get');
+    }
 } else {
     $USER->gradeediting[$course->id] = 0;
-    $buttons = '';
 }
 
 $gradeserror = array();

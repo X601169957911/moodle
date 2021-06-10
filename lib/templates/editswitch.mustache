@@ -30,9 +30,9 @@
         "string": "Edit on"
     }
 }}
-<form action="#" class="d-flex align-items-center editmode-switch-form">
+<form action="{{{pageurl}}}" class="d-flex align-items-center editmode-switch-form">
     <div class="custom-control custom-control-right custom-switch text-nowrap">
-        <input type="checkbox" aria-checked="{{#checked}}true{{/checked}}" class="custom-control-input" {{#checked}}checked{{/checked}} id="editingswitch" data-context={{{pagecontextid}}}>
+        <input type="checkbox" aria-checked="{{#checked}}true{{/checked}}" class="custom-control-input" {{#checked}}checked{{/checked}} id="editingswitch" data-context={{{pagecontextid}}} data-pageurl="{{{pageurl}}}">
         <label class="custom-control-label" for="editingswitch">
             {{#str}} editmode {{/str}}
         </label>

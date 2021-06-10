@@ -2748,6 +2748,9 @@ EOD;
      */
     public function edit_button(moodle_url $url) {
 
+        if ($this->page->theme->haseditswitch == true) {
+            return;
+        }
         $url->param('sesskey', sesskey());
         if ($this->page->user_is_editing()) {
             $url->param('edit', 'off');
@@ -2758,6 +2761,25 @@ EOD;
         }
 
         return $this->single_button($url, $editstring);
+    }
+
+    /**
+     * Create a navbar switch for toggling editing mode.
+     *
+     * @return string Html containing the edit switch
+    */
+    public function edit_switch() {
+        if ($this->page->user_allowed_editing()) {
+
+            $temp = (object)[];
+            $temp->sesskey = sesskey();
+            $temp->pagecontextid = $this->page->context->id;
+            if ($this->page->user_is_editing()) {
+                $temp->checked = true;
+            }
+            $temp->pageurl = $this->page->url;
+            return $this->render_from_template('core/editswitch', $temp);
+        }
     }
 
     /**
