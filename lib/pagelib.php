@@ -394,6 +394,11 @@ class moodle_page {
     protected $_hassecondarynavigation = true;
 
     /**
+     * @var null|string the rendered output for page action.
+     */
+    protected $_pageaction = null;
+
+    /**
      * Force the settings menu to be displayed on this page. This will only force the
      * settings menu on an activity / resource page that is being displayed on a theme that
      * uses a settings menu.
@@ -2174,5 +2179,24 @@ class moodle_page {
      */
     public function include_secondary_navigation() : bool {
         return $this->_hassecondarynavigation;
+    }
+
+    /**
+     * Set the rendered html output to page action
+     *
+     * @param string $html
+     * @return void
+     */
+    public function set_page_action(string $html): void {
+        $this->_pageaction = $html;
+    }
+
+    /**
+     * Get the rendered output for page action
+     *
+     * @return string the rendered page action
+     */
+    public function get_page_action(): string {
+        return $this->_pageaction ?? '';
     }
 }
