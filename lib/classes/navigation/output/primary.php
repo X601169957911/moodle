@@ -59,7 +59,7 @@ class primary implements renderable, templatable {
             'primary' => $this->get_primary_nav(),
             'custom' => $this->get_custom_menu($output),
             'lang' => $this->get_lang_menu($output),
-            'user' => $this->get_user_menu(),
+            'user' => $this->get_user_menu($output),
         ];
     }
 
@@ -116,8 +116,9 @@ class primary implements renderable, templatable {
      * @return array
      */
     protected function get_lang_menu(renderer_base $output): array {
-        // Early return if a lang menu does not exists.
-        if (empty($output->lang_menu())) {
+        // Early return if a lang menu cannot be displayed or if the user is logged in (in this case the language menu
+        // will be displayed within the user menu).
+        if (empty($output->lang_menu()) || (isloggedin() && !isguestuser())) {
             return [];
         }
 
@@ -143,15 +144,18 @@ class primary implements renderable, templatable {
 
     /**
      * Get/Generate the user menu.
+     *
      * This is leveraging the data from user_get_user_navigation_info and the logic in $OUTPUT->user_menu()
      *
+     * @param renderer_base $output
      * @return array
      */
-    public function get_user_menu(): array {
+    public function get_user_menu(renderer_base $output): array {
         global $CFG, $USER, $PAGE;
         require_once($CFG->dirroot . '/user/lib.php');
 
         $usermenudata = [];
+        $submenusdata = [];
         $info = user_get_user_navigation_info($USER, $PAGE);
         if (isset($info->unauthenticateduser)) {
             $info->unauthenticateduser['content'] = get_string($info->unauthenticateduser['content']);
@@ -214,10 +218,60 @@ class primary implements renderable, templatable {
             return $value;
         }, $info->navitems);
 
+        // Include the language menu as a submenu within the user menu.
+        if (!empty($output->lang_menu())) {
+            $currentlang = current_language();
+            $langs = get_string_manager()->get_list_of_translations();
+            $languageitems = [];
+
+            foreach ($langs as $langtype => $langname) {
+                // Whether this language is currently active.
+                $isactive = $langtype == $currentlang;
+                // Generate the data for every available language.
+                $languageitems[] = (object) [
+                    'title' => $langname,
+                    'link' => true,
+                    'isactive' => $isactive,
+                    'url' => $isactive ? new \moodle_url('#') :
+                        new \moodle_url($this->page->url, ['lang' => $langtype]),
+                ];
+            }
+
+            // If there are available languages, generate the data for the the language selector submenu.
+            if (!empty($languageitems)) {
+                $langsubmenuid = uniqid();
+                // Generate the data for the link to language selector submenu.
+                $language = (object) [
+                    'itemtype' => 'submenu-link',
+                    'submenuid' => $langsubmenuid,
+                    'title' => get_string('language'),
+                    'pixicon' => 'i/language',
+                    'divider' => false,
+                    'submenulink' => true,
+                ];
+
+                // Place the link before the 'Log out' menu item which is either the last item in the menu or
+                // second to last when 'Switch roles' is available.
+                $menuposition = count($modifiedarray) - 1;
+                if (has_capability('moodle/role:switchroles', $PAGE->context)) {
+                    $menuposition = count($modifiedarray) - 2;
+                }
+                array_splice($modifiedarray, $menuposition, 0, [$language]);
+
+                // Generate the data for the language selector submenu.
+                $submenusdata[] = (object)[
+                    'id' => $langsubmenuid,
+                    'title' => get_string('languageselector'),
+                    'items' => $languageitems
+                ];
+            }
+        }
+
         // Add dividers after the first item and before the last item.
         $modifiedarray[0]->divider = true;
-        $modifiedarray[count($info->navitems) - 2]->divider = true;
+        $modifiedarray[count($modifiedarray) - 2]->divider = true;
         $usermenudata['items'] = $modifiedarray;
+        $usermenudata['submenus'] = array_values($submenusdata);
 
         return $usermenudata;
     }
