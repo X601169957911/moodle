@@ -47,6 +47,12 @@ body.behat-site {
     [data-region="message-drawer"] {
         padding-right: 10px;
     }
+
+    // Workaround form MDL-71610.
+    // If behat is running without javascript the edit-switch-form is hidden and the "Turn editing on" button is shown.
+    &:not(.jsenabled) .editmode-switch-form .custom-switch {
+        display: none;
+    }
 }
 
 .phpinfo table,
@@ -74,4 +80,3 @@ body.behat-site {
     background-color: #99c;
     font-weight: bold;
 }
-

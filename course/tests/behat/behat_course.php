@@ -83,32 +83,6 @@ class behat_course extends behat_base {
     }
 
     /**
-     * Turns editing mode on.
-     * @Given /^I turn editing mode on$/
-     */
-    public function i_turn_editing_mode_on() {
-
-        try {
-            $this->execute("behat_forms::press_button", get_string('turneditingon'));
-        } catch (Exception $e) {
-            $this->execute("behat_navigation::i_navigate_to_in_current_page_administration", [get_string('turneditingon')]);
-        }
-    }
-
-    /**
-     * Turns editing mode off.
-     * @Given /^I turn editing mode off$/
-     */
-    public function i_turn_editing_mode_off() {
-
-        try {
-            $this->execute("behat_forms::press_button", get_string('turneditingoff'));
-        } catch (Exception $e) {
-            $this->execute("behat_navigation::i_navigate_to_in_current_page_administration", [get_string('turneditingoff')]);
-        }
-    }
-
-    /**
      * Creates a new course with the provided table data matching course settings names with the desired values.
      *
      * @Given /^I create a course with:$/
@@ -1328,13 +1302,11 @@ class behat_course extends behat_base {
      */
     protected function is_course_editor() {
 
-        // We don't need to behat_base::spin() here as all is already loaded.
-        if (!$this->getSession()->getPage()->findButton(get_string('turneditingoff')) &&
-                !$this->getSession()->getPage()->findButton(get_string('turneditingon'))) {
-            return false;
+        $xpath = "//body[contains(concat(' ', normalize-space(@class), ' '), ' editing ')]";
+        if ($this->getSession()->getPage()->find('xpath', $xpath)) {
+            return true;
         }
-
-        return true;
+        return false;
     }
 
     /**
@@ -1343,7 +1315,8 @@ class behat_course extends behat_base {
      * @return bool
      */
     protected function is_editing_on() {
-        return $this->getSession()->getPage()->findButton(get_string('turneditingoff')) ? true : false;
+        $xpath = "//body[contains(concat(' ', normalize-space(@class), ' '), ' editing ')]";
+        return $this->getSession()->getPage()->find('xpath', $xpath);
     }
 
     /**

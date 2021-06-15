@@ -19042,6 +19042,9 @@ body.behat-site .custom-control-label::before, body.behat-site .custom-control-l
 body.behat-site [data-region="message-drawer"] {
   padding-right: 10px; }
 
+body.behat-site:not(.jsenabled) .editmode-switch-form .custom-switch {
+  display: none; }
+
 .phpinfo table,
 .phpinfo th,
 .phpinfo h2 {

@@ -226,4 +226,24 @@ class behat_theme_classic_behat_navigation extends behat_navigation {
 
         return $menuxpath;
     }
+
+    /**
+     * Turns editing mode off.
+     */
+    public function i_switch_editing_mode_off() {
+        $this->i_switch_editing_mode_off_legacy();
+        if ($this->is_editing_on()) {
+            throw new ExpectationException('The edit mode could not be turned on', $this->getSession());
+        }
+    }
+
+    /**
+     * Turns editing mode on.
+     */
+    public function i_switch_editing_mode_on() {
+        $this->i_switch_editing_mode_on_legacy();
+        if (!$this->is_editing_on()) {
+            throw new ExpectationException('The edit mode could not be turned on', $this->getSession());
+        }
+    }
 }

@@ -75,6 +75,10 @@ class editmode extends external_api {
         self::validate_context($context);
         $PAGE->set_context($context);
 
+        if ($context->id === \context_user::instance($USER->id)->id) {
+            $PAGE->set_blocks_editing_capability('moodle/my:manageblocks');
+        }
+
         $success = false;
         if ($PAGE->user_allowed_editing()) {
             $USER->editing = $setmode;

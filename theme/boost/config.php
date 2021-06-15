@@ -156,5 +156,9 @@ $THEME->yuicssmodules = array();
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 $THEME->requiredblocks = '';
 $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
-$THEME->haseditswitch = true;
+if (defined('BEHAT_SITE_RUNNING')) {
+    $THEME->haseditswitch = false;
+} else {
+    $THEME->haseditswitch = true;
+}
 $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
