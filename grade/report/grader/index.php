@@ -81,40 +81,28 @@ if (!isset($USER->grade_last_report)) {
 $USER->grade_last_report[$course->id] = 'grader';
 
 // Build editing on/off buttons
-
-if (!isset($USER->gradeediting)) {
-    $USER->gradeediting = array();
-}
-
 $buttons = '';
 if (has_capability('moodle/grade:edit', $context)) {
-    if (!isset($USER->gradeediting[$course->id])) {
-        $USER->gradeediting[$course->id] = 0;
-    }
 
-    if ($USER->editing == 1) {
-        $USER->gradeediting[$course->id] = 1;
-    } else if ($USER->editing == 0) {
-        $USER->gradeediting[$course->id] = 0;
+    if (($edit != - 1) and $PAGE->user_allowed_editing()) {
+        $USER->editing = $edit;
     }
 
     // page params for the turn editting on
     $options = $gpr->get_options();
     $options['sesskey'] = sesskey();
 
-    if (!$PAGE->theme->haseditswitch) {
-        if ($USER->gradeediting[$course->id]) {
-            $options['edit'] = 0;
-            $string = get_string('turneditingoff');
-        } else {
-            $options['edit'] = 1;
-            $string = get_string('turneditingon');
-        }
+    if (isset($USER->editing) && $USER->editing) {
+        $options['edit'] = 0;
+        $string = get_string('turneditingoff');
+    } else {
+        $options['edit'] = 1;
+        $string = get_string('turneditingon');
+    }
 
+    if (!$PAGE->theme->haseditswitch) {
         $buttons = new single_button(new moodle_url('index.php', $options), $string, 'get');
     }
-} else {
-    $USER->gradeediting[$course->id] = 0;
 }
 
 $gradeserror = array();
@@ -150,7 +138,7 @@ if ($report->currentgroup == -2) {
 }
 
 // processing posted grades & feedback here
-if ($data = data_submitted() and confirm_sesskey() and has_capability('moodle/grade:edit', $context)) {
+if ($USER->editing && $data = data_submitted() and confirm_sesskey() and has_capability('moodle/grade:edit', $context)) {
     $warnings = $report->process_data($data);
 } else {
     $warnings = array();
@@ -188,7 +176,7 @@ if ($numusers == 0) {
 $reporthtml = $report->get_grade_table($displayaverages);
 
 // print submit button
-if ($USER->gradeediting[$course->id] && ($report->get_pref('showquickfeedback') || $report->get_pref('quickgrading'))) {
+if ($USER->editing && ($report->get_pref('showquickfeedback') || $report->get_pref('quickgrading'))) {
     echo '<form action="index.php" enctype="application/x-www-form-urlencoded" method="post" id="gradereport_grader">'; // Enforce compatibility with our max_input_vars hack.
     echo '<div>';
     echo '<input type="hidden" value="'.s($courseid).'" name="id" />';

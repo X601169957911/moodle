@@ -894,7 +894,7 @@ class grade_report_grader extends grade_report {
                         $categorycell->scope = 'col';
 
                         // Print icons.
-                        if ($USER->gradeediting[$this->courseid]) {
+                        if ($USER->editing) {
                             $categorycell->text .= $this->get_icons($element);
                         }
 
@@ -1079,7 +1079,7 @@ class grade_report_grader extends grade_report {
                 }
 
                 // Do not show any icons if no grade (no record in DB to match)
-                if (!$item->needsupdate and $USER->gradeediting[$this->courseid]) {
+                if (!$item->needsupdate and $USER->editing) {
                     $itemcell->text .= $this->get_icons($element);
                 }
 
@@ -1101,7 +1101,7 @@ class grade_report_grader extends grade_report {
                 if ($item->needsupdate) {
                     $itemcell->text .= "<span class='gradingerror{$hidden}'>" . $strerror . "</span>";
 
-                } else if ($USER->gradeediting[$this->courseid]) {
+                } else if ($USER->editing) {
 
                     if ($item->scaleid && !empty($scalesarray[$item->scaleid])) {
                         $itemcell->attributes['class'] .= ' grade_type_scale';
@@ -1239,7 +1239,7 @@ class grade_report_grader extends grade_report {
 
             // Student grades and feedback are already at $jsarguments['feedback'] and $jsarguments['grades']
         }
-        $jsarguments['cfg']['isediting'] = (bool)$USER->gradeediting[$this->courseid];
+        $jsarguments['cfg']['isediting'] = (bool)$USER->editing;
         $jsarguments['cfg']['courseid'] = $this->courseid;
         $jsarguments['cfg']['studentsperpage'] = $this->get_students_per_page();
         $jsarguments['cfg']['showquickfeedback'] = (bool) $showquickfeedback;
@@ -1252,7 +1252,7 @@ class grade_report_grader extends grade_report {
         $PAGE->requires->js_init_call('M.gradereport_grader.init_report', $jsarguments, false, $module);
         $PAGE->requires->strings_for_js(array('addfeedback', 'feedback', 'grade'), 'grades');
         $PAGE->requires->strings_for_js(array('ajaxchoosescale', 'ajaxclicktoclose', 'ajaxerror', 'ajaxfailedupdate', 'ajaxfieldchanged'), 'gradereport_grader');
-        if (!$enableajax && $USER->gradeediting[$this->courseid]) {
+        if (!$enableajax && $USER->editing) {
             $PAGE->requires->yui_module('moodle-core-formchangechecker',
                     'M.core_formchangechecker.init',
                     array(array(
@@ -1310,7 +1310,7 @@ class grade_report_grader extends grade_report {
     public function get_left_icons_row($rows=array(), $colspan=1) {
         global $USER;
 
-        if ($USER->gradeediting[$this->courseid]) {
+        if ($USER->editing) {
             $controlsrow = new html_table_row();
             $controlsrow->attributes['class'] = 'controls';
             $controlscell = new html_table_cell();
@@ -1407,7 +1407,7 @@ class grade_report_grader extends grade_report {
      */
     public function get_right_icons_row($rows=array()) {
         global $USER;
-        if ($USER->gradeediting[$this->courseid]) {
+        if ($USER->editing) {
             $iconsrow = new html_table_row();
             $iconsrow->attributes['class'] = 'controls';
 
@@ -1587,7 +1587,7 @@ class grade_report_grader extends grade_report {
                 }
 
                 // Determine which display type to use for this average
-                if ($USER->gradeediting[$this->courseid]) {
+                if ($USER->editing) {
                     $displaytype = GRADE_DISPLAY_TYPE_REAL;
 
                 } else if ($averagesdisplaytype == GRADE_REPORT_PREFERENCE_INHERIT) { // no ==0 here, please resave the report and user preferences
@@ -1696,7 +1696,7 @@ class grade_report_grader extends grade_report {
     protected function get_icons($element) {
         global $CFG, $USER, $OUTPUT;
 
-        if (!$USER->gradeediting[$this->courseid]) {
+        if (!$USER->editing) {
             return '<div class="grade_icons" />';
         }
 
@@ -1992,4 +1992,3 @@ class grade_report_grader extends grade_report {
         return $this->get_pref('studentsperpage');
     }
 }
-
