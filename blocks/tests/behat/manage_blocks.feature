@@ -48,16 +48,15 @@ Feature: Block appearances
     And I set the following fields to these values:
       | Display on page types | Any course page |
     And I press "Save changes"
-    And I press "Turn editing off"
+    And I switch editing mode off
     And I follow "Test survey name"
     And I should not see "Comments"
-
   Scenario: Block settings can be modified so that a block can be hidden
     When I follow "Test book name"
     And I configure the "Comments" block
     And I set the following fields to these values:
       | Visible | No |
     And I press "Save changes"
-    And I press "Turn editing off"
+    And I switch editing mode off
     And I follow "Test book name"
     Then I should not see "Comments"

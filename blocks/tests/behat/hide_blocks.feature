@@ -18,10 +18,10 @@ Feature: Block visibility
     And I click on "Configure Search forums block" "link" in the "Search forums" "block"
     And I set the field "Region" to "Right"
     And I press "Save changes"
-    And I turn editing mode off
+    And I switch editing mode off
     And ".empty-region-side-post" "css_element" should not exist in the "body" "css_element"
-    And I turn editing mode on
+    And I switch editing mode on
     And I open the "Search forums" blocks action menu
     And I click on "Hide Search forums block" "link" in the "Search forums" "block"
-    And I follow "Turn editing off"
+    And I switch editing mode off
     And ".empty-region-side-post" "css_element" should exist in the "body" "css_element"

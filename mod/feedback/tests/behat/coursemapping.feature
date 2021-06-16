@@ -227,12 +227,12 @@ Feature: Mapping courses in a feedback
   Scenario: Site feedback deletion hides feedback block completely
     When I log in as "manager"
     And I am on site homepage
-    And I turn editing mode on
+    And I switch editing mode on
     And I add the "Feedback" block
     And I add the "Main menu" block
     And I click on "Delete" "link" in the "Course feedback" activity
     And I press "Yes"
-    And I follow "Turn editing off"
+    And I switch editing mode off
     And I am on site homepage
     Then "Feedback" "block" should not exist
     And I am on "Course 1" course homepage

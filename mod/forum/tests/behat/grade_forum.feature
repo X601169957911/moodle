@@ -152,7 +152,6 @@ Feature: I can grade a students interaction across a forum
     And I set the field "Whole forum grading > Grade to pass" to "4"
     And I press "Save and return to course"
     And I navigate to "View > Grader report" in the course gradebook
-    And I turn editing mode on
 
     # There shouldn't be any Whole forum grade gradeitem.
     Then I should see "Test Forum 1 rating"
