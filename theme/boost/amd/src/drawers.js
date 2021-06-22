@@ -393,6 +393,32 @@ const scroller = () => {
 };
 
 /**
+ * Set the last used attribute for the last used toggle button for a drawer.
+ *
+ * @param {object} toggleButton The clicked button.
+ */
+const setLastUsedToggle = (toggleButton) => {
+    if (toggleButton.dataset.target) {
+        document.querySelectorAll('[data-toggle="drawers"][data-target="' + toggleButton.dataset.target + '"]')
+        .forEach(btn => {
+            btn.dataset.lastused = false;
+        });
+        toggleButton.dataset.lastused = true;
+    }
+};
+
+/**
+ * Set the focus to the last used button to open this drawer.
+ * @param {string} target The drawer target.
+ */
+const focusLastUsedToggle = (target) => {
+    const lastUsedButton = document.querySelector('[data-toggle="drawers"][data-target="' + target + '"][data-lastused="true"');
+    if (lastUsedButton) {
+        lastUsedButton.focus();
+    }
+};
+
+/**
  * Register the event listeners for the drawer.
  *
  * @private
@@ -405,6 +431,7 @@ const registerListeners = () => {
             e.preventDefault();
             const targetDrawer = document.getElementById(toggleButton.dataset.target);
             const drawerInstance = Drawers.getDrawerInstanceForNode(targetDrawer);
+            setLastUsedToggle(toggleButton);
 
             drawerInstance.toggleVisibility();
         }
@@ -414,6 +441,7 @@ const registerListeners = () => {
             e.preventDefault();
             const targetDrawer = document.getElementById(openDrawerButton.dataset.target);
             const drawerInstance = Drawers.getDrawerInstanceForNode(targetDrawer);
+            setLastUsedToggle(toggleButton);
 
             drawerInstance.openDrawer();
         }
@@ -425,6 +453,7 @@ const registerListeners = () => {
             const drawerInstance = Drawers.getDrawerInstanceForNode(targetDrawer);
 
             drawerInstance.closeDrawer();
+            focusLastUsedToggle(closeDrawerButton.dataset.target);
         }
     });
 
