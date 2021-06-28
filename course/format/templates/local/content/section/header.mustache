@@ -21,17 +21,45 @@
 
     Example context (json):
     {
+        "id": 123,
         "name": "Section title",
+        "title": "<a href=\"http://moodle/course/view.php?id=5#section-0\">Section title</a>",
         "url": "#",
-        "ishidden": true
+        "coursedisplay": 1
     }
 }}
 
-<h3 class="sectionid-{{id}}-title sectionname">
-    {{#url}}
-    <a href="{{{url}}}" class="{{#ishidden}} dimmed_text {{/ishidden}}">{{name}}</a>
-    {{/url}}
-    {{^url}}
-    <span>{{{title}}}</span>
-    {{/url}}
-</h3>
+{{#coursedisplay}}
+    <h3 class="sectionid-{{id}}-title sectionname"
+        data-for="section_title" data-id="{{id}}" data-number="{{num}}">
+        {{#url}}
+            <a href="{{{url}}}" class="{{#ishidden}} dimmed_text {{/ishidden}}">{{name}}</a>
+        {{/url}}
+        {{^url}}
+            <span>{{{title}}}</span>
+        {{/url}}
+    </h3>
+{{/coursedisplay}}
+{{^coursedisplay}}
+    <h3 class="sectionid-{{id}}-title sectionname course-content-item d-flex {{^visible}}dimmed{{/visible}}"
+        id="coursecontentsection{{num}}" data-for="section_title" data-id="{{id}}" data-number="{{num}}">
+        <a data-toggle="collapse"
+           href="#coursecontentcollapse{{num}}"
+           id="collapssesection{{num}}"
+           aria-expanded="{{#isactive}}true{{/isactive}}{{^isactive}}false{{/isactive}}"
+           aria-controls="coursecontentcollapse{{num}}"
+           class="course-content-link icons-collapse-expand {{^isactive}}collapsed{{/isactive}}">
+                <span class="expanded-icon icon-no-margin mr-1"
+                      data-toggle="tooltip" title="{{#str}} collapse, core {{/str}}">
+                    {{#pix}} t/expanded, core {{/pix}}
+                    <span class="sr-only">{{#str}} collapse, core {{/str}}</span>
+                </span>
+                <span class="collapsed-icon icon-no-margin mr-1"
+                  data-toggle="tooltip" title="{{#str}} expand, core {{/str}}">
+                    {{#pix}} t/collapsed, core {{/pix}}
+                <span class="sr-only">{{#str}} expand, core {{/str}}</span>
+                </span>
+        </a>
+        {{{title}}}
+    </h3>
+{{/coursedisplay}}
