@@ -65,6 +65,7 @@ $templatecontext = [
     'secondarymoremenu' => $secondarynavigation,
     'pageaction' => $pageaction,
     'usermenu' => $primarymenu['user'],
+    'langmenu' => $primarymenu['lang'],
 ];
 $nav = $PAGE->flatnav;
 $templatecontext['flatnavigation'] = $nav;
