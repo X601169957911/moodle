@@ -202,6 +202,7 @@ class grade_report_grader extends grade_report {
         $changedgrades = false;
         $timepageload = clean_param($data->timepageload, PARAM_INT);
 
+
         foreach ($data as $varname => $students) {
 
             $needsupdate = false;

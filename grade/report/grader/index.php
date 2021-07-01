@@ -137,14 +137,15 @@ if ($report->currentgroup == -2) {
     exit;
 }
 
-// processing posted grades & feedback here
-if ($USER->editing && $data = data_submitted() and confirm_sesskey() and has_capability('moodle/grade:edit', $context)) {
+
+$warnings = [];
+$isediting = has_capability('moodle/grade:edit', $context) && !empty($USER->editing);
+if ($isediting && ($data = data_submitted()) && confirm_sesskey()) {
+    // Processing posted grades & feedback here
     $warnings = $report->process_data($data);
-} else {
-    $warnings = array();
 }
 
-// final grades MUST be loaded after the processing
+// Final grades MUST be loaded after the processing.
 $report->load_users();
 $report->load_final_grades();
 echo $report->group_selector;

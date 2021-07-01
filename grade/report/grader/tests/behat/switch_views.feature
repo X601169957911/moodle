@@ -17,17 +17,10 @@ Feature: We can change what we are viewing on the grader report
       | user | course | role |
       | teacher1 | C1 | editingteacher |
       | student1 | C1 | student |
-    And I log in as "teacher1"
-    And I am on "Course 1" course homepage with editing mode on
-    And I add a "Assignment" to section "1" and I fill the form with:
-      | Assignment name | Test assignment name 1 |
-      | Description | Submit your online text |
-      | assignsubmission_onlinetext_enabled | 1 |
-    And I add a "Assignment" to section "1" and I fill the form with:
-      | Assignment name | Test assignment name 2 |
-      | Description | Submit your online text |
-      | assignsubmission_onlinetext_enabled | 1 |
-    And I log out
+    And the following "activities" exist:
+      | activity | name                   | intro                   | course | idnumber | assignsubmission_onlinetext_enabled | submissiondrafts |
+      | assign   | Test assignment name 1 | Submit your online text | C1     | C1A1     | 1                                   | 0                |
+      | assign   | Test assignment name 2 | Submit your online text | C1     | C1A2     | 1                                   | 0                |
     And I log in as "student1"
     And I am on "Course 1" course homepage
     And I follow "Test assignment name 1"
@@ -58,7 +51,7 @@ Feature: We can change what we are viewing on the grader report
     And I am on "Course 1" course homepage with editing mode on
     And I open "Test assignment name 2" actions menu
     And I click on "Hide" "link" in the "Test assignment name 2" activity
-    And I am on "Course 1" course homepage
+    And I am on "Course 1" course homepage with editing mode off
     And I navigate to "View > Grader report" in the course gradebook
     And I should see "Test assignment name 1"
     And I should see "Test assignment name 2"

@@ -757,12 +757,21 @@ class behat_navigation extends behat_base {
     /**
      * Open the course homepage with editing mode enabled.
      *
-     * @Given /^I am on "(?P<coursefullname_string>(?:[^"]|\\")*)" course homepage with editing mode on$/
-     * @throws coding_exception
      * @param string $coursefullname The course full name of the course.
-     * @return void
      */
     public function i_am_on_course_homepage_with_editing_mode_on($coursefullname) {
+        $this->i_am_on_course_homepage_with_editing_mode_set_to($coursefullname, 'on');
+    }
+
+    /**
+     * Open the course homepage with editing mode set to either on, or off.
+     *
+     * @Given I am on :coursefullname course homepage with editing mode :onoroff
+     * @throws coding_exception
+     * @param string $coursefullname The course full name of the course.
+     * @param string $onoroff Whehter to switch editing on, or off.
+     */
+    public function i_am_on_course_homepage_with_editing_mode_set_to(string $coursefullname, string $onoroff): void {
         global $DB;
 
         $course = $DB->get_record("course", array("fullname" => $coursefullname), 'id', MUST_EXIST);
@@ -771,7 +780,16 @@ class behat_navigation extends behat_base {
         // Visit the course page.
         $this->execute('behat_general::i_visit', [$url]);
 
-        $this->i_turn_editing_mode_on();
+        switch ($onoroff) {
+            case 'on':
+                $this->execute('behat_navigation::i_turn_editing_mode_on');
+                break;
+            case 'off':
+                $this->execute('behat_navigation::i_turn_editing_mode_off');
+                break;
+            default:
+                throw new \coding_exception("Unknown editing mode '{$onoroff}'. Accepted values are 'on' and 'off'");
+        }
     }
 
     /**
