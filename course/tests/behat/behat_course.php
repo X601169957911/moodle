@@ -723,9 +723,7 @@ class behat_course extends behat_base {
      * @throws ExpectationException
      */
     public function activity_should_be_hidden($activityname) {
-
         if ($this->is_course_editor()) {
-
             // The activity should exist.
             $activitynode = $this->get_activity_node($activityname);
 
@@ -748,7 +746,6 @@ class behat_course extends behat_base {
             }
 
         } else {
-
             // It should not exist at all.
             try {
                 $this->get_activity_node($activityname);
@@ -1301,9 +1298,7 @@ class behat_course extends behat_base {
      * @return bool
      */
     protected function is_course_editor() {
-
-        $xpath = "//body[contains(concat(' ', normalize-space(@class), ' '), ' editing ')]";
-        if ($this->getSession()->getPage()->find('xpath', $xpath)) {
+        if ($this->find('field', get_string('editmode'))) {
             return true;
         }
         return false;

@@ -30,7 +30,6 @@ Feature: Check label visibility works
     And I log in as "student"
     And I am on "Test" course homepage
     And I should not see "Swanky label"
-    And I log out
 
   @javascript
   Scenario: Visible label activity should be shown as visible.
@@ -55,7 +54,6 @@ Feature: Check label visibility works
     And I log in as "student"
     And I am on "Test" course homepage
     And "Swanky label" activity should be visible
-    And I log out
 
   @javascript
   Scenario: Teacher can not show label inside the hidden section
@@ -91,4 +89,3 @@ Feature: Check label visibility works
     And I log in as "student"
     And I am on "Test" course homepage
     And I should not see "Swanky label"
-    And I log out
