@@ -771,7 +771,7 @@ class behat_navigation extends behat_base {
         // Visit the course page.
         $this->execute('behat_general::i_visit', [$url]);
 
-        $this->i_switch_editing_mode_on();
+        $this->i_turn_editing_mode_on();
     }
 
     /**
@@ -991,7 +991,7 @@ class behat_navigation extends behat_base {
         $this->execute('behat_general::i_visit', [$url]);
     }
 
-        /**
+    /**
      * Returns whether the user can edit the current page.
      *
      * @return bool
@@ -1002,81 +1002,42 @@ class behat_navigation extends behat_base {
     }
 
     /**
-     * Turns editing mode on using the old turn editing on button (without JS)
-     */
-    protected function i_switch_editing_mode_on_legacy() {
-        $buttonnames = [get_string('turneditingon'), get_string('updatemymoodleon'), get_string('blocksediton')];
-        foreach ($buttonnames as $buttonname) {
-            if ($editbutton = $this->getSession()->getPage()->findButton($buttonname)) {
-                $this->execute('behat_general::i_click_on', [$editbutton, 'NodeElement']);
-                return true;
-            }
-        }
-        if (!$this->is_editing_on()) {
-            $this->execute('behat_general::i_click_on', [get_string('turneditingon'), "link"]);
-        }
-    }
-
-    /**
      * Turns editing mode on.
-     * @Given /^I switch editing mode on$/
+     * @Given I switch editing mode on
+     * @Given I turn editing mode on
      */
-    public function i_switch_editing_mode_on() {
-        if ($this->running_javascript()) {
-            $this->execute('behat_forms::i_set_the_field_to', [get_string('editmode'), 1]);
-        } else {
-            $this->i_switch_editing_mode_on_legacy();
+    public function i_turn_editing_mode_on() {
+        $this->execute('behat_forms::i_set_the_field_to', [get_string('editmode'), 1]);
+
+        if (!$this->running_javascript()) {
+            $this->execute('behat_general::i_click_on', [
+                get_string('setmode', 'core'),
+                'button',
+            ]);
         }
+
         if (!$this->is_editing_on()) {
             throw new ExpectationException('The edit mode could not be turned on', $this->getSession());
         }
     }
 
     /**
-     * Turns editing mode off using the old turn editing off button (without JS)
-     */
-    protected function i_switch_editing_mode_off_legacy() {
-        $buttonnames = [get_string('turneditingoff'), get_string('updatemymoodleoff'), get_string('blockseditoff')];
-        foreach ($buttonnames as $buttonname) {
-            if ($editbutton = $this->getSession()->getPage()->findButton($buttonname)) {
-                $this->execute('behat_general::i_click_on', [$editbutton, 'NodeElement']);
-                return true;
-            }
-        }
-        // Click the turneditingoff link in the Site Administration block.
-        if ($this->is_editing_on()) {
-            $this->execute('behat_general::i_click_on', [get_string('turneditingoff'), "link"]);
-        }
-    }
-
-    /**
      * Turns editing mode off.
-     * @Given /^I switch editing mode off$/
+     * @Given I switch editing mode off
+     * @Given I turn editing mode off
      */
-    public function i_switch_editing_mode_off() {
-        if ($this->running_javascript()) {
-            $this->execute('behat_forms::i_set_the_field_to', [get_string('editmode'), 0]);
-        } else {
-            $this->i_switch_editing_mode_off_legacy();
+    public function i_turn_editing_mode_off() {
+        $this->execute('behat_forms::i_set_the_field_to', [get_string('editmode'), 0]);
+
+        if (!$this->running_javascript()) {
+            $this->execute('behat_general::i_click_on', [
+                get_string('setmode', 'core'),
+                'button',
+            ]);
         }
+
         if ($this->is_editing_on()) {
             throw new ExpectationException('The edit mode could not be turned off', $this->getSession());
         }
-    }
-
-    /**
-     * Turns editing mode on.
-     * @Given /^I turn editing mode on$/
-     */
-    public function i_turn_editing_mode_on() {
-        $this->i_switch_editing_mode_on();
-    }
-
-    /**
-     * Turns editing mode off.
-     * @Given /^I turn editing mode off$/
-     */
-    public function i_turn_editing_mode_off() {
-        $this->i_switch_editing_mode_off();
     }
 }

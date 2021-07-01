@@ -1893,6 +1893,7 @@ $string['serverlocaltime'] = 'Server\'s local time';
 $string['sessionforceclean'] = 'As a security precaution, user-generated scripts have been disabled within this session.';
 $string['sessiontimeoutsoon'] = 'Your session is about to time out. Do you want to extend your current session?';
 $string['setcategorytheme'] = 'Set category theme';
+$string['setmode'] = 'Set mode';
 $string['setpassword'] = 'Set password';
 $string['setpasswordinstructions'] = 'Please enter your new password below, then save changes.';
 $string['settings'] = 'Settings';

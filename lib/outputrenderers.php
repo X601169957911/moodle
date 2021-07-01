@@ -2771,13 +2771,15 @@ EOD;
     public function edit_switch() {
         if ($this->page->user_allowed_editing()) {
 
-            $temp = (object)[];
-            $temp->sesskey = sesskey();
-            $temp->pagecontextid = $this->page->context->id;
+            $temp = (object) [
+                'legacyseturl' => (new moodle_url('/editmode.php'))->out(false),
+                'pagecontextid' => $this->page->context->id,
+                'pageurl' => $this->page->url,
+                'sesskey' => sesskey(),
+            ];
             if ($this->page->user_is_editing()) {
                 $temp->checked = true;
             }
-            $temp->pageurl = $this->page->url;
             return $this->render_from_template('core/editswitch', $temp);
         }
     }

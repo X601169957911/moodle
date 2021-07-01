@@ -30,12 +30,26 @@
         "string": "Edit on"
     }
 }}
-<form action="{{{pageurl}}}" class="d-flex align-items-center editmode-switch-form">
+<form action="{{{legacyseturl}}}" method="post" class="d-flex align-items-center editmode-switch-form">
     <div class="custom-control custom-control-right custom-switch text-nowrap">
-        <input type="checkbox" aria-checked="{{#checked}}true{{/checked}}" class="custom-control-input" {{#checked}}checked{{/checked}} id="editingswitch" data-context={{{pagecontextid}}} data-pageurl="{{{pageurl}}}">
+        <input type="checkbox"{{!
+            }} name="setmode"{{!
+            }} aria-checked="{{#checked}}true{{/checked}}"{{!
+            }} class="custom-control-input"{{!
+            }} {{#checked}}checked{{/checked}}{{!
+            }} id="editingswitch"{{!
+            }} data-context="{{{pagecontextid}}}"{{!
+            }} data-pageurl="{{{pageurl}}}"{{!
+        }}>
         <label class="custom-control-label" for="editingswitch">
             {{#str}} editmode {{/str}}
         </label>
+        <input type="hidden" name="sesskey" value="{{{sesskey}}}">
+        <input type="hidden" name="pageurl" value="{{{pageurl}}}">
+        <input type="hidden" name="context" value="{{{pagecontextid}}}">
+        <noscript>
+            <input type="submit" value="{{#str}}setmode, core{{/str}}">
+        </noscript>
     </div>
 </form>
 {{#js}}
