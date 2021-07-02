@@ -77,6 +77,7 @@ Feature: View activity completion information for file resources
     # Teacher view.
     And the manual completion button for "Myfile" should exist
     And the manual completion button for "Myfile" should be disabled
+    And I am on "Course 1" course homepage
     And I follow "Myfile"
     And the manual completion button for "Myfile" should exist
     And the manual completion button for "Myfile" should be disabled
