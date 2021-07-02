@@ -62,7 +62,6 @@ Feature: View activity completion information in the h5p activity
     And I expand all fieldsets
     And I set the field "Completion tracking" to "Students can manually mark the activity as completed"
     And I press "Save and display"
-    And I follow "Music history"
     # Teacher view.
     And the manual completion button for "Music history" should be disabled
     And I log out

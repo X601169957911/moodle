@@ -56,7 +56,6 @@ Feature: View activity completion information in the IMS content package activit
       | Completion tracking | Students can manually mark the activity as completed |
     And I upload "mod/imscp/tests/packages/singlescobasic.zip" file to "Package file" filemanager
     And I click on "Save and display" "button"
-    And I follow "Music history"
     # Teacher view.
     And the manual completion button for "Music history" should be disabled
     And I log out

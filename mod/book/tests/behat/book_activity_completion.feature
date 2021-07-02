@@ -43,7 +43,6 @@ Feature: View activity completion information in the book activity
       | Content       | Rudiments are important |
     And I press "Save changes"
     # Teacher view.
-    And I follow "Music history"
     And "Music history" should have the "View" completion condition
     And I log out
     # Student view.
@@ -65,7 +64,6 @@ Feature: View activity completion information in the book activity
       | Chapter title | Drum theory             |
       | Content       | Rudiments are important |
     And I press "Save changes"
-    And I follow "Music history"
     # Teacher view.
     And the manual completion button for "Music history" should be disabled
     And I log out

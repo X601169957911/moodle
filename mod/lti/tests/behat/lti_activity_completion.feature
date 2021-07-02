@@ -73,7 +73,6 @@ Feature: View activity completion information in the LTI activity
     And I set the field "Completion tracking" to "Students can manually mark the activity as completed"
     And I press "Save and display"
     # Teacher view.
-    And I follow "Music history"
     And the manual completion button for "Music history" should be disabled
     And I log out
     # Student view.
