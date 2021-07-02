@@ -34,14 +34,18 @@
     <div class="custom-control custom-control-right custom-switch text-nowrap">
         <input type="checkbox"{{!
             }} name="setmode"{{!
-            }} aria-checked="{{#checked}}true{{/checked}}"{{!
+            }}{{#checked}}{{!
+                }} aria-checked="true" checked{{!
+            }}{{/checked}}{{!
+            }}{{^checked}}{{!
+                }} aria-checked="false"{{!
+            }}{{/checked}}{{!
             }} class="custom-control-input"{{!
-            }} {{#checked}}checked{{/checked}}{{!
-            }} id="editingswitch"{{!
+            }} id="{{uniqid}}-editingswitch"{{!
             }} data-context="{{{pagecontextid}}}"{{!
             }} data-pageurl="{{{pageurl}}}"{{!
         }}>
-        <label class="custom-control-label" for="editingswitch">
+        <label class="custom-control-label" for="{{uniqid}}-editingswitch">
             {{#str}} editmode {{/str}}
         </label>
         <input type="hidden" name="sesskey" value="{{{sesskey}}}">
@@ -53,7 +57,7 @@
     </div>
 </form>
 {{#js}}
-    require(['core/edit_switch'], function(editSwitch) {
-        editSwitch.init();
-    });
+require(['core/edit_switch'], function(editSwitch) {
+    editSwitch.init('{{uniqid}}-editingswitch');
+});
 {{/js}}
