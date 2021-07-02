@@ -1015,8 +1015,8 @@ class behat_navigation extends behat_base {
      * @return bool
      */
     protected function is_editing_on() {
-        $xpath = "//body[contains(concat(' ', normalize-space(@class), ' '), ' editing ')]";
-        return $this->getSession()->getPage()->find('xpath', $xpath);
+        $body = $this->find('xpath', "//body", false, false, 0);
+        return $body->hasClass('editing');
     }
 
     /**
