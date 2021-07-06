@@ -1,6 +1,12 @@
 This files describes API changes in /theme/* themes,
 information provided here is intended especially for theme designer.
 
+=== 4.0 ===
+The Boost theme now features a edit switch in the top navbar instead of the "Turn editing on" or "Customise this
+page buttons. This feature requires a new config.php variable for child themes of Boost. Simply add
+$THEME->haseditswitch = true to your theme's config.php to ensure the switch works. Child themes of classic should use
+$THEME->haseditswitch = false.
+
 === 3.11 ===
 * The classname 'viewmode-cobmined' in course/management.php has been changed to 'viewmode-combined'
 
