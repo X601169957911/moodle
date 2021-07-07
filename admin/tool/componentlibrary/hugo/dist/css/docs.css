@@ -1098,4 +1098,27 @@
   border: 0;
 }
 
+.activity-item {
+  border-radius: 0.25rem;
+  border: 1px solid #dee2e6;
+}
+
+.activity-item.editing {
+  cursor: pointer;
+}
+
+.activity-item.editing:hover {
+  color: #212529;
+  background-color: #f5faff;
+  border-color: #2990ff;
+}
+
+.activity-item.editing:hover hr {
+  border-top-color: #1083ff;
+}
+
+.activity-item.editing:hover .alert-link {
+  color: #0a0c0d;
+}
+
 /*# sourceMappingURL=docs.css.map */

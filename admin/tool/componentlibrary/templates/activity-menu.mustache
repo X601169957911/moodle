@@ -1,0 +1,15 @@
+<div class="ml-auto dropdown">
+    <button id="activity-actions-menu-button" class="btn btn-link btn-icon icon-no-margin icon-size-3" type="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    aria-label="{{#str}} activityactions, core_message {{/str}}" aria-controls="activity-actions-menu">
+        {{#pix}} i/menu, core {{/pix}}
+    </button>
+    <div id="activity-actions-menu" class="dropdown-menu dropdown-menu-right" role="menu"
+    aria-labelledby="activity-actions-menu-button">
+        {{#menuitems}}
+        <a class="dropdown-item" href="#" data-action="{{action}}" role="menuitem">
+            {{{icon}}} {{name}}
+        </a>
+        {{/menuitems}}
+    </div>
+</div>

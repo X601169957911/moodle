@@ -8,3 +8,20 @@
         border: 0;
     }
 }
+$enable-rounded: true;
+$activity-item-hover: theme-color-level('primary', -12) !default;
+$activity-item-border: theme-color-level('primary', -2) !default;
+$activity-item-color: $body-color;
+
+.activity-item {
+    @if $enable-rounded {
+        @include border-radius($card-border-radius);
+    }
+    border: $border-width solid $border-color;
+    &.editing {
+        cursor: pointer;
+        &:hover {
+            @include alert-variant($activity-item-hover, $activity-item-border, $activity-item-color);
+        }
+    }
+}
