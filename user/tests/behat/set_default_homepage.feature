@@ -28,14 +28,16 @@ Feature: Set the site home page and dashboard as the default home page
     And I am on site homepage
     And I follow "Make this my home page"
     And I should not see "Make this my home page"
-    And I am on "Course 1" course homepage
-    And "Home" "text" should exist in the ".breadcrumb" "css_element"
+#    The following lines should be changed once MDL-72110 is resolved.
+#    And I am on "Course 1" course homepage
+#    And "Home" "text" should exist in the ".breadcrumb" "css_element"
     And I am on site homepage
     And I follow "Dashboard"
     And I follow "Make this my home page"
     And I should not see "Make this my home page"
-    And I am on "Course 1" course homepage
-    Then "Dashboard" "text" should exist in the ".breadcrumb" "css_element"
+#    The following lines should be changed once MDL-72110 is resolved.
+#    And I am on "Course 1" course homepage
+#    Then "Dashboard" "text" should exist in the ".breadcrumb" "css_element"
 
   Scenario: User cannot configure their preferred default home page unless allowed by admin
     Given I log in as "user1"
@@ -53,7 +55,9 @@ Feature: Set the site home page and dashboard as the default home page
     And I follow "Home page"
     And I set the field "Home page" to "<preference>"
     And I press "Save changes"
-    Then "<breadcrumb>" "text" should exist in the ".breadcrumb" "css_element"
+    And I log out
+    And I log in as "user1"
+    Then I should see "<breadcrumb>" in the ".navbar .nav-link.active" "css_element"
 
     Examples:
       | preference | breadcrumb |
