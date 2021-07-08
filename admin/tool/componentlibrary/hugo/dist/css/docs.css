@@ -1099,7 +1099,6 @@
 }
 
 .activity-item {
-  border-radius: 0.25rem;
   border: 1px solid #dee2e6;
 }
 
@@ -1119,6 +1118,30 @@
 
 .activity-item.editing:hover .alert-link {
   color: #0a0c0d;
+}
+
+.activity-add {
+  color: #2990ff;
+  background-color: #f5faff;
+  border-color: #2990ff;
+  border-width: 1px;
+  border-style: dashed;
+}
+
+.activity-add hr {
+  border-top-color: #1083ff;
+}
+
+.activity-add .alert-link {
+  color: #0076f5;
+}
+
+.activity-add .pluscontainer {
+  border: 1px solid #2990ff;
+}
+
+.activity-add:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=docs.css.map */

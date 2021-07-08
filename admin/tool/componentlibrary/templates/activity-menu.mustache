@@ -1,11 +1,58 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template tool_componentlibrary/activity-menu
+
+    Displays a course module instance inside a course section.
+
+    Example context (json):
+    {
+        "menuitems": [
+            {
+                "name": "Add activity below",
+                "action": "addbelow",
+                "icon": "<i class=\"icon fa fa-plus\"></i>"
+            },
+            {
+                "name": "Move to",
+                "action": "move",
+                "icon": "<i class=\"icon fa fa-chevron-right\"></i>"
+            },
+            {
+                "name": "Delete",
+                "action": "delete",
+                "icon": "<i class=\"icon fa fa-trash\"></i>"
+            },
+            {
+                "name": "Settings",
+                "action": "settings",
+                "icon": "<i class=\"icon fa fa-cog\"></i>"
+            }
+        ]
+    }
+}}
 <div class="ml-auto dropdown">
-    <button id="activity-actions-menu-button" class="btn btn-link btn-icon icon-no-margin icon-size-3" type="button"
+    <button id="activity-actions-menu-button-{{uniqid}}" class="btn btn-link btn-icon icon-no-margin icon-size-3"
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-    aria-label="{{#str}} activityactions, core_message {{/str}}" aria-controls="activity-actions-menu">
+    aria-label="Activity Menu" aria-controls="activity-actions-menu">
         {{#pix}} i/menu, core {{/pix}}
     </button>
     <div id="activity-actions-menu" class="dropdown-menu dropdown-menu-right" role="menu"
-    aria-labelledby="activity-actions-menu-button">
+    aria-labelledby="activity-actions-menu-button-{{uniqid}}">
         {{#menuitems}}
         <a class="dropdown-item" href="#" data-action="{{action}}" role="menuitem">
             {{{icon}}} {{name}}

@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template core_courseformat/local/content/cm
+    @template tool_componentlibrary/activity-item
 
     Displays a course module instance inside a course section.
 
@@ -80,7 +80,6 @@
     }
 }}
 <div class="activity-item p-3 mb-3 {{#editing}}editing{{/editing}}" draggable="{{#editing}}true{{/editing}}">
-    {{! Display the link to the module (or do nothing if module has no url). }}
     {{#hasname}}
         <div class="d-flex align-items-center">
             <div class="media align-items-center">

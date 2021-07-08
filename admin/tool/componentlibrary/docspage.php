@@ -41,7 +41,7 @@ $folder = clean_param($args[1], PARAM_TEXT);
 $section = clean_param($args[2], PARAM_TEXT);
 
 $docsdir = '/' . $CFG->admin . '/tool/componentlibrary/docs/';
-$cssfile = '/' . $CFG->admin . '/tool/componentlibrary/hugo/dist/css/docs.css';
+$cssfile = '/' . $CFG->admin . '/tool/componentlibrary/hugo/dist/css/docs.css' . '#' . time();
 $docspage = '';
 
 $validroots = [

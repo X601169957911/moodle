@@ -8,7 +8,7 @@
         border: 0;
     }
 }
-$enable-rounded: true;
+$enable-rounded: false;
 $activity-item-hover: theme-color-level('primary', -12) !default;
 $activity-item-border: theme-color-level('primary', -2) !default;
 $activity-item-color: $body-color;
@@ -23,5 +23,20 @@ $activity-item-color: $body-color;
         &:hover {
             @include alert-variant($activity-item-hover, $activity-item-border, $activity-item-color);
         }
+    }
+}
+
+.activity-add {
+    @if $enable-rounded {
+        @include border-radius($card-border-radius);
+    }
+    @include alert-variant($activity-item-hover, $activity-item-border, $activity-item-border);
+    border-width: $border-width;
+    border-style: dashed;
+    .pluscontainer {
+        border: $border-width solid $activity-item-border;
+    }
+    &:hover {
+        cursor: pointer;
     }
 }

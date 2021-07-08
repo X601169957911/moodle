@@ -33,6 +33,8 @@ require_capability('moodle/site:configview', context_system::instance());
 $repeatcount = optional_param('test_repeat', 1, PARAM_INT);
 
 $PAGE->set_pagelayout('embedded');
+$cssfile = '/' . $CFG->admin . '/tool/componentlibrary/hugo/dist/css/docs.css' . '#' . time();
+$PAGE->requires->css($cssfile);
 
 $url = new moodle_url('/admin/tool/componentlibrary/formfields.php');
 
@@ -54,5 +56,6 @@ $form = new \tool_componentlibrary\exampleform($url, ['repeatcount' => $repeatco
 echo $OUTPUT->header();
 
 echo $OUTPUT->render_from_template('tool_componentlibrary/moodleformtoggles', $toggles);
+echo $OUTPUT->render_from_template('tool_componentlibrary/course-test', (object)[]);
 $form->display();
 echo $OUTPUT->footer();

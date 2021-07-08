@@ -55,7 +55,6 @@ The SCSS for the Course activity provides the styles for the editing mode of the
 
 ## SCSS
 {{< highlight scss>}}
-$enable-rounded: true;
 $activity-item-hover: theme-color-level('primary', -12) !default;
 $activity-item-border: theme-color-level('primary', -2) !default;
 $activity-item-color: $body-color;
@@ -177,5 +176,105 @@ In labels the label content is shown first, after this all the other info is sho
         }
     ],
     "availability": "<div><span class=\"badge badge-info\">Restricted</span> Available from <strong>3 Dec 2029</strong></div>"
+}
+{{< /mustache >}}
+
+## Adding an activity
+
+{{< mustache template="tool_componentlibrary/activity-add">}}
+{{< /mustache >}}
+
+The adding a activity is just a simple box with some text. It has no interactive features other than showing the pointer on hover
+
+### SCSS for adding an activity
+
+The scss shares some variables with the activity-item
+
+{{< highlight scss >}}
+$activity-item-hover: theme-color-level('primary', -12) !default;
+$activity-item-border: theme-color-level('primary', -2) !default;
+$activity-item-color: $body-color;
+.activity-add {
+    @if $enable-rounded {
+        @include border-radius($card-border-radius);
+    }
+    @include alert-variant($activity-item-hover, $activity-item-border, $activity-item-border);
+    border-width: $border-width;
+    border-style: dashed;
+    .pluscontainer {
+        border: $border-width solid $activity-item-border;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+{{< /highlight >}}
+
+
+### Combining course activities
+
+The sample below is just to show how the spacing for activities work.
+
+
+{{< mustache template="tool_componentlibrary/course-test">}}
+{
+    "activities": [
+        {
+            "activityname": "Meet the group",
+            "modname": "Forum",
+            "hasname": "true",
+            "hasurl": "true",
+            "icon": "http://placekitten.com/50/51",
+            "editing": "true",
+            "menuitems": [
+                {
+                    "name": "Settings",
+                    "action": "settings",
+                    "icon": "<i class=\"icon fa fa-cog\"></i>"
+                }
+            ]
+        },
+        {
+            "activityname": "Collaborative work",
+            "modname": "Workshop",
+            "hasname": "true",
+            "hasurl": "true",
+            "icon": "http://placekitten.com/50/51",
+            "editing": "true",
+            "menuitems": [
+                {
+                    "name": "Settings",
+                    "action": "settings",
+                    "icon": "<i class=\"icon fa fa-cog\"></i>"
+                }
+            ]
+        },
+        {
+            "editing": "true",
+            "altcontent": "<h3>This is a label</h3>Suspendisse condimentum non ipsum ut ultrices. Praesent in ipsum ac ex rutrum varius gravida quis est. Vestibulum elit ante, vestibulum vel varius non, congue in velit. Vivamus posuere efficitur magna, in <a href=\"#\">faucibus lacus bibendum</a> non. Nullam non tempus tortor. Suspendisse condimentum non ipsum ut ultrices. Praesent in ipsum ac ex rutrum varius gravida quis est. Vestibulum elit ante, vestibulum vel varius non, congue in velit. Vivamus posuere efficitur magna, in faucibus lacus bibendum non. Nullam non tempus tortor Suspendisse condimentum non ipsum ut ultrices. Praesent in ipsum ac ex rutrum varius gravida quis est. Vestibulum elit ante, vestibulum vel varius non, congue in velit. Vivamus posuere efficitur magna, in faucibus lacus bibendum non. Nullam non tempus tortor",
+            "menuitems": [
+                {
+                    "name": "Settings",
+                    "action": "settings",
+                    "icon": "<i class=\"icon fa fa-cog\"></i>"
+                }
+            ]
+        },
+        {
+            "activityname": "Write an essay",
+            "modname": "Assignment",
+            "hasname": "true",
+            "hasurl": "true",
+            "icon": "http://placekitten.com/51/51",
+            "editing": "true",
+            "menuitems": [
+                {
+                    "name": "Settings",
+                    "action": "settings",
+                    "icon": "<i class=\"icon fa fa-cog\"></i>"
+                }
+            ]
+        }
+    ]
 }
 {{< /mustache >}}
