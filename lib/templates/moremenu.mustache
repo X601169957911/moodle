@@ -44,8 +44,8 @@
         }
     }
 }}
-<nav class="moremenu">
-    <ul id="moremenu-{{ uniqid }}" {{#tabs}}role="tablist" {{/tabs}}{{^tabs}}role="menu" {{/tabs}}class="nav more-nav {{navbarstyle}}">
+<nav class="moremenu navigation">
+    <ul id="moremenu-{{ uniqid }}" {{#tabs}}role="tablist" {{/tabs}}{{^tabs}}role="menu" {{/tabs}}class="nav more-nav nav-pills mx-0">
         {{#nodecollection}}
             {{#children}}
                 {{> core/moremenu_children}}

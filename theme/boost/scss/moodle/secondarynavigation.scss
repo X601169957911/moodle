@@ -1,6 +1,64 @@
-.secondarynavigation {
-    z-index: 1;
-    .moremenu {
-        margin-bottom: -1px;
+@mixin hover-navbar {
+    border-bottom: solid 3px black;
+    transition: all 0.3s ease;
+}
+
+.navigation.moremenu {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    height: $moremenu-height + 2; /* Add a 2px offset of height to cover the two 1px borders.*/
+
+    &.observed {
+        /*background: gold;*/
+    }
+
+    .nav-link {
+
+        border-bottom: solid 3px transparent;
+        font-weight: bold;
+        color: $gray-900;
+        @include hover-focus() {
+            /*background: rebeccapurple;*/
+            @include hover-navbar();
+        }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+        /*background: peachpuff;*/
+        background: transparent;
+        @include hover-navbar();
+    }
+}
+
+/*From Navbar.scss*/
+.navbar.fixed-top {
+    .nav-link {
+        @include hover-focus() {
+            /*background: red;*/
+        }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+        /*background: green;*/
+    }
+    .navigation.moremenu {
+        border-top: none;
+        border-bottom: none;
+    }
+}
+
+#page-header {
+    h1.h2 {
+        font-weight: bold;
+    }
+    nav {
+        overflow: hidden;
+        padding: 0.25rem;
     }
 }

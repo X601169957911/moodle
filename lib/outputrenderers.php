@@ -3824,13 +3824,13 @@ EOD;
             }
             return $this->render_from_template('core/moremenu', (object) [
                 'nodecollection' => $content,
-                'navbarstyle' => $navbarstyle,
+                'navbarstyle' => $navbarstyle, // TODO: Unused
                 'tabs' => $hastabs
             ]);
         } else {
             return $this->render_from_template('core/moremenu', (object) [
                 'nodearray' => $content,
-                'navbarstyle' => $navbarstyle,
+                'navbarstyle' => $navbarstyle, // TODO: Unused
                 'tabs' => $hastabs
             ]);
         }
