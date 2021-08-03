@@ -46,11 +46,13 @@
         </button>
     </div>
 
-    <a href="{{{ config.wwwroot }}}" class="navbar-brand d-flex align-items-center m-1 p-0 aabtn">
+    <a href="{{{ config.wwwroot }}}" class="navbar-brand d-flex align-items-center m-0 p-0 aabtn">
         {{# output.should_display_navbar_logo }}
             <img src="{{output.get_compact_logo_url}}" class="logo mr-1" alt="{{sitename}}">
         {{/ output.should_display_navbar_logo }}
-        {{{ sitename }}}
+        {{^ output.should_display_navbar_logo }}
+            {{{ sitename }}}
+        {{/ output.should_display_navbar_logo }}
     </a>
     {{#primarymoremenu}}
         {{> core/moremenu }}
@@ -65,7 +67,6 @@
         {{#langmenu}}
             {{> theme_boost/language_menu }}
         {{/langmenu}}
-        <div class="divider border-left h-50 align-self-center mx-1"></div>
         {{{ output.search_box }}}
         {{{ output.navbar_plugin_output }}}
         <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
@@ -73,5 +74,6 @@
                 {{> core/user_menu }}
             {{/usermenu}}
         </div>
+        <div class="divider border-left h-75 align-self-center mx-1"></div>
     </div>
 </nav>
