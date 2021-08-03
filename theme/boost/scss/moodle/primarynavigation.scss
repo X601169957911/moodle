@@ -1,8 +1,28 @@
 .navbar.fixed-top {
-    .moremenu {
+    .navigation.moremenu {
         height: $navbar-height;
+        border-top: none !important; /* stylelint-disable-line declaration-no-important */
+        border-bottom: none !important; /* stylelint-disable-line declaration-no-important */
         .nav-link {
             height: $navbar-height;
+            color: $gray-900;
+        }
+    }
+}
+#page-header {
+    h1.h2 {
+        font-weight: bold;
+    }
+}
+.navbar-nav {
+    .popover-region {
+        .icon {
+            font-weight: bolder;
+        }
+    }
+    .simplesearchform {
+        .icon {
+            font-weight: lighter;
         }
     }
 }
