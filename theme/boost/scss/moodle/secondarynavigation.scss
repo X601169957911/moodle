@@ -1,6 +1,29 @@
-.secondarynavigation {
-    z-index: 1;
-    .moremenu {
-        margin-bottom: -1px;
+.navigation.moremenu {
+    height: $moremenu-height + 2; /* Add a 2px offset of height to cover the two 1px borders.*/
+    border-color: $gray-300;
+    .dropdown-toggle::after {
+        display: none;
+    }
+    .nav-tabs {
+        border-bottom: none;
+    }
+    .nav-link {
+        border-right: none;
+        border-bottom: solid 3px transparent;
+        border-left: none;
+        border-top: none;
+        @include hover-focus-active() {
+            @include hover-navbar();
+        }
+        &.active {
+            font-weight: bold;
+        }
+    }
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+        background: transparent;
+        @include hover-navbar();
     }
 }

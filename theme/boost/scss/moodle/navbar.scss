@@ -1,7 +1,14 @@
+@mixin hover-navbar {
+    color: $gray-900;
+    border-bottom: solid 3px $blue;
+    transition: border-color 0.3s ease-in-out;
+}
+
 .navbar.fixed-top {
     padding-top: 0;
     padding-bottom: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+    border-bottom: $gray-300 1px solid;
     align-items: stretch;
     height: $navbar-height;
 

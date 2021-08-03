@@ -59,10 +59,9 @@
         {{/node.children}}
     </ul>
 {{/secondarynavigation}}
-
 <div class="tab-content mt-3">
     <div class="tab-pane active" id="link{{node.key}}" {{^secondarynavigation}}role="tabpanel"{{/secondarynavigation}}>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3">
                 </div>
@@ -86,8 +85,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
-                                    {{^action}}<h4>{{text}}</h4>{{/action}}
+                                    <h4 class="h5 font-weight-bold">{{text}}</h4>
                                 </div>
                                 <div class="col">
                                     <ul class="list-unstyled">
@@ -106,11 +104,10 @@
     {{#node.children}}
         {{#children.count}}
             <div class="tab-pane" id="link{{key}}" {{^secondarynavigation}}role="tabpanel"{{/secondarynavigation}}>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-3">
-                            {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
-                            {{^action}}<h4>{{text}}</h4>{{/action}}
+                            <h4 class="h5 font-weight-bold">{{text}}</h4>
                         </div>
                         <div class="col-sm-9">
                             <ul class="list-unstyled">
@@ -130,8 +127,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
-                                        {{^action}}<h4>{{text}}</h4>{{/action}}
+                                        <h4 class="h5 font-weight-bold">{{text}}</h4>
                                     </div>
                                     <div class="col-sm-9">
                                         <ul class="list-unstyled">
