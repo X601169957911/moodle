@@ -23,6 +23,7 @@ if ($hassiteconfig && moodle_needs_upgrading()) {
 \core\hub\registration::registration_reminder('/admin/search.php');
 
 admin_externalpage_setup('search', '', array('query' => $query)); // now hidden page
+$PAGE->set_heading(get_string('administrationsite')); // Has to be after setup since it has its' own heading set_heading.
 
 $adminroot = admin_get_root(); // need all settings here
 $adminroot->search = $query; // So we can reference it in search boxes later in this invocation
@@ -59,8 +60,6 @@ if (empty($query)) {
     echo $adminrenderer->warn_if_not_registered();
 }
 
-echo $OUTPUT->heading(get_string('administrationsite'));
-
 if ($errormsg !== '') {
     echo $OUTPUT->notification($errormsg);
 
@@ -77,12 +76,12 @@ if ($hassiteconfig) {
         'inputname' => 'query',
         'searchstring' => get_string('search'),
         'query' => $query,
-        'extraclasses' => 'd-flex justify-content-center'
+        'extraclasses' => 'd-flex justify-content-end'
     ];
     echo $OUTPUT->render_from_template('core/search_input', $data);
 
-    echo '<hr>';
     if ($query) {
+        echo '<hr>';
         echo admin_search_settings_html($query);
         $showsettingslinks = false;
     }

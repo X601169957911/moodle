@@ -4,8 +4,8 @@
 }
 
 .navigation.moremenu {
-    border-top: 1px solid black;
     border-bottom: 1px solid black;
+    border-top: 1px solid black;
     height: $moremenu-height + 2; /* Add a 2px offset of height to cover the two 1px borders.*/
 
     &.observed {
@@ -33,6 +33,10 @@
     }
 }
 
+.navigation-card {
+    /*Need to check the site admin for this setting.*/
+    /*border-bottom: 1px solid black;*/
+}
 /*From Navbar.scss*/
 .navbar.fixed-top {
     .nav-link {
