@@ -32,7 +32,7 @@
 }}
 {{#haschildren}}
     <li class="dropdown nav-item" role="menuitem" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
-        <a class="nav-link" id="drop-down-{{uniqid}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" {{#title}}title="{{{title}}}"{{/title}} aria-controls="drop-down-menu-{{uniqid}}">
+        <a class="nav-link font-weight-bold text-dark" id="drop-down-{{uniqid}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" {{#title}}title="{{{title}}}"{{/title}} aria-controls="drop-down-menu-{{uniqid}}">
             {{{text}}}
             <i class="fa fa-angle-down mx-1" aria-hidden="true"></i>
         </a>
@@ -51,11 +51,11 @@
 {{^haschildren}}
     <li class="nav-item" role="{{#tab}}tab{{/tab}}{{^tab}}menuitem{{/tab}}" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
         {{#tab}}
-            <a class="nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" href="{{tab}}" data-toggle="tab" aria-selected="false" tabindex="-1">{{{text}}}
+            <a class="nav-link font-weight-bold text-dark {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" href="{{tab}}" data-toggle="tab" aria-selected="false" tabindex="-1">{{{text}}}
             </a>
         {{/tab}}
         {{^tab}}
-        <a class="nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" href="{{{url}}}{{{action}}}" {{#isactive}}aria-current="true"{{/isactive}}>
+        <a class="nav-link font-weight-bold text-dark {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" href="{{{url}}}{{{action}}}" {{#isactive}}aria-current="true"{{/isactive}}>
             {{{text}}}
         </a>
         {{/tab}}

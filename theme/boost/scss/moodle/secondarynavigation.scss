@@ -4,21 +4,12 @@
 }
 
 .navigation.moremenu {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
     height: $moremenu-height + 2; /* Add a 2px offset of height to cover the two 1px borders.*/
-
-    &.observed {
-        /*background: gold;*/
-    }
+    opacity: 1;
 
     .nav-link {
-
         border-bottom: solid 3px transparent;
-        font-weight: bold;
-        color: $gray-900;
         @include hover-focus() {
-            /*background: rebeccapurple;*/
             @include hover-navbar();
         }
     }
@@ -27,7 +18,6 @@
     .active > .nav-link,
     .nav-link.show,
     .nav-link.active {
-        /*background: peachpuff;*/
         background: transparent;
         @include hover-navbar();
     }
@@ -36,33 +26,18 @@
 .navigation-card {
     /*Need to check the site admin for this setting.*/
     /*border-bottom: 1px solid black;*/
+    /*Could also use: border-bottom border-dark on the div*/
 }
-/*From Navbar.scss*/
-.navbar.fixed-top {
-    .nav-link {
-        @include hover-focus() {
-            /*background: red;*/
-        }
-    }
 
-    .show > .nav-link,
-    .active > .nav-link,
-    .nav-link.show,
-    .nav-link.active {
-        /*background: green;*/
-    }
+.navbar.fixed-top {
     .navigation.moremenu {
-        border-top: none;
-        border-bottom: none;
+        border-top: none !important;
+        border-bottom: none !important;
     }
 }
 
 #page-header {
     h1.h2 {
         font-weight: bold;
-    }
-    nav {
-        overflow: hidden;
-        padding: 0.25rem;
     }
 }
