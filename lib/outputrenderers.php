@@ -3822,16 +3822,20 @@ EOD;
             if (!isset($content->children) || count($content->children) == 0) {
                 return false;
             }
+            // Secondary.
             return $this->render_from_template('core/moremenu', (object) [
                 'nodecollection' => $content,
                 'navbarstyle' => $navbarstyle, // TODO: Unused
-                'tabs' => $hastabs
+                'tabs' => $hastabs,
+                'check' => '1'
             ]);
         } else {
+            // Primary.
             return $this->render_from_template('core/moremenu', (object) [
                 'nodearray' => $content,
                 'navbarstyle' => $navbarstyle, // TODO: Unused
-                'tabs' => $hastabs
+                'tabs' => $hastabs,
+                'check' => '2'
             ]);
         }
     }
