@@ -21,6 +21,9 @@
         background: transparent;
         @include hover-navbar();
     }
+    .dropdown-item[aria-current="true"]:before {
+        content: '';
+    }
 }
 
 .navigation-card {

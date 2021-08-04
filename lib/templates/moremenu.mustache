@@ -55,9 +55,8 @@
             {{> core/moremenu_children}}
         {{/nodearray}}
         <li class="nav-item dropdown dropdownmoremenu d-none" data-region="morebutton">
-            <a class="nav-link font-weight-bold text-dark" href="#" id="moremenu-dropdown{{ uniqid }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="dropdown-toggle nav-link font-weight-bold text-dark" href="#" id="moremenu-dropdown{{ uniqid }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{#str}}moremenu, core{{/str}}
-                <i class="fa fa-angle-down mx-1" aria-hidden="true"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-right" data-region="moredropdown" aria-labelledby="moremenu-dropdown{{ uniqid }}" role="menu">
             </ul>
@@ -65,8 +64,7 @@
     </ul>
 </nav>
 {{#js}}
-require(['core/moremenu'], function(moremenu) {
-    var moreMenu = document.querySelector('#moremenu-{{ uniqid }}');
-    moremenu(moreMenu);
-});
+    require(['core/moremenu'], function(moremenu) {
+        moremenu(document.querySelector('#moremenu-{{ uniqid }}'));
+    });
 {{/js}}
