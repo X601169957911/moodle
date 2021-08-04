@@ -20093,9 +20093,13 @@ div.editor_atto_toolbar button .icon {
     .moremenu .dropdownmoremenu > .dropdown-menu .dropdown-menu .dropdown-divider {
       display: none; }
 
-.navbar.fixed-top .moremenu {
-  height: 60px; }
-  .navbar.fixed-top .moremenu .nav-link {
+.navbar.fixed-top .navigation.moremenu {
+  height: 60px;
+  border-top: none !important;
+  /* stylelint-disable-line declaration-no-important */
+  border-bottom: none !important;
+  /* stylelint-disable-line declaration-no-important */ }
+  .navbar.fixed-top .navigation.moremenu .nav-link {
     height: 60px; }
 
 .navigation.moremenu {
@@ -20121,10 +20125,6 @@ div.editor_atto_toolbar button .icon {
   /*Need to check the site admin for this setting.*/
   /*border-bottom: 1px solid black;*/
   /*Could also use: border-bottom border-dark on the div*/ }
-
-.navbar.fixed-top .navigation.moremenu {
-  border-top: none !important;
-  border-bottom: none !important; }
 
 #page-header h1.h2 {
   font-weight: bold; }

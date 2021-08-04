@@ -1,6 +1,8 @@
 .navbar.fixed-top {
-    .moremenu {
+    .navigation.moremenu {
         height: $navbar-height;
+        border-top: none !important; /* stylelint-disable-line declaration-no-important */
+        border-bottom: none !important; /* stylelint-disable-line declaration-no-important */
         .nav-link {
             height: $navbar-height;
         }
