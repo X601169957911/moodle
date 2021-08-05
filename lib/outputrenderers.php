@@ -3817,25 +3817,21 @@ EOD;
      * @return string
      */
     public function more_menu($content, $navbarstyle, $hastabs = false) {
-        $tabs = ($navbarstyle == 'nav-tabs');
         if (is_object($content)) {
             if (!isset($content->children) || count($content->children) == 0) {
                 return false;
             }
-            // Secondary.
+            // Secondary navigation.
             return $this->render_from_template('core/moremenu', (object) [
                 'nodecollection' => $content,
-                'navbarstyle' => $navbarstyle, // TODO: Unused
-                'tabs' => $hastabs,
-                'check' => '1'
+                'tabs' => $hastabs
             ]);
         } else {
-            // Primary.
+            // Primary navigation.
             return $this->render_from_template('core/moremenu', (object) [
                 'nodearray' => $content,
-                'navbarstyle' => $navbarstyle, // TODO: Unused
                 'tabs' => $hastabs,
-                'check' => '2'
+                'primary' => true
             ]);
         }
     }

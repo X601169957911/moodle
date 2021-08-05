@@ -1,11 +1,13 @@
 @mixin hover-navbar {
-    border-bottom: solid 3px black;
+    color: $gray-900;
+    border-bottom: solid 3px $blue;
     transition: all 0.3s ease;
 }
 
 .navigation.moremenu {
     height: $moremenu-height + 2; /* Add a 2px offset of height to cover the two 1px borders.*/
     opacity: 1;
+    border-color: $gray-300;
 
     .nav-link {
         border-bottom: solid 3px transparent;
