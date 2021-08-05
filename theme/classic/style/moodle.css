@@ -14407,9 +14407,9 @@ span.editinstructions {
 :target::before {
   content: " ";
   display: block;
-  height: 70px;
+  height: 60px;
   /* fixed header height*/
-  margin-top: -70px;
+  margin-top: -60px;
   /* negative fixed header height */
   width: 1px;
   pointer-events: none; }
@@ -14428,8 +14428,8 @@ span.editinstructions {
 [data-region="drawer"] {
   position: fixed;
   width: 285px;
-  top: 60px;
-  height: calc(100% - 60px);
+  top: 50px;
+  height: calc(100% - 50px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 999;
@@ -14463,7 +14463,7 @@ span.editinstructions {
     margin-bottom: 0; }
 
 #page {
-  margin-top: 60px; }
+  margin-top: 50px; }
 
 .pagelayout-embedded #page {
   margin-top: 0; }
@@ -14496,9 +14496,9 @@ body.drawer-ease {
   [data-region=right-hand-drawer].drawer {
     z-index: 1021;
     position: fixed;
-    top: 60px;
+    top: 50px;
     right: 0;
-    height: calc(100% - 60px);
+    height: calc(100% - 50px);
     width: 320px;
     box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
     padding: 0;
@@ -14615,7 +14615,7 @@ body.drawer-ease {
 
 .drawerheader {
   padding: 0 0.75rem;
-  height: 60px;
+  height: 50px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #dee2e6; }
@@ -14624,7 +14624,7 @@ body.drawer-ease {
 
 .drawercontent {
   position: relative;
-  height: calc(100% - 60px);
+  height: calc(100% - 50px);
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -16725,7 +16725,7 @@ body.path-question-type .mform fieldset.hidden {
   display: flex;
   background-color: #fff;
   z-index: 1060;
-  height: 60px; }
+  height: 50px; }
   .simplesearchform .collapse.show .form-inline,
   .simplesearchform .collapsing .form-inline {
     width: auto;
@@ -18014,7 +18014,7 @@ div#dock {
   display: none;
   position: sticky;
   justify-content: end;
-  top: 65px;
+  top: 55px;
   z-index: 1020; }
   #quiz-timer-wrapper #quiz-timer {
     border: 1px solid #ca3120;
@@ -19061,7 +19061,7 @@ body:not(.jsenabled) .langmenu:hover > .dropdown-menu,
   overflow-y: auto; }
 
 .navbar.fixed-top .dropdown .dropdown-menu {
-  max-height: calc(100vh - 60px);
+  max-height: calc(100vh - 50px);
   overflow-y: auto; }
 
 .page-item.active .page-link, .page-item.active .page-link:hover, .page-item.active .page-link:focus {
@@ -19324,7 +19324,7 @@ body {
   right: 0; }
 
 .navbar .popover-region-container {
-  top: calc(60px - (1rem / 2)); }
+  top: calc(50px - (1rem / 2)); }
 
 .content-item-container {
   width: 100%;
@@ -19651,7 +19651,7 @@ span[data-flexitour="container"][x-placement="right"], span[data-flexitour="cont
       font-size: 4em; }
 
 #page.drawers {
-  margin-top: calc(60px + 2rem);
+  margin-top: calc(50px + 2rem);
   padding-left: 10px;
   padding-right: 10px; }
   #page.drawers .main-inner {
@@ -19665,7 +19665,7 @@ span[data-flexitour="container"][x-placement="right"], span[data-flexitour="cont
 
 .drawer-left-toggle {
   position: fixed;
-  top: calc(60px + 0.5rem);
+  top: calc(50px + 0.5rem);
   left: 0;
   z-index: 2; }
   .drawer-left-toggle .btn {
@@ -19684,7 +19684,7 @@ span[data-flexitour="container"][x-placement="right"], span[data-flexitour="cont
 
 .drawer-right-toggle {
   position: fixed;
-  top: calc(60px + 0.5rem);
+  top: calc(50px + 0.5rem);
   right: 0;
   z-index: 2; }
   .drawer-right-toggle .btn {
@@ -19718,21 +19718,21 @@ span[data-flexitour="container"][x-placement="right"], span[data-flexitour="cont
 
 @media (min-width: 768px) {
   #page.drawers {
-    margin-top: 60px;
+    margin-top: 50px;
     padding-left: 3rem;
     padding-right: 3rem; } }
 
 @media (min-width: 992px) {
   .drawer-left,
   .drawer-right {
-    top: calc(60px + 1px);
-    height: calc(100vh - 60px); }
+    top: calc(50px + 1px);
+    height: calc(100vh - 50px); }
   #page.drawers {
     position: relative;
     overflow-y: auto;
     transition: 0.2s;
-    height: calc(100vh - 60px);
-    margin-top: 60px;
+    height: calc(100vh - 50px);
+    margin-top: 50px;
     left: 0;
     right: 0; }
     #page.drawers.show-drawer-left {
@@ -20180,9 +20180,9 @@ div.editor_atto_toolbar button .icon {
   padding-bottom: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   align-items: stretch;
-  height: 60px; }
+  height: 50px; }
   .navbar.fixed-top .navbar-brand .logo {
-    max-height: calc(60px - (0.25rem * 2)); }
+    max-height: calc(50px - (0.25rem * 2)); }
   .navbar.fixed-top .nav-link {
     height: 100%;
     display: flex;
@@ -20252,15 +20252,15 @@ div.editor_atto_toolbar button .icon {
   transform: translateX(100%); }
 
 #page {
-  margin-top: 60px; }
+  margin-top: 50px; }
 
 .moremenu {
   opacity: 0;
-  height: 60px; }
+  height: 50px; }
   .moremenu.observed {
     opacity: 1; }
   .moremenu .nav-link {
-    height: 60px;
+    height: 50px;
     display: flex;
     align-items: center; }
   .moremenu .nav-tabs {
@@ -20282,16 +20282,16 @@ div.editor_atto_toolbar button .icon {
       display: none; }
 
 .navbar.fixed-top .navigation.moremenu {
-  height: 60px;
+  height: 50px;
   border-top: none !important;
   /* stylelint-disable-line declaration-no-important */
   border-bottom: none !important;
   /* stylelint-disable-line declaration-no-important */ }
   .navbar.fixed-top .navigation.moremenu .nav-link {
-    height: 60px; }
+    height: 50px; }
 
 .navigation.moremenu {
-  height: 62px;
+  height: 52px;
   /* Add a 2px offset of height to cover the two 1px borders.*/
   opacity: 1;
   border-color: #dee2e6; }
