@@ -1080,8 +1080,8 @@ div#dock {
             margin-right: $spacer / 2;
             height: 35px;
             .meta {
-                display: block;
                 font-size: $font-size-sm;
+                align-items: center;
             }
         }
         .avatar {

@@ -17626,8 +17626,8 @@ div#dock {
   .userloggedinas .usermenu .usertext .meta,
   .userswitchedrole .usermenu .usertext .meta,
   .loginfailures .usermenu .usertext .meta {
-    display: block;
-    font-size: 0.8203125rem; }
+    font-size: 0.8203125rem;
+    align-items: center; }
 
 .userloggedinas .usermenu .avatar img,
 .userswitchedrole .usermenu .avatar img,
