@@ -31,7 +31,8 @@
 @mixin hover-focus-active() {
   &:hover,
   &:focus,
-  &:active {
+  &:active,
+  &.active {
     @content;
   }
 }

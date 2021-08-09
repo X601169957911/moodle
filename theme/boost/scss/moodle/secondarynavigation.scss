@@ -1,7 +1,7 @@
 @mixin hover-navbar {
     color: $gray-900;
     border-bottom: solid 3px $blue;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease-in-out;
 }
 
 .navigation.moremenu {
@@ -10,9 +10,15 @@
     border-color: $gray-300;
 
     .nav-link {
+        border-right: none;
         border-bottom: solid 3px transparent;
-        @include hover-focus() {
+        border-left: none;
+        @include hover-focus-active() {
             @include hover-navbar();
+        }
+        &:active,
+        &.active {
+            font-weight: bold;
         }
     }
 

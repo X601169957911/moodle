@@ -16953,13 +16953,6 @@ select {
 .path-mod-forum .discussion-list .topic {
   font-weight: inherit; }
 
-.path-mod-forum .subscriptionmode {
-  color: #212529; }
-
-.path-mod-forum .activesetting {
-  color: #212529;
-  font-weight: bold; }
-
 .discussion-settings-container .custom-select {
   width: 100%; }
 
@@ -20105,11 +20098,15 @@ div.editor_atto_toolbar button .icon {
   opacity: 1;
   border-color: #dee2e6; }
   .navigation.moremenu .nav-link {
-    border-bottom: solid 3px transparent; }
-    .navigation.moremenu .nav-link:hover, .navigation.moremenu .nav-link:focus {
+    border-right: none;
+    border-bottom: solid 3px transparent;
+    border-left: none; }
+    .navigation.moremenu .nav-link:hover, .navigation.moremenu .nav-link:focus, .navigation.moremenu .nav-link:active, .navigation.moremenu .nav-link.active {
       color: #212529;
       border-bottom: solid 3px #0f6fc5;
-      transition: all 0.3s ease; }
+      transition: border-color 0.3s ease-in-out; }
+    .navigation.moremenu .nav-link:active, .navigation.moremenu .nav-link.active {
+      font-weight: bold; }
   .navigation.moremenu .show > .nav-link,
   .navigation.moremenu .active > .nav-link,
   .navigation.moremenu .nav-link.show,
@@ -20117,7 +20114,7 @@ div.editor_atto_toolbar button .icon {
     background: transparent;
     color: #212529;
     border-bottom: solid 3px #0f6fc5;
-    transition: all 0.3s ease; }
+    transition: border-color 0.3s ease-in-out; }
   .navigation.moremenu .dropdown-item[aria-current="true"]:before {
     content: ''; }
 
