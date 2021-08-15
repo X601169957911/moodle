@@ -25,11 +25,11 @@
         "name": "Section title",
         "title": "<a href=\"http://moodle/course/view.php?id=5#section-0\">Section title</a>",
         "url": "#",
-        "coursedisplay": 1
+        "iscoursedisplaymultipage": true
     }
 }}
 
-{{#coursedisplay}}
+{{#iscoursedisplaymultipage}}
     <h3 class="sectionid-{{id}}-title sectionname"
         data-for="section_title" data-id="{{id}}" data-number="{{num}}">
         {{#url}}
@@ -39,8 +39,20 @@
             <span>{{{title}}}</span>
         {{/url}}
     </h3>
-{{/coursedisplay}}
-{{^coursedisplay}}
+{{/iscoursedisplaymultipage}}
+{{^iscoursedisplaymultipage}}
+    {{#sitehome}}
+        <h3 class="sectionid-{{id}}-title sectionname"
+            data-for="section_title" data-id="{{id}}" data-number="{{num}}">
+            {{#url}}
+                <a href="{{{url}}}" class="{{#ishidden}} dimmed_text {{/ishidden}}">{{name}}</a>
+            {{/url}}
+            {{^url}}
+                <span>{{{title}}}</span>
+            {{/url}}
+        </h3>
+    {{/sitehome}}
+    {{^sitehome}}
     <h3 class="sectionid-{{id}}-title sectionname course-content-item d-flex {{^visible}}dimmed{{/visible}}"
         id="coursecontentsection{{num}}" data-for="section_title" data-id="{{id}}" data-number="{{num}}">
         <a data-toggle="collapse"
@@ -62,4 +74,5 @@
         </a>
         {{{title}}}
     </h3>
-{{/coursedisplay}}
+    {{/sitehome}}
+    {{/iscoursedisplaymultipage}}

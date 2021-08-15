@@ -152,7 +152,11 @@ class section implements renderable, templatable {
             }
         }
 
-        $data->coursedisplay = $course->coursedisplay ?? COURSE_DISPLAY_SINGLEPAGE;
+        $coursedisplay = $course->coursedisplay ?? COURSE_DISPLAY_SINGLEPAGE;
+        if ($coursedisplay == COURSE_DISPLAY_MULTIPAGE) {
+            $data->iscoursedisplaymultipage = true;
+        }
+
         if ($course->id == 1) {
             $data->sitehome = true;
         }
@@ -171,7 +175,7 @@ class section implements renderable, templatable {
             return $data;
         }
 
-        if (!isset($data->isactive) || !$data->isactive) {
+        if (!isset($data->isactive)) {
             $data->isactive = true;
         }
 
