@@ -365,6 +365,7 @@ class icon_system_fontawesome extends icon_system_font {
             'core:t/collapsed_rtl' => 'fa-caret-left',
             'core:t/collapsed' => 'fa-caret-right',
             'core:t/collapsedcaret' => 'fa-caret-right',
+            'core:t/collapsedchevron' => 'fa-chevron-right',
             'core:t/contextmenu' => 'fa-cog',
             'core:t/copy' => 'fa-copy',
             'core:t/delete' => 'fa-trash',
@@ -384,6 +385,7 @@ class icon_system_fontawesome extends icon_system_font {
             'core:t/emptystar' => 'fa-star-o',
             'core:t/enrolusers' => 'fa-user-plus',
             'core:t/expanded' => 'fa-caret-down',
+            'core:t/expandedchevron' => 'fa-chevron-down',
             'core:t/go' => 'fa-play',
             'core:t/grades' => 'fa-table',
             'core:t/groupn' => 'fa-user',
@@ -486,4 +488,3 @@ class icon_system_fontawesome extends icon_system_font {
     }
 
 }
-

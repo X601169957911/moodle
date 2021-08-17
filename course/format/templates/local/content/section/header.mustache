@@ -60,15 +60,15 @@
            id="collapssesection{{num}}"
            aria-expanded="{{#isactive}}true{{/isactive}}{{^isactive}}false{{/isactive}}"
            aria-controls="coursecontentcollapse{{num}}"
-           class="course-content-link icons-collapse-expand {{^isactive}}collapsed{{/isactive}}">
-                <span class="expanded-icon icon-no-margin mr-1"
+           class="course-content-link text-decoration-none text-reset mr-1 icons-collapse-expand {{^isactive}}collapsed{{/isactive}}">
+                <span class="expanded-icon icon-no-margin mx-2"
                       data-toggle="tooltip" title="{{#str}} collapse, core {{/str}}">
-                    {{#pix}} t/expanded, core {{/pix}}
+                    {{#pix}} t/expandedchevron, core {{/pix}}
                     <span class="sr-only">{{#str}} collapse, core {{/str}}</span>
                 </span>
-                <span class="collapsed-icon icon-no-margin mr-1"
+                <span class="collapsed-icon icon-no-margin mx-2"
                   data-toggle="tooltip" title="{{#str}} expand, core {{/str}}">
-                    {{#pix}} t/collapsed, core {{/pix}}
+                    {{#pix}} t/collapsedchevron, core {{/pix}}
                 <span class="sr-only">{{#str}} expand, core {{/str}}</span>
                 </span>
         </a>
