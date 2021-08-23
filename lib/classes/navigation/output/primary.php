@@ -59,8 +59,10 @@ class primary implements renderable, templatable {
         $moremenu = new \core\navigation\output\more_menu($menudata, 'navbar-nav', false);
 
         return [
+            'custom' => $this->get_custom_menu($output),
             'moremenu' => $moremenu->export_for_template($output),
             'lang' => !isloggedin() || isguestuser() ? $this->get_lang_menu($output) : [],
+            'primary' => $this->get_primary_nav(),
             'user' => $this->get_user_menu($output),
         ];
     }

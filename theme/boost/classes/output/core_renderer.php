@@ -19,6 +19,7 @@ namespace theme_boost\output;
 use moodle_url;
 use html_writer;
 use get_string;
+use context_course;
 
 defined('MOODLE_INTERNAL') || die;
 

@@ -14656,6 +14656,9 @@ body.drawer-ease {
     width: 220px;
     white-space: normal; }
 
+.drawer-primary .drawercontent {
+  padding: 0; }
+
 #page-my-index {
   background-color: #f7f7f7; }
 
