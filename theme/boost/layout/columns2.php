@@ -53,6 +53,7 @@ if (defined('BEHAT_SITE_RUNNING')) {
 $primary = new core\navigation\output\primary($PAGE);
 $renderer = $PAGE->get_renderer('core');
 $primarymenu = $primary->export_for_template($renderer);
+$primarynavlinks = array_merge($primarymenu['primary'], $primarymenu['custom']);
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -63,7 +64,8 @@ $templatecontext = [
     'navdraweropen' => $navdraweropen,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
-    'primarymoremenu' => $OUTPUT->more_menu(array_merge($primarymenu['primary'], $primarymenu['custom']), 'navbar-nav'),
+    'primarynavlinks' => $primarynavlinks,
+    'primarymoremenu' => $OUTPUT->more_menu($primarynavlinks, 'navbar-nav'),
     'secondarymoremenu' => $secondarynavigation,
     'usermenu' => $primarymenu['user'],
     'langmenu' => $primarymenu['lang'],

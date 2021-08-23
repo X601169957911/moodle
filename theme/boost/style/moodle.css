@@ -14408,6 +14408,9 @@ body.drawer-ease {
   overflow-y: auto;
   padding: 0.5rem; }
 
+.drawer-primary .drawercontent {
+  padding: 0; }
+
 #page-my-index {
   background-color: #f7f7f7; }
 
