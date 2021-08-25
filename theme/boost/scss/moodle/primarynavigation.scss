@@ -5,6 +5,7 @@
         border-bottom: none !important; /* stylelint-disable-line declaration-no-important */
         .nav-link {
             height: $navbar-height;
+            color: $gray-900;
         }
     }
 }
