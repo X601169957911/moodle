@@ -26,4 +26,28 @@
         background: transparent;
         @include hover-navbar();
     }
+
+    .dropdown-item[aria-current="true"]:before {
+        content: '';
+    }
+    .nav-link[data-toggle="tab"] {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .nav-link[data-toggle="tab"]::after {
+        content: attr(data-text);
+        content: attr(data-text) / "";
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+        user-select: none;
+        pointer-events: none;
+        font-weight: bold;
+
+        @media speech {
+            display: none;
+        }
+    }
 }
