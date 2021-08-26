@@ -20402,7 +20402,6 @@ div.editor_atto_toolbar button .icon {
     align-items: center;
     justify-content: center; }
   .navigation.moremenu .nav-link[data-toggle="tab"]::after {
-    content: attr(data-text);
     content: attr(data-text)/"";
     height: 0;
     visibility: hidden;

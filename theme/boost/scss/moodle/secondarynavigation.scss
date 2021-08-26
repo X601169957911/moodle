@@ -37,7 +37,6 @@
         justify-content: center;
     }
     .nav-link[data-toggle="tab"]::after {
-        content: attr(data-text);
         content: attr(data-text) / "";
         height: 0;
         visibility: hidden;

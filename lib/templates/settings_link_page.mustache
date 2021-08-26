@@ -85,7 +85,8 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h4 class="h5 font-weight-bold">{{text}}</h4>
+                                    {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
+                                    {{^action}}<h4>{{text}}</h4>{{/action}}
                                 </div>
                                 <div class="col">
                                     <ul class="list-unstyled">
@@ -107,7 +108,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-3">
-                            <h4 class="h5 font-weight-bold">{{text}}</h4>
+                            {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
+                            {{^action}}<h4>{{text}}</h4>{{/action}}
                         </div>
                         <div class="col-sm-9">
                             <ul class="list-unstyled">
@@ -127,7 +129,8 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h4 class="h5 font-weight-bold">{{text}}</h4>
+                                        {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
+                                        {{^action}}<h4>{{text}}</h4>{{/action}}
                                     </div>
                                     <div class="col-sm-9">
                                         <ul class="list-unstyled">
