@@ -211,7 +211,6 @@ class icon_system_fontawesome extends icon_system_font {
             'core:i/completion_self' => 'fa-user-o',
             'core:i/contentbank' => 'fa-paint-brush',
             'core:i/dashboard' => 'fa-tachometer',
-            'core:i/lock' => 'fa-lock',
             'core:i/categoryevent' => 'fa-cubes',
             'core:i/course' => 'fa-graduation-cap',
             'core:i/courseevent' => 'fa-graduation-cap',

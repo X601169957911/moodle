@@ -54,7 +54,7 @@
 }}
 <div class="usermenu">
     {{#unauthenticateduser}}
-        <span class="login pl-2 h-75 align-self-center">
+        <span class="login pl-2">
             {{content}}
             {{#url}}
                 (<a href="{{url}}">{{#str}} login, core {{/str}}</a>)
@@ -68,7 +68,6 @@
                 <span class="userbutton">
                     {{> core/user_menu_metadata }}
                 </span>
-                <i class="fa fa-caret-down" aria-hidden="true"></i>
             </a>
             <div id="user-action-menu" class="dropdown-menu dropdown-menu-right">
                 <div id="usermenu-carousel" class="carousel slide" data-touch="false" data-interval="false" data-keyboard="false">
