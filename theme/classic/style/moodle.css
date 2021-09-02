@@ -20374,26 +20374,23 @@ div.editor_atto_toolbar button .icon {
   .navigation.moremenu .dropdown-toggle::after {
     display: none; }
   .navigation.moremenu .nav-tabs {
-    border-bottom: none; }
+    background-color: #fff; }
   .navigation.moremenu .nav-link {
     border-right: none;
     border-bottom: solid 3px transparent;
     border-left: none;
     border-top: none; }
-    .navigation.moremenu .nav-link:hover, .navigation.moremenu .nav-link:focus, .navigation.moremenu .nav-link:active {
-      color: #212529;
-      border-bottom: solid 3px #0f6fc5;
-      transition: border-color 0.3s ease-in-out; }
+    .navigation.moremenu .nav-link:hover, .navigation.moremenu .nav-link:focus {
+      background-color: #e9ecef;
+      transition: background-color 0.1s ease-in-out; }
     .navigation.moremenu .nav-link.active {
-      font-weight: bold; }
+      font-weight: bold;
+      border-bottom: solid 3px #0f6fc5; }
   .navigation.moremenu .show > .nav-link,
   .navigation.moremenu .active > .nav-link,
   .navigation.moremenu .nav-link.show,
   .navigation.moremenu .nav-link.active {
-    background: transparent;
-    color: #212529;
-    border-bottom: solid 3px #0f6fc5;
-    transition: border-color 0.3s ease-in-out; }
+    background: transparent; }
   .navigation.moremenu .dropdown-item[aria-current="true"]:before {
     content: ''; }
   .navigation.moremenu .nav-link[data-toggle="tab"] {
