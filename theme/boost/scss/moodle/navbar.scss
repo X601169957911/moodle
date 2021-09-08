@@ -36,8 +36,9 @@
             display: flex;
             align-items: center;
         }
-        .dropdown-toggle::after {
-            display: none;
+        .login {
+            display: flex;
+            align-items: center;
         }
         .dropdown-menu {
             min-width: 235px;
@@ -80,6 +81,23 @@
             }
         }
     }
+    .usermenu,
+    .langmenu {
+        .dropdown {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            .dropdown-toggle {
+                padding-top: 0;
+                padding-bottom: 0;
+                border-radius: 0;
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+        }
+    }
+
     .langmenu {
         .dropdown-menu {
             .dropdown-item {
