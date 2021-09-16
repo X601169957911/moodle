@@ -42,6 +42,7 @@ $PAGE->set_pagelayout('frontpage');
 $PAGE->set_other_editing_capability('moodle/course:update');
 $PAGE->set_other_editing_capability('moodle/course:manageactivities');
 $PAGE->set_other_editing_capability('moodle/course:activityvisibility');
+$PAGE->has_secondary_navigation_setter(false);
 
 // Prevent caching of this page to stop confusion when changing page after making AJAX changes.
 $PAGE->set_cacheable(false);
