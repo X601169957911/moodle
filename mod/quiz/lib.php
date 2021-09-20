@@ -1685,6 +1685,7 @@ function quiz_supports($feature) {
         case FEATURE_CONTROLS_GRADE_VISIBILITY: return true;
         case FEATURE_USES_QUESTIONS:            return true;
         case FEATURE_PLAGIARISM:                return true;
+        case FEATURE_MOD_PURPOSE:               return MOD_PURPOSE_ASSESSMENT;
 
         default: return null;
     }

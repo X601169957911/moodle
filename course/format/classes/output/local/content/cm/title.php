@@ -122,6 +122,10 @@ class title implements renderable, templatable {
         // has already been encoded for display (puke).
         $data->onclick = htmlspecialchars_decode($mod->onclick, ENT_QUOTES);
 
+        $data->purpose = plugin_supports('mod', $mod->modname, FEATURE_MOD_PURPOSE, 'none');
+
+        $data->modname = $mod->modname;
+
         return $data;
     }
 }

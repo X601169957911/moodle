@@ -34,7 +34,9 @@
 {{#url}}
     {{#uservisible}}
         <a href="{{url}}" class="aalink {{linkclasses}}" onclick="{{{onclick}}}">
-            <img class="iconlarge activityicon" src="{{icon}}" alt="" role="presentation" aria-hidden="true" />
+            <div class="activityiconcontainer {{purpose}} modicon_{{modname}} courseicon align-self-start mr-3">
+                <img src="{{{icon}}}" class="activityicon " role="presentation" alt="" aria-hidden="true" />
+            </div>
             <span class="instancename">
                 {{instancename}} {{{altname}}}
             </span>

@@ -57,6 +57,9 @@ class content_item {
     /** @var string $componentname the name of the component from which this content item originates. */
     private $componentname;
 
+    /** @var string $purpose the purpose type of this component. */
+    private $purpose;
+
     /**
      * The content_item constructor.
      *
@@ -70,7 +73,7 @@ class content_item {
      * @param string $componentname the name of the component/plugin with which this content item is associated.
      */
     public function __construct(int $id, string $name, title $title, \moodle_url $link, string $icon, string $help,
-            int $archetype, string $componentname) {
+            int $archetype, string $componentname, string $purpose) {
         $this->id = $id;
         $this->name = $name;
         $this->title = $title;
@@ -79,6 +82,7 @@ class content_item {
         $this->help = $help;
         $this->archetype = $archetype;
         $this->componentname = $componentname;
+        $this->purpose = $purpose;
     }
 
     /**
@@ -150,5 +154,14 @@ class content_item {
      */
     public function get_icon(): string {
         return $this->icon;
+    }
+
+    /**
+     * Get purpose for this item.
+     *
+     * @return string
+     */
+    public function get_purpose(): string {
+        return $this->purpose;
     }
 }

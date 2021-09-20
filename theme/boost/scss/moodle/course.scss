@@ -87,14 +87,10 @@ body:not(.editing)  .sitetopic ul.section {
         .contentwithoutlink,
         .activityinstance {
             min-width: 40%;
-            display: table-cell;
-            padding-right: 4px;
-            min-height: 2em;
 
             > a {
-                display: inline-block;
-                text-indent: -31px;
-                padding-left: 31px;
+                display: inline-flex;
+                align-items: center;
             }
 
             .dimmed {
@@ -156,14 +152,10 @@ body:not(.editing)  .sitetopic ul.section {
     }
 }
 
-.activity img.activityicon {
-    margin-right: 6px;
-    vertical-align: text-bottom;
-}
-
-.section .activity .activityinstance,
-.section .activity .activityinstance div {
-    display: inline-block;
+.section .activity .activityinstance {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .editing {

@@ -392,6 +392,8 @@ function assign_supports($feature) {
             return true;
         case FEATURE_COMMENT:
             return true;
+        case FEATURE_MOD_PURPOSE:
+            return MOD_PURPOSE_ASSESSMENT;
 
         default:
             return null;
