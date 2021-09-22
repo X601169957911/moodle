@@ -94,15 +94,17 @@
     </div>
     <div class="content">
         {{#header}} {{> core_courseformat/local/content/section/header }} {{/header}}
-        {{#availability}}
-            {{> core_courseformat/local/content/section/availability }}
-        {{/availability}}
-        <div class="summary">
-        {{#summary}}
-            {{> core_courseformat/local/content/section/summary }}
-        {{/summary}}
+        {{#hasdescription}}
+        <div class="description mb-3">
+            {{#availability}}
+                {{> core_courseformat/local/content/section/availability }}
+            {{/availability}}
+            {{#summary}}
+                {{> core_courseformat/local/content/section/summary }}
+            {{/summary}}
+            {{#cmsummary}} {{> core_courseformat/local/content/section/cmsummary }} {{/cmsummary}}
         </div>
-        {{#cmsummary}} {{> core_courseformat/local/content/section/cmsummary }} {{/cmsummary}}
+        {{/hasdescription}}
         {{#cmlist}} {{> core_courseformat/local/content/section/cmlist }} {{/cmlist}}
         {{{cmcontrols}}}
     </div>

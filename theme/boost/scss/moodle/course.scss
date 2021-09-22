@@ -44,11 +44,6 @@ body:not(.editing)  .sitetopic ul.section {
     }
 }
 
-@include media-breakpoint-up(sm) {
-    .course-content ul.section {
-        margin: $spacer;
-    }
-}
 .section {
     .side {
         &.left {
@@ -71,14 +66,6 @@ body:not(.editing)  .sitetopic ul.section {
         .spinner {
             left: 100%;
             position: absolute;
-        }
-
-        /* The command block for each activity */
-        .actions {
-            position: absolute;
-            right: 0;
-            top: 0;
-            display: flex;
         }
 
         .contentwithoutlink,
@@ -217,29 +204,10 @@ body:not(.editing)  .sitetopic ul.section {
 }
 
 .section li.activity {
-    padding: 0.2em;
-    clear: both;
-
-    &.hasinfo {
-        border-bottom: $border-width solid $table-border-color;
-        padding-top: map-get($spacers, 3);
-        padding-bottom: map-get($spacers, 3);
-
-        &:last-child {
-            border-bottom: 0;
-            padding-bottom: 0;
-        }
-    }
 }
 
 .section .activity .activityinstance .groupinglabel {
     padding-left: 30px;
-}
-
-.section .activity .availabilityinfo,
-.section .activity .contentafterlink {
-    margin-top: 0.5em;
-    margin-left: 30px;
 }
 
 .section .activity .contentafterlink p {
@@ -330,14 +298,6 @@ body:not(.editing)  .sitetopic ul.section {
     margin-top: 0;
 }
 
-.course-content ul li.section.main {
-    border-bottom: $border-width solid $table-border-color;
-    margin-top: 0;
-
-    &:last-child {
-        border-bottom: 0;
-    }
-}
 
 .course-content ul li.section.hidden {
     .sectionname > span,
@@ -354,8 +314,6 @@ body:not(.editing)  .sitetopic ul.section {
     list-style: none;
 
     li.section {
-        margin-top: $spacer;
-        padding-bottom: $spacer;
         .content {
             margin: 0;
             padding: 0;
@@ -401,10 +359,8 @@ body:not(.editing)  .sitetopic ul.section {
 
 .course-content li {
     &.section {
-        @include media-breakpoint-down(sm) {
-            ul {
-                padding-left: 0;
-            }
+        & > ul {
+            padding-left: 0;
         }
         ul {
             list-style: disc;
@@ -500,7 +456,6 @@ body:not(.editing)  .sitetopic ul.section {
 .path-site li.activity > div,
 .path-course-view li.activity > div {
     position: relative;
-    padding: 0 16px 0 0; /* to accommodate the floated completion icon with highlighting */
 }
 
 .path-course-view li.activity span.autocompletion img {
@@ -1215,8 +1170,119 @@ span.editinstructions {
     }
 }
 
-.automatic-completion-conditions {
-    .badge {
-        font-size: 100%;
+$activity-iconcontainer-width: 50px;
+$activity-iconcontainer-height: 50px;
+.activity:not(.defaulticon) {
+
+    .activityiconcontainer {
+        width: $activity-iconcontainer-width;
+        height: $activity-iconcontainer-height;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $gray-100;
+        border-radius: 4px;
+        padding: 0.7rem;
+
+        .activityicon {
+            margin: 0;
+            height: 24px;
+            width: 24px;
+        }
+    }
+}
+
+$enable-rounded: true;
+$activity-item-hover: theme-color-level('primary', -12) !default;
+$activity-item-border: theme-color-level('primary', -2) !default;
+$activity-item-color: $body-color;
+
+.activity-item {
+    @if $enable-rounded {
+        @include border-radius($border-radius-lg);
+    }
+
+    &:not(.courseinline) {
+        border: $border-width solid $border-color;
+        padding: map-get($spacers, 4);
+    }
+    &.editing {
+        cursor: pointer;
+
+        &:hover {
+            @include alert-variant($activity-item-hover, $activity-item-border, $activity-item-color);
+
+            .description,
+            .badge {
+                mix-blend-mode: multiply;
+            }
+        }
+    }
+
+    .automatic-completion-conditions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .badge {
+            font-size: 80%;
+            padding: 0.5rem 0.3rem;
+            @include border-radius($border-radius-lg);
+        }
+    }
+
+    .activity-info,
+    .activity-actions {
+        margin-left: map-get($spacers, 2);
+        min-height: 50px;
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .dropdown-toggle::after {
+            display: none;
+        }
+    }
+    .inplaceeditable {
+        display: flex;
+        flex: 1 1 auto;
+        .quickeditlink {
+            align-self: end;
+            margin: 0 0 0.2rem 0.5rem;
+        }
+    }
+    .action-menu-item .filler {
+        display: none;
+    }
+}
+
+.course-content .description {
+    margin-top: map-get($spacers, 3);
+    background-color: $gray-100;
+    padding: map-get($spacers, 3);
+
+    .description-item {
+        border-top: $border-width solid $border-color;
+        border-bottom: $border-width solid $border-color;
+        padding-bottom: map-get($spacers, 2);
+        padding-top: map-get($spacers, 2);
+        margin-top: -1px;
+
+        &:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+ul.section > li.activity {
+    margin-bottom: map-get($spacers, 3);
+    &:last-child {
+        margin-bottom: 0;
     }
 }

@@ -136,6 +136,10 @@ class section implements renderable, templatable {
             'availability' => $availability->export_for_template($output),
         ];
 
+        if (!empty($data->summary) && !empty($data->availability->info)) {
+            $data->hasdescription = true;
+        }
+
         // Check if it is a stealth sections (orphaned).
         if ($thissection->section > $format->get_last_section_number()) {
             $data->isstealth = true;
@@ -208,4 +212,3 @@ class section implements renderable, templatable {
         return $data;
     }
 }
-

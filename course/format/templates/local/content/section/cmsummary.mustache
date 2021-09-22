@@ -34,11 +34,13 @@
         "modprogress": "Total 5"
     }
 }}
-<div class="section-summary-activities pr-2 mdl-right">
-    {{#mods}}
-    <span class="activity-count">{{name}}: {{count}}</span>
-    {{/mods}}
-</div>
-<div class="section-summary-activities pr-2 mdl-right">
-    <span class="activity-count">{{modprogress}}</span>
+<div class="description-item">
+    <div class="section-summary-activities pr-2 mdl-right">
+        {{#mods}}
+        <span class="activity-count">{{name}}: {{count}}</span>
+        {{/mods}}
+    </div>
+    <div class="section-summary-activities pr-2 mdl-right">
+        <span class="activity-count">{{modprogress}}</span>
+    </div>
 </div>

@@ -31,21 +31,31 @@
         "textclasses": ""
     }
 }}
+
 {{#url}}
-    {{#uservisible}}
-        <a href="{{url}}" class="aalink {{linkclasses}}" onclick="{{{onclick}}}">
-            <img class="iconlarge activityicon" src="{{icon}}" alt="" role="presentation" aria-hidden="true" />
-            <span class="instancename">
-                {{instancename}} {{{altname}}}
-            </span>
-        </a>
-    {{/uservisible}}
-    {{^uservisible}}
-        <div class="{{textclasses}}">
-            <img class="iconlarge activityicon" src="{{icon}}" alt="" role="presentation" aria-hidden="true" />
-            <span class="instancename">
-                {{instancename}} {{{altname}}}
-            </span>
+    <div class="activitytitle media {{textclasses}} modtype_{{modname}} position-relative">
+        <div class="activityiconcontainer courseicon align-self-start mr-3">
+            <img src="{{{icon}}}" class="activityicon " alt="{{{modname}}} icon">
         </div>
-    {{/uservisible}}
+        <div class="media-body align-self-center">
+            <div class="text-uppercase small">
+                {{{activityname}}}
+            </div>
+            <div class="activityname">
+                {{#uservisible}}
+                    <a href="{{url}}" class="instancename {{linkclasses}} stretched-link" onclick="{{{onclick}}}">
+                        {{instancename}} {{{altname}}}
+                    </a>
+                {{/uservisible}}
+                {{^uservisible}}
+                    <span class="instancename">
+                        {{instancename}} {{{altname}}}
+                    </span>
+                {{/uservisible}}
+                {{#afterlink}}
+                    <span class="afterlink my-1">{{{afterlink}}}</span>
+                {{/afterlink}}
+            </div>
+        </div>
+    </div>
 {{/url}}

@@ -160,10 +160,30 @@ class cm implements renderable, templatable {
             'afterlink' => $mod->afterlink,
             'altcontent' => $mod->get_formatted_content(['overflowdiv' => true, 'noclean' => true]),
             'modavailability' => $availability->export_for_template($output),
+            'modname' => get_string('pluginname', 'mod_' . $mod->modname),
             'url' => $mod->url,
             'activityinfo' => $activityinfodata,
             'textclasses' => $displayoptions['textclasses'],
         ];
+
+        if (!empty($data->cmname['displayvalue'])) {
+            $data->hasname = true;
+        } else if (!empty($data->altcontent)) {
+            $data->hasname = true;
+            $data->namealt = $data->altcontent;
+            $data->altcontent = false;
+            if (!$data->activityinfo->hasdates && !$data->activityinfo->hascompletion && empty($data->modavailability->info)
+                && !$format->show_editor()) {
+                $data->courseinline = true;
+            }
+        }
+        if ($data->courseinline) {
+            $data->florp = true;
+        }
+        $data->hasdescription = false;
+        if (!empty($data->altcontent) || $data->activityinfo->hasdates || !empty($data->modavailability->info)) {
+            $data->hasdescription = true;
+        }
 
         if (!empty($mod->indent)) {
             $data->indent = $mod->indent;
@@ -172,9 +192,6 @@ class cm implements renderable, templatable {
             }
         }
 
-        if (!empty($data->cmname)) {
-            $data->hasname = true;
-        }
         if (!empty($data->url)) {
             $data->hasurl = true;
         }

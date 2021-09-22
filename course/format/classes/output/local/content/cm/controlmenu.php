@@ -110,6 +110,7 @@ class controlmenu implements renderable, templatable {
      * @return aciton_menu the activity action menu
      */
     public function get_action_menu(): ?action_menu {
+        global $OUTPUT;
 
         if (!empty($this->menu)) {
             return $this->menu;
@@ -126,7 +127,8 @@ class controlmenu implements renderable, templatable {
         // Convert control array into an action_menu.
         $menu = new action_menu();
         $menu->set_alignment(action_menu::TR, action_menu::BR);
-        $menu->set_menu_trigger(get_string('edit'));
+        $icon = $OUTPUT->pix_icon('i/menu', get_string('edit'));
+        $menu->set_menu_trigger($icon, 'btn btn-icon d-flex align-items-center justify-content-center');
 
         $menu->attributes['class'] .= ' section-cm-edit-actions commands';
 
