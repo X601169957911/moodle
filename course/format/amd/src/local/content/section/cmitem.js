@@ -49,7 +49,6 @@ export default class extends DndCmItem {
      */
     stateReady() {
         this.configDragDrop(this.id);
-        this.getElement(this.selectors.DRAGICON)?.classList.add(this.classes.DRAGICON);
     }
 
     /**

@@ -51,12 +51,12 @@ M.course_dndupload = {
     // The type of HTML element that is a course section
     sectiontypename: 'li',
     // The classes that an element must have to be identified as a course section
-    sectionclasses: ['section', 'main'],
+    sectionclasses: ['course-section', 'main'],
     // The ID of the main content area of the page (for adding the 'status' div)
     pagecontentid: 'page',
     // The selector identifying the list of modules within a section (note changing this may require
     // changes to the get_mods_element function)
-    modslistselector: 'ul.section',
+    modslistselector: 'ul.course-section',
 
     /**
      * Initalise the drag and drop upload interface

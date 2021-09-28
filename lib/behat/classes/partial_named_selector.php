@@ -135,7 +135,7 @@ class behat_partial_named_selector extends \Behat\Mink\Selector\PartialNamedSele
      */
     protected static $moodleselectors = array(
         'activity' => <<<XPATH
-.//li[contains(concat(' ', normalize-space(@class), ' '), ' activity ')][descendant::*[contains(normalize-space(.), %locator%)]]
+.//li[contains(concat(' ', normalize-space(@class), ' '), ' activity-item ')][descendant::*[contains(normalize-space(.), %locator%)]]
 XPATH
         , 'block' => <<<XPATH
 .//*[@data-block][contains(concat(' ', normalize-space(@class), ' '), concat(' ', %locator%, ' ')) or
@@ -206,7 +206,7 @@ XPATH
 .//*[self::div | self::section | self::aside | self::header | self::footer][./@id = %locator%]
 XPATH
         , 'section' => <<<XPATH
-.//li[contains(concat(' ', normalize-space(@class), ' '), ' section ')][./descendant::*[self::h3]
+.//li[contains(concat(' ', normalize-space(@class), ' '), ' course-section ')][./descendant::*[self::h3]
     [normalize-space(.) = %locator%][contains(concat(' ', normalize-space(@class), ' '), ' sectionname ') or
     contains(concat(' ', normalize-space(@class), ' '), ' section-title ')]] |
 .//div[contains(concat(' ', normalize-space(@class), ' '), ' sitetopic ')]

@@ -1052,7 +1052,7 @@ class behat_course extends behat_base {
             // We wait until the AJAX request finishes and the section is visible again.
             $hiddenlightboxxpath = "//li[contains(concat(' ', normalize-space(@class), ' '), ' activity ')]" .
                     "[contains(., $activityliteral)]" .
-                    "/ancestor::li[contains(concat(' ', normalize-space(@class), ' '), ' section ')]" .
+                    "/ancestor::li[contains(concat(' ', normalize-space(@class), ' '), ' course-section ')]" .
                     "/descendant::div[contains(concat(' ', @class, ' '), ' lightbox ')][contains(@style, 'display: none')]";
 
             $this->execute("behat_general::wait_until_exists",
@@ -1259,7 +1259,7 @@ class behat_course extends behat_base {
     protected function get_activity_node($activityname) {
 
         $activityname = behat_context_helper::escape($activityname);
-        $xpath = "//li[contains(concat(' ', normalize-space(@class), ' '), ' activity ')][contains(., $activityname)]";
+        $xpath = "//li[contains(concat(' ', normalize-space(@class), ' '), ' activity-item ')][contains(., $activityname)]";
 
         return $this->find('xpath', $xpath);
     }

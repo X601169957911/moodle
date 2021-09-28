@@ -94,11 +94,6 @@ class controlmenu implements renderable, templatable {
             'id' => $mod->id,
         ];
 
-        // After icons.
-        if (!empty($mod->afterediticons)) {
-            $data->afterediticons = $mod->afterediticons;
-        }
-
         return $data;
     }
 
@@ -110,6 +105,7 @@ class controlmenu implements renderable, templatable {
      * @return aciton_menu the activity action menu
      */
     public function get_action_menu(): ?action_menu {
+        global $OUTPUT;
 
         if (!empty($this->menu)) {
             return $this->menu;
@@ -126,7 +122,8 @@ class controlmenu implements renderable, templatable {
         // Convert control array into an action_menu.
         $menu = new action_menu();
         $menu->set_alignment(action_menu::TR, action_menu::BR);
-        $menu->set_menu_trigger(get_string('edit'));
+        $icon = $OUTPUT->pix_icon('i/menu', get_string('edit'));
+        $menu->set_menu_trigger($icon, 'btn btn-icon d-flex align-items-center justify-content-center');
 
         $menu->attributes['class'] .= ' section-cm-edit-actions commands';
 
@@ -164,11 +161,7 @@ class controlmenu implements renderable, templatable {
         $format = $this->format;
         $mod = $this->mod;
         $sectionreturn = $format->get_section_number();
-        if (!empty($this->displayoptions['disableindentation'])) {
-            $indent = -1;
-        } else {
-            $indent = $mod->indent;
-        }
+        $indent = -1;
         return course_get_cm_edit_actions($mod, $indent, $sectionreturn);
     }
 }

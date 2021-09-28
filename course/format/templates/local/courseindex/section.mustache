@@ -72,12 +72,12 @@
             class="courseindex-link icons-collapse-expand {{^isactive}}collapsed{{/isactive}}"
         >
             <span class="collapsed-icon icon-no-margin mr-1"
-                data-toggle="tooltip" title="{{#str}} expand, core {{/str}}">
+                title="{{#str}} expand, core {{/str}}">
                 {{#pix}} t/collapsed, core {{/pix}}
                 <span class="sr-only">{{#str}} expand, core {{/str}}</span>
             </span>
             <span class="expanded-icon icon-no-margin mr-1"
-                data-toggle="tooltip" title="{{#str}} collapse, core {{/str}}">
+                title="{{#str}} collapse, core {{/str}}">
                 {{#pix}} t/expanded, core {{/pix}}
                 <span class="sr-only">{{#str}} collapse, core {{/str}}</span>
             </span>
@@ -94,7 +94,7 @@
     <div id="courseindexcollapse{{number}}"
         class="courseindex-item-content collapse {{#isactive}}show{{/isactive}}"
         aria-labelledby="courseindexsection{{number}}">
-        <ul class="courseindex-sectioncontent unlist" data-for="cmlist" data-id="{{id}}">
+        <ul class="courseindex-sectioncontent" data-for="cmlist" data-id="{{id}}">
             {{#cms}}
             {{> core_courseformat/local/courseindex/cm }}
             {{/cms}}

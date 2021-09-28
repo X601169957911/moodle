@@ -13866,9 +13866,6 @@ body:not(.editing) .sitetopic ul.section {
 .path-course-view .subscribelink {
   text-align: right; }
 
-.path-course-view .unread {
-  margin-left: 30px; }
-
 .path-course-view .block.drag .header {
   cursor: move; }
 
@@ -13880,9 +13877,7 @@ body:not(.editing) .sitetopic ul.section {
 
 .path-site li.activity > div,
 .path-course-view li.activity > div {
-  position: relative;
-  padding: 0 16px 0 0;
-  /* to accommodate the floated completion icon with highlighting */ }
+  position: relative; }
 
 .path-course-view li.activity span.autocompletion img {
   vertical-align: text-bottom;
@@ -14427,8 +14422,138 @@ span.editinstructions {
 .activity-navigation #next-activity-link {
   white-space: pre-wrap; }
 
+.course-section {
+  list-style: none;
+  padding-left: 0;
+  border-bottom: 1px solid #dee2e6; }
+  .course-section:last-child {
+    border-bottom: 0; }
+  .course-section .section_action_menu .dropdown-toggle::after {
+    display: none; }
+  .course-section .section-summary-activities .activity-count {
+    color: #6a737b;
+    font-size: 0.8203125rem;
+    margin: 3px;
+    white-space: nowrap;
+    display: inline-block; }
+  .course-section .collapsemenu .collapseall {
+    display: block; }
+  .course-section .collapsemenu .expandall {
+    display: none; }
+  .course-section .collapsemenu.collapsed .collapseall {
+    display: none; }
+  .course-section .collapsemenu.collapsed .expandall {
+    display: block; }
+
+.activity-item .activityiconcontainer {
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding: 0.7rem; }
+  .activity-item .activityiconcontainer .activityicon {
+    margin: 0;
+    height: 24px;
+    width: 24px; }
+
+.activity-item {
+  border-radius: 0.3rem;
+  margin: 0.5rem 0; }
+  .activity-item:not(.activityinline) {
+    border: 1px solid #dee2e6;
+    padding: 1rem; }
+  .activity-item.editing {
+    cursor: move; }
+    .activity-item.editing .a {
+      cursor: pointer; }
+    .activity-item.editing:hover {
+      color: #212529;
+      background-color: #f5f9fd;
+      border-color: #3586ce; }
+      .activity-item.editing:hover hr {
+        border-top-color: #2e79bc; }
+      .activity-item.editing:hover .alert-link {
+        color: #0a0c0d; }
+      .activity-item.editing:hover .description .description-item,
+      .activity-item.editing:hover .activityiconcontainer,
+      .activity-item.editing:hover .badge {
+        mix-blend-mode: multiply; }
+  .activity-item.hiddenactivity {
+    background-color: #f8f9fa; }
+    .activity-item.hiddenactivity .description .description-item,
+    .activity-item.hiddenactivity .activityiconcontainer,
+    .activity-item.hiddenactivity .badge {
+      mix-blend-mode: multiply; }
+  .activity-item .activity-actions .dropdown-toggle::after {
+    display: none; }
+  .activity-item .inplaceeditable {
+    display: flex;
+    flex: 0 1 auto; }
+    .activity-item .inplaceeditable .quickeditlink {
+      align-self: flex-end;
+      margin: 0 0 0.2rem 0.5rem; }
+  .activity-item .action-menu-item {
+    display: flex;
+    align-items: center; }
+  .activity-item .action-menu-item .filler {
+    display: none; }
+  .activity-item .no-overflow {
+    width: 100%; }
+  @media (max-width: 767.98px) {
+    .activity-item .badge {
+      white-space: normal;
+      text-align: left; } }
+  @media (min-width: 768px) {
+    .activity-item .automatic-completion-conditions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; }
+    .activity-item:not(.activityinline) {
+      padding: 1.5rem; }
+    .activity-item .activity-info,
+    .activity-item .activity-actions {
+      margin-left: auto;
+      padding-left: 0.5rem;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; } }
+
 .automatic-completion-conditions .badge {
-  font-size: 100%; }
+  font-size: 80%;
+  padding: 0.5rem;
+  margin-top: 0.25rem; }
+  .automatic-completion-conditions .badge .icon {
+    width: 0.7rem;
+    height: 0.7rem;
+    font-size: 0.7rem; }
+  .automatic-completion-conditions .badge:first-child {
+    margin-top: 0; }
+
+.course-content .description .description-item {
+  background-color: #f8f9fa;
+  padding-left: 1rem;
+  padding-right: 1rem; }
+  .course-content .description .description-item .description-inner {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    border-bottom: 1px solid #dee2e6; }
+    .course-content .description .description-item .description-inner p:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0; }
+  .course-content .description .description-item:first-child {
+    margin-top: 1rem;
+    padding-top: 1rem; }
+    .course-content .description .description-item:first-child .description-inner {
+      padding-top: 0; }
+  .course-content .description .description-item:last-child {
+    padding-bottom: 1rem; }
+    .course-content .description .description-item:last-child .description-inner {
+      padding-bottom: 0;
+      border-bottom: 0; }
 
 /* Anchor link offset fix. This makes hash links scroll 60px down to account for the fixed header. */
 :target {

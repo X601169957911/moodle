@@ -102,15 +102,7 @@ class availability implements renderable, templatable {
         $canviewhidden = has_capability('moodle/course:viewhiddensections', $context, $USER);
 
         $info = [];
-        if (!$section->visible) {
-            if ($canviewhidden) {
-                $info[] = $this->availability_info(get_string('hiddenfromstudents'), 'ishidden');
-            } else {
-                // We are here because of the setting "Hidden sections are shown in collapsed form".
-                // Student can not see the section contents but can see its name.
-                $info[] = $this->availability_info(get_string('notavailable'), 'ishidden');
-            }
-        } else if (!$section->uservisible) {
+        if (!$section->uservisible) {
             if ($section->availableinfo) {
                 // Note: We only get to this function if availableinfo is non-empty,
                 // so there is definitely something to print.
