@@ -29,7 +29,7 @@
 }}
 {{#istrackeduser}}
     {{#statuscomplete}}
-    <span class="badge badge-success rounded mb-1" role="listitem" {{!
+    <span class="badge badge-pill badge-success-light" role="listitem" {{!
         }}{{#accessibledescription}}{{!
             }}title="{{.}}" {{!
             }}aria-label="{{.}}" {{!
@@ -38,7 +38,7 @@
     </span>
     {{/statuscomplete}}
     {{#statuscompletefail}}
-    <span class="badge badge-danger rounded mb-1" role="listitem" {{!
+    <span class="badge badge-pill badge-danger" role="listitem" {{!
         }}{{#accessibledescription}}{{!
             }}title="{{.}}" {{!
             }}aria-label="{{.}}" {{!
@@ -47,7 +47,7 @@
     </span>
     {{/statuscompletefail}}
     {{#statusincomplete}}
-    <span class="badge badge-secondary rounded mb-1" role="listitem" {{!
+    <span class="badge badge-pill badge-light" role="listitem" {{!
         }}{{#accessibledescription}}{{!
             }}title="{{.}}" {{!
             }}aria-label="{{.}}" {{!
@@ -57,7 +57,7 @@
     {{/statusincomplete}}
 {{/istrackeduser}}
 {{^istrackeduser}}
-    <span class="badge badge-secondary rounded mb-1" role="listitem">
+    <span class="badge badge-pill badge-light mb-1" role="listitem">
         <span class="font-weight-normal">{{description}}</span>
     </span>
 {{/istrackeduser}}

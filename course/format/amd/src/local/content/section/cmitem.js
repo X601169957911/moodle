@@ -34,10 +34,6 @@ export default class extends DndCmItem {
     create() {
         // Optional component name for debugging.
         this.name = 'content_section_cmitem';
-        // Default query selectors.
-        this.selectors = {
-            DRAGICON: `.editing_move`,
-        };
         // We need our id to watch specific events.
         this.id = this.element.dataset.id;
     }
@@ -47,7 +43,6 @@ export default class extends DndCmItem {
      */
     stateReady() {
         this.configDragDrop(this.id);
-        this.getElement(this.selectors.DRAGICON)?.classList.add(this.classes.DRAGICON);
     }
 
     /**

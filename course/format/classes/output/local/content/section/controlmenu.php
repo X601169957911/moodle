@@ -68,6 +68,7 @@ class controlmenu implements renderable, templatable {
      * @return array data context for a mustache template
      */
     public function export_for_template(\renderer_base $output): stdClass {
+        global $OUTPUT;
 
         $section = $this->section;
 
@@ -79,7 +80,8 @@ class controlmenu implements renderable, templatable {
 
         // Convert control array into an action_menu.
         $menu = new action_menu();
-        $menu->set_menu_trigger(get_string('edit'));
+        $icon = $OUTPUT->pix_icon('i/menu', get_string('edit'));
+        $menu->set_menu_trigger($icon, 'btn btn-icon d-flex align-items-center justify-content-center');
         $menu->attributes['class'] .= ' section-actions';
         foreach ($controls as $value) {
             $url = empty($value['url']) ? '' : $value['url'];

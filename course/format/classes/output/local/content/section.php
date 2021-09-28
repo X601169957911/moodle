@@ -25,6 +25,7 @@
 namespace core_courseformat\output\local\content;
 
 use core_courseformat\base as course_format;
+use context_course;
 use completion_info;
 use renderable;
 use templatable;
@@ -119,11 +120,13 @@ class section implements renderable, templatable {
      * @return stdClass data context for a mustache template
      */
     public function export_for_template(\renderer_base $output): stdClass {
+        global $USER;
 
         $format = $this->format;
         $course = $format->get_course();
         $thissection = $this->thissection;
         $singlesection = $format->get_section_number();
+        $context = context_course::instance($thissection->course);
 
         $summary = new $this->summaryclass($format, $thissection);
         $availability = new $this->availabilityclass($format, $thissection);
@@ -155,6 +158,10 @@ class section implements renderable, templatable {
         $coursedisplay = $course->coursedisplay ?? COURSE_DISPLAY_SINGLEPAGE;
         if ($coursedisplay == COURSE_DISPLAY_MULTIPAGE) {
             $data->iscoursedisplaymultipage = true;
+        }
+
+        if ($data->num === 0 && !$data->iscoursedisplaymultipage) {
+            $data->collapsemenu = true;
         }
 
         if ($course->id == SITEID) {
@@ -207,17 +214,27 @@ class section implements renderable, templatable {
             $data->cmlist = $cmlist->export_for_template($output);
         }
 
+        $canviewhidden = has_capability('moodle/course:viewhiddensections', $context, $USER);
         if (!$thissection->visible) {
-            $data->ishidden = true;
+            $data->availability = null;
+            if ($canviewhidden) {
+                $data->hiddenfromstudents = get_string('hiddenfromstudents');
+            } else {
+                // We are here because of the setting "Hidden sections are shown in collapsed form".
+                // Student can not see the section contents but can see its name.
+                $data->notavailable = get_string('notavailable');
+            }
+        }
+
+        $data->hasavailability = $data->availability->hasavailability;
+
+        if (!$thissection->visible) {
+            $data->ishidden = true; // should be for students only
         }
         if ($format->is_section_current($thissection)) {
             $data->iscurrent = true;
-            $data->currentlink = get_accesshide(
-                get_string('currentsection', 'format_'.$format->get_format())
-            );
         }
 
         return $data;
     }
 }
-

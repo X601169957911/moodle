@@ -53,3 +53,5 @@ moodle-plugin-ci.phar
 /jsdoc
 /admin/tool/componentlibrary/docs
 /admin/tool/componentlibrary/hugo/site/data/my-index.json
+/course/format/topcoll
+/course/format/tiles

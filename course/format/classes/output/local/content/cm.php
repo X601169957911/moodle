@@ -25,6 +25,7 @@
 namespace core_courseformat\output\local\content;
 
 use cm_info;
+use context_module;
 use core\activity_dates;
 use core_completion\cm_completion_details;
 use core_courseformat\base as course_format;
@@ -159,24 +160,52 @@ class cm implements renderable, templatable {
             'grouping' => $groupinglabel,
             'afterlink' => $mod->afterlink,
             'altcontent' => $mod->get_formatted_content(['overflowdiv' => true, 'noclean' => true]),
-            'modavailability' => $availability->export_for_template($output),
+            'modavailability' => $mod->visible ? $availability->export_for_template($output) : null,
+            'modname' => get_string('pluginname', 'mod_' . $mod->modname),
             'url' => $mod->url,
             'activityinfo' => $activityinfodata,
             'textclasses' => $displayoptions['textclasses'],
+            'classlist' => []
         ];
 
-        if (!empty($mod->indent)) {
-            $data->indent = $mod->indent;
-            if ($mod->indent > 15) {
-                $data->hugeindent = true;
+
+        if (!empty($data->cmname['displayvalue'])) {
+            $data->hasname = true;
+        } else if (!empty($data->altcontent)) {
+            // Activity has no name but does have altcontent, usually a label
+            // If this is the case we render the altcontent in the location of the
+            // activity name.
+            $data->hasname = true;
+            $data->namealt = $data->altcontent;
+            $data->altcontent = false;
+            if (!isset($data->activityinfo->hasdates) &&
+                !isset($data->activityinfo->hascompletion) &&
+                empty($data->modavailability->info) &&
+                !$format->show_editor()) {
+                $data->classlist[] = "activityinline";
             }
         }
 
-        if (!empty($data->cmname)) {
-            $data->hasname = true;
-        }
         if (!empty($data->url)) {
             $data->hasurl = true;
+        }
+
+        // This is a teacher who is allowed to see module but still should see the
+        // information that module is not available to all/some students.
+        $modcontext = $mod->context;
+        $canviewhidden = has_capability('moodle/course:viewhiddenactivities', $modcontext);
+        if ($canviewhidden && !$mod->visible) {
+            // This module is hidden but current user has capability to see it.
+            // Do not display the availability info if the whole section is hidden.
+            if ($section->visible) {
+                $data->hiddenfromstudents = get_string('hiddenfromstudents');
+                $data->classlist[] = 'hiddenactivity';
+            }
+        } else if ($mod->is_stealth()) {
+            // This module is available but is normally not displayed on the course page
+            // (this user can see it because they can manage it).
+            $data->stealth = get_string('hiddenoncoursepage');
+            $data->classlist[] = 'hiddenactivity';
         }
 
         $returnsection = $format->get_section_number();
@@ -190,9 +219,11 @@ class cm implements renderable, templatable {
                 $this->displayoptions
             );
             $data->controlmenu = $controlmenu->export_for_template($output);
-
+            $data->classlist[] = 'editing';
             // Move and select options.
-            $data->moveicon = course_get_cm_move($mod, $returnsection);
+
+            $modcontext = context_module::instance($mod->id);
+            $data->canmove = has_capability('moodle/course:manageactivities', $modcontext);
         }
 
         return $data;
@@ -224,12 +255,6 @@ class cm implements renderable, templatable {
                     $linkclasses .= ' conditionalhidden';
                     $textclasses .= ' conditionalhidden';
                 }
-            }
-            if ($mod->is_stealth()) {
-                // Stealth activity is the one that is not visible on course page.
-                // It still may be displayed to the users who can manage it.
-                $linkclasses .= ' stealth';
-                $textclasses .= ' stealth';
             }
         } else {
             $linkclasses .= ' dimmed';

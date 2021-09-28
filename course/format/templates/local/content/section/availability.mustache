@@ -27,8 +27,11 @@
         "hasavailability": true
     }
 }}
-<div class="section_availability">
+
 {{#hasavailability}}
-    {{{info}}}
+    <div class="section_availability description-item">
+        <div class="description-inner">
+            {{{info}}}
+        </div>
+    </div>
 {{/hasavailability}}
-</div>

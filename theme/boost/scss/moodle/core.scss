@@ -2816,3 +2816,7 @@ body.dragging {
     visibility: visible;
     cursor: move;
 }
+
+.badge-success-light {
+    @include badge-variant($success-light-color);
+}

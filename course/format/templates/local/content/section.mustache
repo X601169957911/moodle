@@ -77,9 +77,9 @@
         "sitehome": false
     }
 }}
-<li id="section-{{num}}"
-    class="section main {{#onlysummary}} section-summary {{/onlysummary}} clearfix
-            {{#ishidden}} hidden {{/ishidden}} {{#iscurrent}} current {{/iscurrent}}
+<li id="course-section-{{num}}"
+    class="course-section main py-3 {{#onlysummary}} course-section-summary {{/onlysummary}} clearfix
+            {{#ishidden}} hiddensection {{/ishidden}} {{#iscurrent}} current {{/iscurrent}}
             {{#isstealth}} orphaned {{/isstealth}}"
     data-sectionid="{{num}}"
     data-sectionreturnid="{{sectionreturnid}}"
@@ -87,28 +87,97 @@
     data-id="{{id}}"
     data-number="{{num}}"
 >
+    <div class="course-section-header d-flex"
+        data-for="section_title"
+        data-id="{{id}}"
+        data-number="{{num}}"
+    >
     {{#singleheader}} {{> core_courseformat/local/content/section/header }} {{/singleheader}}
-    <div class="left side">{{#iscurrent}} {{{currentlink}}} {{/iscurrent}}</div>
-    <div class="right side">
+    {{#header}} {{> core_courseformat/local/content/section/header }} {{/header}}
+    {{#iscurrent}}
+        <div class="ml-2 mb-1 align-self-end">
+            <span class="badge badge-pill badge-info">{{#str}}highlighted{{/str}}</span>
+        </div>
+    {{/iscurrent}}
+    {{#hiddenfromstudents}}
+        <div class="ml-md-2 mb-1 mt-1 mt-md-0 align-self-md-end">
+            <span class="badge badge-pill badge-danger">{{{hiddenfromstudents}}}</span>
+        </div>
+    {{/hiddenfromstudents}}
+    {{#notavailable}}
+        <div class="ml-md-2 mb-1 mt-1 mt-md-0 align-self-md-end">
+            <span class="badge badge-pill badge-secondary">{{{notavailable}}}</span>
+        </div>
+    {{/notavailable}}
+    {{#collapsemenu}}
+        <div class="flex-fill d-flex justify-content-end mr-2 align-self-center">
+            <a id="collapsesections" href="#" aria-expanded="true" class="collapsemenu">
+                <span class="collapseall">{{#str}}collapseall{{/str}}</span>
+                <span class="expandall">{{#str}}expandall{{/str}}</span>
+            </a>
+        </div>
+    {{/collapsemenu}}
     {{#controlmenu}}
             {{> core_courseformat/local/content/section/controlmenu }}
     {{/controlmenu}}
     </div>
-    {{#header}} {{> core_courseformat/local/content/section/header }} {{/header}}
     <div id="coursecontentcollapse{{num}}"
          class="content {{^iscoursedisplaymultipage}}
              {{^sitehome}}course-content-item-content collapse {{#isactive}}show{{/isactive}}{{/sitehome}}
          {{/iscoursedisplaymultipage}}">
-        {{#availability}}
-            {{> core_courseformat/local/content/section/availability }}
-        {{/availability}}
-        <div class="summary">
-        {{#summary}}
-            {{> core_courseformat/local/content/section/summary }}
-        {{/summary}}
+
+         <div class="{{#hasavailability}}description small{{/hasavailability}} my-3">
+            {{#summary}}
+                {{> core_courseformat/local/content/section/summary }}
+            {{/summary}}
+            {{#availability}}
+                {{> core_courseformat/local/content/section/availability }}
+            {{/availability}}
         </div>
         {{#cmsummary}} {{> core_courseformat/local/content/section/cmsummary }} {{/cmsummary}}
+
         {{#cmlist}} {{> core_courseformat/local/content/section/cmlist }} {{/cmlist}}
         {{{cmcontrols}}}
     </div>
 </li>
+
+{{#collapsemenu}}
+    {{#js}}
+        require(['jquery'], function($) {
+            var collapsemenu = document.getElementById('collapsesections');
+            collapsemenu.addEventListener('click', function(e) {
+                var action = 'hide';
+                if (collapsemenu.classList.contains('collapsed')) {
+                    action = 'show';
+                }
+
+                document.querySelectorAll('.course-content-item-content').forEach(function(collapsecontainer) {
+                    $(collapsecontainer).collapse(action);
+                });
+            });
+            $('.course-content-item-content').on('hidden.bs.collapse', function (e) {
+                var allcollapsed = true;
+                $('.course-content-item-content').each(function(_, collapsecontainer) {
+                    if (collapsecontainer.classList.contains('show')) {
+                        allcollapsed = false;
+                    }
+                })
+                if (allcollapsed) {
+                    collapsemenu.classList.add('collapsed');
+                }
+            });
+            $('.course-content-item-content').on('shown.bs.collapse', function (e) {
+                var allexpanded = true;
+                $('.course-content-item-content').each(function(_, collapsecontainer) {
+                    if (!collapsecontainer.classList.contains('show')) {
+                        allexpanded = false;
+                    }
+                })
+
+                if (allexpanded) {
+                    collapsemenu.classList.remove('collapsed');
+                }
+            })
+        });
+    {{/js}}
+{{/collapsemenu}}

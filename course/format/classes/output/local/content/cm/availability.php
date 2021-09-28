@@ -125,29 +125,17 @@ class availability implements renderable, templatable {
         // information that module is not available to all/some students.
         $modcontext = $mod->context;
         $canviewhidden = has_capability('moodle/course:viewhiddenactivities', $modcontext);
-        if ($canviewhidden && !$mod->visible) {
-            // This module is hidden but current user has capability to see it.
-            // Do not display the availability info if the whole section is hidden.
-            if ($section->visible) {
-                $info = $output->availability_info(get_string('hiddenfromstudents'), 'ishidden');
-            }
-        } else if ($mod->is_stealth()) {
-            // This module is available but is normally not displayed on the course page
-            // (this user can see it because they can manage it).
-            $info = $output->availability_info(get_string('hiddenoncoursepage'), 'isstealth');
-        }
 
         if ($canviewhidden && !empty($CFG->enableavailability)) {
             // Display information about conditional availability.
             // Don't add availability information if user is not editing and activity is hidden.
             if ($mod->visible || $format->show_editor()) {
                 $hidinfoclass = 'isrestricted isfullinfo';
-                if (!$mod->visible) {
-                    $hidinfoclass .= ' hide';
-                }
+
                 $ci = new info_module($mod);
                 $fullinfo = $ci->get_full_information();
                 if ($fullinfo) {
+                    $fullinfo->truncate = true;
                     $formattedinfo = info::format_info(
                         $fullinfo,
                         $mod->get_course()
