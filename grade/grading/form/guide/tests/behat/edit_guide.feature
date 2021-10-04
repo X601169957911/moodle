@@ -98,7 +98,7 @@ Feature: Marking guides can be created and edited
     Then the field "Guide criterion B criterion remark" matches value "Comment \"4\""
     When I press "Save changes"
     And I follow "Edit settings"
-    And I follow "Test assignment 1 name"
+    And I am on the "Test assignment 1 name" "assign activity" page
     And I navigate to "View all submissions" in current page administration
     # Checking that the user grade is correct.
     Then I should see "80" in the "Student 1" "table_row"

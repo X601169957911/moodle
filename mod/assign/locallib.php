@@ -489,6 +489,10 @@ class assign {
             $nextpageparams['id'] = $this->get_course_module()->id;
         }
 
+        if (empty($action)) {
+            $PAGE->add_body_class('limitedwidth');
+        }
+
         // Handle form submissions first.
         if ($action == 'savesubmission') {
             $action = 'editsubmission';
@@ -645,6 +649,7 @@ class assign {
         } else if ($action == 'viewpluginassignsubmission') {
             $o .= $this->view_plugin_content('assignsubmission');
         } else if ($action == 'editsubmission') {
+            $PAGE->add_body_class('limitedwidth');
             $o .= $this->view_edit_submission_page($mform, $notices);
         } else if ($action == 'grader') {
             $o .= $this->view_grader();

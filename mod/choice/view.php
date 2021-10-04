@@ -97,6 +97,8 @@ if (data_submitted() && !empty($action) && confirm_sesskey()) {
 // Completion and trigger events.
 choice_view($choice, $course, $cm, $context);
 
+$PAGE->add_body_class('limitedwidth');
+
 echo $OUTPUT->header();
 echo $OUTPUT->heading(format_string($choice->name), 2, null);
 

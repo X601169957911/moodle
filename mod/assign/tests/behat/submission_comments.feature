@@ -99,7 +99,7 @@ Feature: In an assignment, students can comment in their submissions
       | Feedback comments  | I'm the teacher feedback  |
     And I press "Save changes"
     And I click on "Edit settings" "link"
-    And I follow "Test assignment name"
+    And I am on the "Test assignment name" "assign activity" page
     And I navigate to "View all submissions" in current page administration
     Then I should see "50.00" in the "Student 1" "table_row"
     And I should see "I'm the teacher feedback" in the "Student 1" "table_row"
