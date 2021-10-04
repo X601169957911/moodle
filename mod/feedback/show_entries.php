@@ -85,6 +85,7 @@ if ($data = $courseselectform->get_data()) {
 navigation_node::override_active_url($baseurl);
 $PAGE->set_heading($course->fullname);
 $PAGE->set_title($feedback->name);
+$PAGE->add_body_class('limitedwidth');
 echo $OUTPUT->header();
 echo $OUTPUT->heading(format_string($feedback->name));
 
@@ -160,4 +161,3 @@ if ($userid || $showcompleted) {
 
 // Finish the page.
 echo $OUTPUT->footer();
-
