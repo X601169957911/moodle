@@ -231,7 +231,7 @@ class secondary extends view {
         $additionalchildren = false;
         $initialchildren = [];
         if ($node->has_action()) {
-            $initialchildren[$node->action->out()] = $node->text;
+            $initialchildren[$node->action->out()] = $node->get_title();
         }
         foreach ($node->children as $child) {
             $additionalnode = [];
@@ -241,13 +241,13 @@ class secondary extends view {
 
             if ($child->has_children()) {
                 $additionalchildren = true;
-                $urldata[][$child->text] = $additionalnode + $this->get_additional_child_nodes($child);
+                $urldata[][$child->get_title()] = $additionalnode + $this->get_additional_child_nodes($child);
             } else {
                 $initialchildren += $additionalnode;
             }
         }
         if ($additionalchildren) {
-            $urldata[][$node->text] = $initialchildren;
+            $urldata[][$node->get_title()] = $initialchildren;
         } else {
             $urldata = $initialchildren;
         }

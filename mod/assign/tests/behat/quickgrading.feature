@@ -33,7 +33,7 @@ Feature: In an assignment, teachers grade multiple students on one page
     When I click on "Grade" "link" in the "Student 1" "table_row"
     And I press "Save changes"
     And I click on "Edit settings" "link"
-    And I follow "Test assignment name"
+    And I am on the "Test assignment name" "assign activity" page
     Then I should see "1" in the "Needs grading" "table_row"
 
   @skip_chrome_zerosize
@@ -101,7 +101,7 @@ Feature: In an assignment, teachers grade multiple students on one page
       | Feedback comments | I'm the teacher first feedback |
     And I press "Save changes"
     And I click on "Edit settings" "link"
-    And I follow "Test assignment name"
+    And I am on the "Test assignment name" "assign activity" page
     And I navigate to "View all submissions" in current page administration
     Then I click on "Quick grading" "checkbox"
     And I set the field "User grade" to "60.0"
