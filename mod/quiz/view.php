@@ -143,6 +143,7 @@ if (!empty($grading_info->items)) {
 $title = $course->shortname . ': ' . format_string($quiz->name);
 $PAGE->set_title($title);
 $PAGE->set_heading($course->fullname);
+$PAGE->add_body_class('limitedwidth');
 $output = $PAGE->get_renderer('mod_quiz');
 
 // Print table with existing attempts.

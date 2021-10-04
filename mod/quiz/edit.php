@@ -176,6 +176,7 @@ $questionbank->process_actions();
 // End of process commands =====================================================.
 
 $PAGE->set_pagelayout('incourse');
+$PAGE->add_body_class('limitedwidth');
 $PAGE->set_pagetype('mod-quiz-edit');
 
 $output = $PAGE->get_renderer('mod_quiz', 'edit');

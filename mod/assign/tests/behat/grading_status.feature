@@ -66,7 +66,7 @@ Feature: View the grading status of an assignment
     And I set the field "Marking workflow state" to "Released"
     And I press "Save changes"
     And I click on "Edit settings" "link"
-    And I follow "Test assignment name"
+    And I am on the "Test assignment name" "assign activity" page
     And I follow "View all submissions"
     And I should see "Released" in the "Student 1" "table_row"
     And I log out

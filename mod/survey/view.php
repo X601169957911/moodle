@@ -70,6 +70,7 @@ if ($surveyalreadydone) {
 $strsurvey = get_string("modulename", "survey");
 $PAGE->set_title($survey->name);
 $PAGE->set_heading($course->fullname);
+$PAGE->add_body_class('limitedwidth');
 echo $OUTPUT->header();
 echo $OUTPUT->heading(format_string($survey->name));
 
@@ -188,5 +189,3 @@ echo '</div>';
 echo "</form>";
 
 echo $OUTPUT->footer();
-
-

@@ -125,6 +125,6 @@ Feature: In an assignment, teacher can annotate PDF files during grading
     And I press "Save changes"
     And I should see "The changes to the grade and feedback were saved"
     And I click on "Edit settings" "link"
-    And I follow "Test assignment name"
+    And I am on the "Test assignment name" "assign activity" page
     And I follow "View all submissions"
     And I should see "View annotated PDF..." in the "student2@example.com" "table_row"
