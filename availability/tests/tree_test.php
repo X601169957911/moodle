@@ -433,13 +433,13 @@ class tree_testcase extends \advanced_testcase {
                 self::mock(array('m' => '2'))
         );
         $tree = new tree($structure);
-        $this->assertMatchesRegularExpression('~Not available unless any of:.*<ul>~',
+        $this->assertMatchesRegularExpression('~Not available unless any of:.*<ul~',
                 $renderer->render($tree->get_full_information($info)));
 
         // Now, OR message when not shown.
         $structure->show = false;
         $tree = new tree($structure);
-        $this->assertMatchesRegularExpression('~hidden.*<ul>~',
+        $this->assertMatchesRegularExpression('~hidden.*<ul~',
                 $renderer->render($tree->get_full_information($info)));
 
         // AND message.
@@ -447,7 +447,7 @@ class tree_testcase extends \advanced_testcase {
         unset($structure->show);
         $structure->showc = array(false, false);
         $tree = new tree($structure);
-        $this->assertMatchesRegularExpression('~Not available unless:.*<ul>~',
+        $this->assertMatchesRegularExpression('~Not available unless:.*<ul~',
                 $renderer->render($tree->get_full_information($info)));
 
         // Hidden markers on items.

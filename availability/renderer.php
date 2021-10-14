@@ -43,24 +43,62 @@ class core_availability_renderer extends plugin_renderer_base {
      * @param core_availability_multiple_messages $renderable Multiple messages
      * @return string Combined HTML
      */
+
+    /** @var int counts number of conditions */
+    public $count = 0;
+
+    /** @var bool If these conditions have parent conditions, ie. are part of a subset  */
+    public $hasparent = false;
+
     public function render_core_availability_multiple_messages(
             core_availability_multiple_messages $renderable) {
+        // Make the list.
+        $template = (object)[];
         // Get initial message.
-        $out = get_string('list_' . ($renderable->root ? 'root_' : '') .
+        $template->header = get_string('list_' . ($renderable->root ? 'root_' : '') .
                 ($renderable->andoperator ? 'and' : 'or') . ($renderable->treehidden ? '_hidden' : ''),
                 'availability');
+        $template->items = [];
+        $template->parent = $this->count;
 
-        // Make the list.
-        $out .= html_writer::start_tag('ul');
-        foreach ($renderable->items as $item) {
-            if (is_string($item)) {
-                $str = $item;
-            } else {
-                $str = $this->render($item);
-            }
-            $out .= html_writer::tag('li', $str);
+        $maxvisible = 4;
+
+        if (!$this->hasparent) {
+            $template->parentcontainer = uniqid();
+            $this->hasparent = true;
         }
-        $out .= html_writer::end_tag('ul');
-        return $out;
+
+        foreach ($renderable->items as $item) {
+            $message = (object)[];
+
+            if (is_string($item)) {
+                $this->count++;
+                $message->title = $item;
+                if ($this->count == $maxvisible) {
+                    $message->abbreviate = true;
+                }
+                if ($this->count > $maxvisible) {
+                    $message->class = 'd-none';
+                }
+            } else {
+                if ($this->count == $maxvisible) {
+                    $message->class = 'd-none';
+                }
+                $message->title = $this->render($item);
+            }
+
+            $template->items[] = $message;
+
+            if (is_string($item) && $this->count == $maxvisible) {
+                // Insert a more link time.
+                $morelink = (object)[];
+                $morelink->showmorelink = true;
+                $template->items[] = $morelink;
+            }
+        }
+
+        $html = $this->render_from_template('core_availability/availability_multiple_messages', $template);
+        // Removing newlines for unit test in tree_test.php.
+        return str_replace(array("\r", "\n"), '', $html);
     }
 }
