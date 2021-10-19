@@ -408,7 +408,7 @@ class behat_course extends behat_base {
 
         // Click on un-highlight topic link.
         $this->execute('behat_general::i_click_on_in_the',
-            array($stredit, "link", "#section-" . $sectionnumber, "css_element")
+            array($stredit, "link", "#section-" . $sectionnumber . " .action-menu", "css_element")
         );
 
     }
@@ -518,7 +518,7 @@ class behat_course extends behat_base {
                 $dimmedexception = new ExpectationException('There are activities that are not dimmed', $this->getSession());
                 foreach ($activities as $activity) {
                     // Dimmed.
-                    $this->find('xpath', "//div[contains(concat(' ', normalize-space(@class), ' '), ' activityinstance ')]" .
+                    $this->find('xpath', "//div[contains(concat(' ', normalize-space(@class), ' '), ' activity-instance ')]" .
                         "//a[contains(concat(' ', normalize-space(@class), ' '), ' dimmed ')]", $dimmedexception, $activity);
                 }
             }
@@ -2006,8 +2006,8 @@ class behat_course extends behat_base {
      * @param string $text The text to be searched in the activity date.
      */
     public function activity_date_in_activity_should_contain_text(string $activityname, string $text): void {
-        $containerselector = "//div[@data-region='activity-information'][@data-activityname='$activityname']";
-        $containerselector .= " /div[@data-region='activity-dates']";
+        $containerselector = "//div[@data-activityname='$activityname']";
+        $containerselector .= "//div[@data-region='activity-dates']";
 
         $params = [$text, $containerselector, 'xpath_element'];
         $this->execute("behat_general::assert_element_contains_text", $params);
@@ -2020,8 +2020,8 @@ class behat_course extends behat_base {
      * @param string $activityname The activity name.
      */
     public function activity_dates_information_in_activity_should_exist(string $activityname): void {
-        $containerselector = "//div[@data-region='activity-information'][@data-activityname='$activityname']";
-        $elementselector = "/div[@data-region='activity-dates']";
+        $containerselector = "//div[@data-activityname='$activityname']";
+        $elementselector = "//div[@data-region='activity-dates']";
         $params = [$elementselector, "xpath_element", $containerselector, "xpath_element"];
         $this->execute("behat_general::should_exist_in_the", $params);
     }
