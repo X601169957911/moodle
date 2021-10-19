@@ -13791,14 +13791,14 @@ body:not(.editing) .sitetopic ul.section {
   .section .activity.modtype_label.label.hasinfo i:last-child {
     margin-bottom: 0; }
 
-.section li.activity {
+.section li.activity:not(.activity-wrapper) {
   padding: 0.2em;
   clear: both; }
-  .section li.activity.hasinfo {
+  .section li.activity:not(.activity-wrapper).hasinfo {
     border-bottom: 1px solid #dee2e6;
     padding-top: 1rem;
     padding-bottom: 1rem; }
-    .section li.activity.hasinfo:last-child {
+    .section li.activity:not(.activity-wrapper).hasinfo:last-child {
       border-bottom: 0;
       padding-bottom: 0; }
 
@@ -13811,16 +13811,16 @@ body:not(.editing) .sitetopic ul.section {
 .section .activity .activityinstance .groupinglabel {
   padding-left: 30px; }
 
-.section .activity .availabilityinfo,
-.section .activity .contentafterlink {
+.section.main:not(.course-section) .activity .availabilityinfo,
+.section.main:not(.course-section) .activity .contentafterlink {
   margin-top: 0.5em;
   margin-left: 30px; }
 
 .section .activity .contentafterlink p {
   margin: .5em 0; }
 
-.editing .section .activity:hover,
-.editing .section .activity.action-menu-shown {
+.editing .section.main:not(.course-section) .activity:hover,
+.editing .section.main:not(.course-section) .activity.action-menu-shown {
   background-color: rgba(0, 0, 0, 0.03); }
 
 .course-content .current {
@@ -14002,8 +14002,8 @@ body:not(.editing) .sitetopic ul.section {
 .path-course-view .single-section .completionprogress {
   margin-right: 5px; }
 
-.path-site li.activity > div,
-.path-course-view li.activity > div {
+.path-site li.activity > div:not(.activity-item),
+.path-course-view li.activity > div:not(.activity-item) {
   position: relative;
   padding: 0 16px 0 0;
   /* to accommodate the floated completion icon with highlighting */ }
@@ -14643,6 +14643,82 @@ span.editinstructions {
     .description .course-description-item:last-child .description-inner {
       padding-bottom: 0;
       border-bottom: 0; }
+
+.course-section .activity-item {
+  border-radius: 0.3rem;
+  margin: 0.5rem 0; }
+  .course-section .activity-item:not(.activityinline) {
+    border: 1px solid #dee2e6;
+    padding: 1rem; }
+  .course-section .activity-item.editing {
+    cursor: move; }
+    .course-section .activity-item.editing .a {
+      cursor: pointer; }
+    .course-section .activity-item.editing:hover {
+      color: #212529;
+      background-color: #f5f9fd;
+      border-color: #3586ce; }
+      .course-section .activity-item.editing:hover hr {
+        border-top-color: #2e79bc; }
+      .course-section .activity-item.editing:hover .alert-link {
+        color: #0a0c0d; }
+      .course-section .activity-item.editing:hover .description .course-description-item,
+      .course-section .activity-item.editing:hover .activityiconcontainer,
+      .course-section .activity-item.editing:hover .badge {
+        mix-blend-mode: multiply; }
+  .course-section .activity-item.hiddenactivity {
+    background-color: #f8f9fa; }
+    .course-section .activity-item.hiddenactivity .description .course-description-item,
+    .course-section .activity-item.hiddenactivity .activityiconcontainer,
+    .course-section .activity-item.hiddenactivity .badge {
+      mix-blend-mode: multiply; }
+  .course-section .activity-item .activity-actions .actions {
+    position: relative; }
+  .course-section .activity-item .activity-actions .dropdown-toggle::after {
+    display: none; }
+  .course-section .activity-item .inplaceeditable {
+    display: flex;
+    flex: 0 1 auto; }
+  .course-section .activity-item .inplaceeditable .quickeditlink,
+  .course-section .activity-item .afterlink {
+    margin: 1.5rem 0 0.2rem 0.5rem; }
+  .course-section .activity-item .action-menu-item {
+    display: flex;
+    align-items: center; }
+  .course-section .activity-item .action-menu-item .filler {
+    display: none; }
+  .course-section .activity-item .no-overflow {
+    width: 100%; }
+  @media (max-width: 767.98px) {
+    .course-section .activity-item .badge {
+      white-space: normal;
+      text-align: left; } }
+  @media (min-width: 768px) {
+    .course-section .activity-item .automatic-completion-conditions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; }
+    .course-section .activity-item:not(.activityinline) {
+      padding: 1.5rem; }
+    .course-section .activity-item .activity-info,
+    .course-section .activity-item .activity-actions {
+      margin-left: auto;
+      padding-left: 0.5rem;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; } }
+
+.automatic-completion-conditions .badge {
+  font-size: 80%;
+  padding: 0.5rem;
+  margin-top: 0.25rem; }
+  .automatic-completion-conditions .badge .icon {
+    width: 0.7rem;
+    height: 0.7rem;
+    font-size: 0.7rem; }
+  .automatic-completion-conditions .badge:first-child {
+    margin-top: 0; }
 
 /* Anchor link offset fix. This makes hash links scroll 60px down to account for the fixed header. */
 :target {
