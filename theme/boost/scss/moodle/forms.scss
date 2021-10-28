@@ -5,6 +5,11 @@
  *
  */
 
+.mform:not(.form-inline) {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 .jsenabled .mform .containsadvancedelements .advanced {
     display: none;
 }
