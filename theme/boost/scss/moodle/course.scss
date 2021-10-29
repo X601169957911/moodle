@@ -1278,3 +1278,23 @@ $activity-item-hover: theme-color-level('primary', -10) !default;
     width: 100%;
     border-radius: 4px;
 }
+
+.section-collapsemenu {
+    .collapseall {
+        display: block;
+    }
+
+    .expandall {
+        display: none;
+    }
+
+    &.collapsed {
+        .collapseall {
+            display: none;
+        }
+
+        .expandall {
+            display: block;
+        }
+    }
+}
