@@ -386,17 +386,17 @@ class renderer_base {
      */
     public function should_display_navbar_logo() {
         $logo = $this->get_compact_logo_url();
-        return !empty($logo) && !$this->should_display_main_logo();
+        return !empty($logo);
     }
 
     /**
      * Whether we should display the main logo.
-     *
+     * @deprecated since Moodle 4.0
      * @param int $headinglevel The heading level we want to check against.
      * @return bool
      */
     public function should_display_main_logo($headinglevel = 1) {
-
+        debugging('should_display_main_logo() is deprecated.', DEBUG_DEVELOPER);
         // Only render the logo if we're on the front page or login page and the we have a logo.
         $logo = $this->get_logo_url();
         if ($headinglevel == 1 && !empty($logo)) {
@@ -4256,27 +4256,14 @@ EOD;
             }
         }
 
-        if ($this->should_display_main_logo($headinglevel)) {
-            $sitename = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID)]);
-            // Logo.
-            $html = html_writer::div(
-                html_writer::empty_tag('img', [
-                    'src' => $this->get_logo_url(null, 150),
-                    'alt' => get_string('logoof', '', $sitename),
-                    'class' => 'img-fluid'
-                ]),
-                'logo'
-            );
-            // Heading.
-            if (!isset($heading)) {
-                $html .= $this->heading($this->page->heading, $headinglevel, 'sr-only');
-            } else {
-                $html .= $this->heading($heading, $headinglevel, 'sr-only');
-            }
-            return $html;
+        $prefix = null;
+        if ($context->contextlevel == CONTEXT_MODULE) {
+            $heading = $this->page->cm->get_formatted_name();
+            $imagedata = $this->pix_icon('icon', '', $this->page->activityname);
+            $prefix = get_string('modulename', $this->page->activityname);
         }
 
-        $contextheader = new context_header($heading, $headinglevel, $imagedata, $userbuttons);
+        $contextheader = new context_header($heading, $headinglevel, $imagedata, $userbuttons, $prefix);
         return $this->render_context_header($contextheader);
     }
 
@@ -4306,9 +4293,9 @@ EOD;
 
         // Generate the heading first and before everything else as we might have to do an early return.
         if (!isset($contextheader->heading)) {
-            $heading = $this->heading($this->page->heading, $contextheader->headinglevel);
+            $heading = $this->heading($this->page->heading, $contextheader->headinglevel, 'h2');
         } else {
-            $heading = $this->heading($contextheader->heading, $contextheader->headinglevel);
+            $heading = $this->heading($contextheader->heading, $contextheader->headinglevel, 'h2');
         }
 
         $showheader = empty($this->page->layout_options['nocontextheader']);
@@ -4323,12 +4310,12 @@ EOD;
         // Image data.
         if (isset($contextheader->imagedata)) {
             // Header specific image.
-            $html .= html_writer::div($contextheader->imagedata, 'page-header-image icon-size-7');
+            $html .= html_writer::div($contextheader->imagedata, 'page-header-image icon-size-6');
         }
 
         // Headings.
         if (isset($contextheader->prefix)) {
-            $prefix = html_writer::div($contextheader->prefix, 'text-muted');
+            $prefix = html_writer::div($contextheader->prefix, 'text-muted text-uppercase');
             $heading = $prefix . $heading;
         }
         $html .= html_writer::tag('div', $heading, array('class' => 'page-header-headings'));
