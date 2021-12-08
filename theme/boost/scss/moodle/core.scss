@@ -2363,6 +2363,10 @@ $footer-link-color: $bg-inverse-link-color !default;
     }
 }
 
+.footer-content-debugging .container:not(:empty) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 .bg-inverse a {
     color: $bg-inverse-link-color;
     text-decoration: underline;
