@@ -435,8 +435,11 @@ class navigation_node implements renderable {
      * @param flat_navigation $nodes List of the found flat navigation nodes.
      * @param boolean $showdivider Show a divider before the first node.
      * @param string $label A label for the collection of navigation links.
+     * @deprecated since Moodle 4.0 MDL-73320
+     * @todo To be removed in Moodle 4.4 - MDL-73328
      */
     public function build_flat_navigation_list(flat_navigation $nodes, $showdivider = false, $label = '') {
+        debugging('Function build_flat_navigation_list() has been deprecated since the removal of the navdrawer', DEBUG_DEVELOPER);
         if ($this->showinflatnavigation) {
             $indent = 0;
             if ($this->type == self::TYPE_COURSE || $this->key === self::COURSE_INDEX_PAGE) {
@@ -3879,6 +3882,8 @@ class breadcrumb_navigation_node extends navigation_node {
 /**
  * Subclass of navigation_node allowing different rendering for the flat navigation
  * in particular allowing dividers and indents.
+ * @deprecated since Moodle 4.0 MDL-73320
+ * @todo To be removed in Moodle 4.4 - MDL-73328
  *
  * @package   core
  * @category  navigation
@@ -3902,6 +3907,10 @@ class flat_navigation_node extends navigation_node {
      * @param mixed $navnode A navigation_node or an array
      */
     public function __construct($navnode, $indent) {
+        debugging(
+            'flat_navigation_node is deprecated',
+            DEBUG_DEVELOPER
+        );
         if (is_array($navnode)) {
             parent::__construct($navnode);
         } else if ($navnode instanceof navigation_node) {
@@ -4010,6 +4019,8 @@ class flat_navigation_node extends navigation_node {
 /**
  * Class used to generate a collection of navigation nodes most closely related
  * to the current page.
+ * @deprecated since Moodle 4.0 MDL-73320
+ * @todo To be removed in Moodle 4.4 - MDL-73328
  *
  * @package core
  * @copyright 2016 Damyon Wiese
@@ -4037,6 +4048,11 @@ class flat_navigation extends navigation_node_collection {
      */
     public function initialise() {
         global $PAGE, $USER, $OUTPUT, $CFG;
+
+        debugging(
+            'flat_navigation is deprecated',
+            DEBUG_DEVELOPER
+        );
         if (during_initial_install()) {
             return;
         }

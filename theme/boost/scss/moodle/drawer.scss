@@ -21,14 +21,6 @@ $drawer-transition: left 0.2s ease, right 0.2s ease, top 0.2s ease, bottom 0.2s 
     margin-top: initial;
 }
 
-#nav-drawer.closed {
-    left: -($drawer-width + $drawer-offscreen-gutter);
-}
-
-#nav-drawer[aria-hidden=true] .list-group-item {
-    display: none;
-}
-
 /* Use a variable for the drawer background colors. */
 $drawer-bg: darken($body-bg, 5%) !default;
 
@@ -52,64 +44,12 @@ $drawer-bg: darken($body-bg, 5%) !default;
         @include transition($drawer-transition);
     }
 }
-#nav-drawer {
-    right: auto;
-    left: 0;
 
-    /* Override the z-indexes defined in bootstrap/_list-group.scss that
-       lead to side effects on the user tours positioning. */
-    .list-group-item-action.active,
-    .list-group-item.active {
-        z-index: inherit;
-    }
-    .list-group-item-action.active + .list-group-item,
-    .list-group-item.active + .list-group-item {
-        border-top: none;
-    }
-
-    .list-group {
-        // Remove default list styling in nav menus.
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        // Add margin to be consistent with `.list-group-item` spacing.
-        li {
-            margin-bottom: -1px;
-        }
-        li:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
 #page {
     margin-top: $fixed-header-y;
 }
 .pagelayout-embedded #page {
     margin-top: 0;
-}
-body.drawer-ease {
-    @include transition(margin-left 0.5s ease, margin-right 0.5s ease);
-}
-
-body:not(.uses-drawers).drawer-open-left {
-    @include media-breakpoint-up(md) {
-        margin-left: $drawer-left-width;
-    }
-}
-
-body.drawer-open-left #page.drawers {
-    @include media-breakpoint-up(md) {
-        margin-left: $drawer-left-width;
-        padding-left: 1rem;
-    }
-}
-
-body.drawer-open-right {
-    @include media-breakpoint-up(md) {
-        margin-right: $drawer-right-width;
-    }
 }
 
 $right-drawer-width: 320px;
@@ -151,10 +91,6 @@ $right-drawer-width: 320px;
             height: 100%;
             z-index: $zindex-fixed + 1;
         }
-    }
-    body.drawer-open-left,
-    body.drawer-open-right {
-        overflow: hidden;
     }
 }
 

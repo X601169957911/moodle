@@ -262,7 +262,6 @@ define(
          */
         var registerEventListeners = function(root) {
             var resizeTimeout = null;
-            var drawerToggling = false;
 
             PubSub.subscribe(CourseEvents.favourited, function(courseId) {
                 favouriteCourse(root, courseId);
@@ -270,37 +269,6 @@ define(
 
             PubSub.subscribe(CourseEvents.unfavorited, function(courseId) {
                 unfavouriteCourse(root, courseId);
-            });
-
-            PubSub.subscribe('nav-drawer-toggle-start', function() {
-                if (!contentLoaded || !allCourses.length || drawerToggling) {
-                    // Nothing to recalculate.
-                    return;
-                }
-
-                drawerToggling = true;
-                var recalculationCount = 0;
-                // This function is going to recalculate the number of courses while
-                // the nav drawer is opening or closes (up to a maximum of 5 recalcs).
-                var doRecalculation = function() {
-                    setTimeout(function() {
-                        recalculateVisibleCourses(root);
-                        recalculationCount++;
-
-                        if (recalculationCount < 5 && drawerToggling) {
-                            // If we haven't done too many recalculations and the drawer
-                            // is still toggling then recurse.
-                            doRecalculation();
-                        }
-                    }, 100);
-                };
-
-                // Start the recalculations.
-                doRecalculation(root);
-            });
-
-            PubSub.subscribe('nav-drawer-toggle-end', function() {
-                drawerToggling = false;
             });
 
             $(window).on('resize', function() {

@@ -44,7 +44,6 @@ if (isset($PAGE->theme->addblockposition) && $PAGE->user_is_editing() && $PAGE->
     $PAGE->blocks->add_fake_block($block, BLOCK_POS_RIGHT);
 }
 
-user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 user_preference_allow_ajax_update('drawer-open-index', PARAM_BOOL);
 user_preference_allow_ajax_update('drawer-open-block', PARAM_BOOL);
 

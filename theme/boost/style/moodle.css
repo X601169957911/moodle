@@ -12989,34 +12989,6 @@ body.dragging .dragging {
   #region-main.has-blocks .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
     width: calc(25% - 0.5rem); } }
 
-@media (min-width: 768px) {
-  body.drawer-open-left .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
-    width: calc(100% - 0.5rem); } }
-
-@media (min-width: 861px) {
-  body.drawer-open-left .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
-    width: calc(50% - 0.5rem); } }
-
-@media (min-width: 1122px) {
-  body.drawer-open-left .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
-    width: calc(33.33% - 0.5rem); } }
-
-@media (min-width: 1381px) {
-  body.drawer-open-left .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
-    width: calc(25% - 0.5rem); } }
-
-@media (min-width: 1200px) {
-  body.drawer-open-left #region-main.has-blocks .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
-    width: calc(100% - 0.5rem); } }
-
-@media (min-width: 1236px) {
-  body.drawer-open-left #region-main.has-blocks .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
-    width: calc(50% - 0.5rem); } }
-
-@media (min-width: 1497px) {
-  body.drawer-open-left #region-main.has-blocks .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
-    width: calc(33.33% - 0.5rem); } }
-
 @media (min-width: 1200px) {
   #block-region-side-pre .dashboard-card-deck:not(.fixed-width-cards) {
     margin-left: 0;
@@ -14773,12 +14745,6 @@ span.editinstructions {
   padding-top: initial;
   margin-top: initial; }
 
-#nav-drawer.closed {
-  left: -305px; }
-
-#nav-drawer[aria-hidden=true] .list-group-item {
-  display: none; }
-
 /* Use a variable for the drawer background colors. */
 [data-region="drawer"] {
   position: fixed;
@@ -14803,50 +14769,11 @@ span.editinstructions {
     .jsenabled .btn-footer-popover {
       transition: none; } }
 
-#nav-drawer {
-  right: auto;
-  left: 0;
-  /* Override the z-indexes defined in bootstrap/_list-group.scss that
-       lead to side effects on the user tours positioning. */ }
-  #nav-drawer .list-group-item-action.active,
-  #nav-drawer .list-group-item.active {
-    z-index: inherit; }
-  #nav-drawer .list-group-item-action.active + .list-group-item,
-  #nav-drawer .list-group-item.active + .list-group-item {
-    border-top: none; }
-  #nav-drawer .list-group ul {
-    list-style: none;
-    padding: 0;
-    margin: 0; }
-  #nav-drawer .list-group li {
-    margin-bottom: -1px; }
-  #nav-drawer .list-group li:last-child {
-    margin-bottom: 0; }
-
 #page {
   margin-top: 60px; }
 
 .pagelayout-embedded #page {
   margin-top: 0; }
-
-body.drawer-ease {
-  transition: margin-left 0.5s ease, margin-right 0.5s ease; }
-  @media (prefers-reduced-motion: reduce) {
-    body.drawer-ease {
-      transition: none; } }
-
-@media (min-width: 768px) {
-  body:not(.uses-drawers).drawer-open-left {
-    margin-left: 285px; } }
-
-@media (min-width: 768px) {
-  body.drawer-open-left #page.drawers {
-    margin-left: 285px;
-    padding-left: 1rem; } }
-
-@media (min-width: 768px) {
-  body.drawer-open-right {
-    margin-right: 315px; } }
 
 [data-region=right-hand-drawer] {
   display: flex;
@@ -14880,10 +14807,7 @@ body.drawer-ease {
   [data-region=right-hand-drawer].drawer {
     top: 0;
     height: 100%;
-    z-index: 1031; }
-  body.drawer-open-left,
-  body.drawer-open-right {
-    overflow: hidden; } }
+    z-index: 1031; } }
 
 .dir-rtl [data-region=right-hand-drawer] {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); }
@@ -20139,9 +20063,6 @@ span[data-flexitour="container"][x-placement="right"], span[data-flexitour="cont
   width: 275px; }
 
 @media print {
-  body.drawer-open-left.jsenabled,
-  body.drawer-open-right.jsenabled {
-    margin: 0; }
   .container {
     width: auto; } }
 

@@ -227,50 +227,6 @@ $card-gutter : $card-deck-margin * 2;
     }
 }
 
-body.drawer-open-left {
-    .dashboard-card-deck:not(.fixed-width-cards) {
-        @media (min-width: 768px) {
-            .dashboard-card {
-                width: calc(100% - #{$card-gutter});
-            }
-        }
-        @media (min-width: 861px) {
-            .dashboard-card {
-                width: calc(50% - #{$card-gutter});
-            }
-        }
-        @media (min-width: 1122px) {
-            .dashboard-card {
-                width: calc(33.33% - #{$card-gutter});
-            }
-        }
-        @media (min-width: 1381px) {
-            .dashboard-card {
-                width: calc(25% - #{$card-gutter});
-            }
-        }
-    }
-}
-
-body.drawer-open-left #region-main.has-blocks {
-    .dashboard-card-deck:not(.fixed-width-cards) {
-        @media (min-width: 1200px) {
-            .dashboard-card {
-                width: calc(100% - #{$card-gutter});
-            }
-        }
-        @media (min-width: 1236px) {
-            .dashboard-card {
-                width: calc(50% - #{$card-gutter});
-            }
-        }
-        @media (min-width: 1497px) {
-            .dashboard-card {
-                width: calc(33.33% - #{$card-gutter});
-            }
-        }
-    }
-}
 
 @media (min-width: 1200px) {
     #block-region-side-pre {

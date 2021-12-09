@@ -952,8 +952,12 @@ class behat_navigation extends behat_base {
      *
      * @When /^I open flat navigation drawer$/
      * @throws ElementNotFoundException Thrown by behat_base::find
+     *
+     * @deprecated since 4.0 MDL-73320. This tested the navigation drawer, which has been removed.
+     * @todo MDL-73123 This will be deleted in Moodle 4.4.
      */
     public function i_open_flat_navigation_drawer() {
+        $this->deprecated_message('Find navigation in the primary or secondary navigation, as appropriate.');
         if (!$this->running_javascript()) {
             // Navigation drawer is always open without JS.
             return;
@@ -972,8 +976,12 @@ class behat_navigation extends behat_base {
      *
      * @When /^I close flat navigation drawer$/
      * @throws ElementNotFoundException Thrown by behat_base::find
+     *
+     * @deprecated since 4.0 MDL-73320. This tested the navigation drawer, which has been removed.
+     * @todo MDL-73123 This will be deleted in Moodle 4.4.
      */
     public function i_close_flat_navigation_drawer() {
+        $this->deprecated_message('Find navigation in the primary or secondary navigation, as appropriate.');
         if (!$this->running_javascript()) {
             // Navigation drawer can not be closed without JS.
             return;
