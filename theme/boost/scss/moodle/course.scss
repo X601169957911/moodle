@@ -9,6 +9,7 @@
 
 .section-modchooser {
     clear: both;
+    margin-top: map-get($spacers, 1);
 }
 
 .block_tree .tree_item.branch {
@@ -68,7 +69,9 @@ body:not(.editing)  .sitetopic ul.section {
         width: 16px;
     }
 
-    .activity {
+    li.activity {
+        padding: map-get($spacers, 1) 0;
+
         .spinner {
             left: 100%;
             position: absolute;
@@ -76,7 +79,7 @@ body:not(.editing)  .sitetopic ul.section {
 
         /* The command block for each activity */
         .actions {
-            position: absolute;
+            position: relative;
             right: 0;
             top: 0;
             display: flex;
@@ -287,14 +290,25 @@ body:not(.editing)  .sitetopic ul.section {
     }
 }
 
+// Compensate for the border widths when dropzones are displayed.
 .course-content .section.dropready {
 
     &.main.drop-down {
-        border-bottom: 2px solid $dropzone-border;
+        border-bottom: 1px solid $dropzone-border;
+    }
+
+    .course-section-header.dropready.drop-zone {
+        margin-top: -2px;
     }
 
     li.activity.dropready.drop-down {
-        border-bottom: 2px solid $dropzone-border;
+        border-bottom: 1px solid $dropzone-border;
+        margin-bottom: -1px;
+    }
+
+    li.activity.dropready.drop-up {
+        border-top: 1px solid $dropzone-border;
+        margin-top: -1px;
     }
 }
 
@@ -1369,7 +1383,6 @@ $activity-add-hover: theme-color-level('primary', -10) !default;
 
 .activity-item {
     position: relative;
-    margin: map-get($spacers, 2) 0;
 
     @if $enable-rounded {
         @include border-radius();
