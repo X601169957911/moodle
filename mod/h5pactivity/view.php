@@ -59,6 +59,7 @@ $fileurl = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_co
                     $file->get_filename(), false);
 
 $PAGE->set_url('/mod/h5pactivity/view.php', ['id' => $cm->id]);
+$PAGE->add_body_class('limitedwidth');
 
 $shortname = format_string($course->shortname, true, ['context' => $context]);
 $pagetitle = strip_tags($shortname.': '.format_string($moduleinstance->name));

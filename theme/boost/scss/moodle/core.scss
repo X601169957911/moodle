@@ -2516,6 +2516,18 @@ body.h5p-embed {
     vertical-align: middle;
 }
 
+#page.drawers {
+    form#h5peditor,
+    form#coolh5peditor,
+    .core_contentbank_viewcontent {
+        max-width: $h5p-content-maxwidth;
+        margin: 0 auto;
+    }
+}
+body.path-mod-h5pactivity.limitedwidth #page.drawers .main-inner {
+    max-width: $h5p-content-maxwidth;
+    margin: 0 auto;
+}
 .text-decoration-none {
     text-decoration: none !important; /* stylelint-disable-line declaration-no-important */
 }
