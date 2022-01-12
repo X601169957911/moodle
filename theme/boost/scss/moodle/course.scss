@@ -69,7 +69,8 @@ body:not(.editing)  .sitetopic ul.section {
         width: 16px;
     }
 
-    li.activity {
+    .activity {
+        list-style: none;
         padding: map-get($spacers, 1) 0;
 
         .spinner {
@@ -79,7 +80,7 @@ body:not(.editing)  .sitetopic ul.section {
 
         /* The command block for each activity */
         .actions {
-            position: relative;
+            position: absolute;
             right: 0;
             top: 0;
             display: flex;
