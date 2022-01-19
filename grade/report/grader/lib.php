@@ -682,16 +682,17 @@ class grade_report_grader extends grade_report {
         $studentheader->scope = 'col';
         $studentheader->header = true;
         $studentheader->id = 'studentheader';
-        if ($hasuserreportcell) {
-            $studentheader->colspan = 2;
-        }
         $studentheader->text = $arrows['studentname'];
-
         $headerrow->cells[] = $studentheader;
+
+        if ($hasuserreportcell) {
+            $emptyheader = new html_table_cell();
+            $headerrow->cells[] = $emptyheader;
+        }
 
         foreach ($extrafields as $field) {
             $fieldheader = new html_table_cell();
-            $fieldheader->attributes['class'] = 'header userfield user' . $field;
+            $fieldheader->attributes['class'] = 'userfield user' . $field;
             $fieldheader->scope = 'col';
             $fieldheader->header = true;
             $fieldheader->text = $arrows[$field];
@@ -1305,10 +1306,17 @@ class grade_report_grader extends grade_report {
             $controlsrow->attributes['class'] = 'controls';
             $controlscell = new html_table_cell();
             $controlscell->attributes['class'] = 'header controls';
-            $controlscell->colspan = $colspan;
+            $controlscell->header = true;
             $controlscell->text = $this->get_lang_string('controls', 'grades');
-
             $controlsrow->cells[] = $controlscell;
+
+            for ($i = 1; $i < $colspan; $i++) {
+                $cell = new html_table_cell();
+                if ($i != ($colspan - 1)) {
+                    $cell->attributes['class'] = 'noborder';
+                }
+                $controlsrow->cells[] = $cell;
+            }
             $rows[] = $controlsrow;
         }
         return $rows;
@@ -1328,11 +1336,18 @@ class grade_report_grader extends grade_report {
             $rangerow->attributes['class'] = 'range r'.$this->rowcount++;
             $rangecell = new html_table_cell();
             $rangecell->attributes['class'] = 'header range';
-            $rangecell->colspan = $colspan;
             $rangecell->header = true;
             $rangecell->scope = 'row';
             $rangecell->text = $this->get_lang_string('range', 'grades');
             $rangerow->cells[] = $rangecell;
+
+            for ($i = 1; $i < $colspan; $i++) {
+                $cell = new html_table_cell();
+                if ($i != ($colspan - 1)) {
+                    $cell->attributes['class'] = 'noborder';
+                }
+                $rangerow->cells[] = $cell;
+            }
             $rows[] = $rangerow;
         }
 
@@ -1363,11 +1378,17 @@ class grade_report_grader extends grade_report {
                 $groupavgrow->attributes['class'] = 'groupavg r'.$this->rowcount++;
                 $groupavgcell = new html_table_cell();
                 $groupavgcell->attributes['class'] = 'header range';
-                $groupavgcell->colspan = $colspan;
                 $groupavgcell->header = true;
                 $groupavgcell->scope = 'row';
                 $groupavgcell->text = $straveragegroup;
                 $groupavgrow->cells[] = $groupavgcell;
+                for ($i = 1; $i < $colspan; $i++) {
+                    $cell = new html_table_cell();
+                    if ($i != ($colspan - 1)) {
+                        $cell->attributes['class'] = 'noborder';
+                    }
+                    $groupavgrow->cells[] = $cell;
+                }
                 $rows[] = $groupavgrow;
             }
         } else {
@@ -1378,11 +1399,17 @@ class grade_report_grader extends grade_report {
                 $avgrow->attributes['class'] = 'avg r'.$this->rowcount++;
                 $avgcell = new html_table_cell();
                 $avgcell->attributes['class'] = 'header range';
-                $avgcell->colspan = $colspan;
                 $avgcell->header = true;
                 $avgcell->scope = 'row';
                 $avgcell->text = $straverage;
                 $avgrow->cells[] = $avgcell;
+                for ($i = 1; $i < $colspan; $i++) {
+                    $cell = new html_table_cell();
+                    if ($i != ($colspan - 1)) {
+                        $cell->attributes['class'] = 'noborder';
+                    }
+                    $avgrow->cells[] = $cell;
+                }
                 $rows[] = $avgrow;
             }
         }

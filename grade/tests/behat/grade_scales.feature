@@ -82,7 +82,7 @@ Feature: View gradebook when scales are used
       | Student 4          | D        | 2.00           | 2.00         |
       | Student 5          | F        | 1.00           | 1.00         |
     And the following should exist in the "user-grades" table:
-      | -1-                | -2-      | -3-            | -4-          |
+      | -1-                | -4-      | -5-            | -6-          |
       | Range              | F–A      | 0.00–5.00      | 0.00–5.00    |
       | Overall average    | C        | 3.00           | 3.00         |
     And I navigate to "View > User report" in the course gradebook
@@ -128,7 +128,7 @@ Feature: View gradebook when scales are used
       | Student 4          | D        | 2.00           | <coursetotal4> |
       | Student 5          | F        | 1.00           | <coursetotal5> |
     And the following should exist in the "user-grades" table:
-      | -1-                | -2-      | -3-            | -4-            |
+      | -1-                | -4-      | -5-            | -6-            |
       | Range              | F–A      | 1.00–5.00      | 0.00–100.00    |
       | Overall average    | C        | 3.00           | <overallavg>   |
     And I navigate to "View > User report" in the course gradebook

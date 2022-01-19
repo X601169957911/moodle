@@ -62,7 +62,7 @@ Feature: View gradebook when single item scales are used
       | -1-                | -4-       | -5-            | -6-          |
       | Student 1          | Ace!      | 1.00           | 1.00         |
     And the following should exist in the "user-grades" table:
-      | -1-                | -2-       | -3-            | -4-          |
+      | -1-                | -4-       | -5-            | -6-          |
       | Range              | Ace!–Ace! | 0.00–1.00      | 0.00–1.00    |
       | Overall average    | Ace!      | 1.00           | 1.00         |
     And I navigate to "View > User report" in the course gradebook
@@ -100,7 +100,7 @@ Feature: View gradebook when single item scales are used
       | Student 1          | Ace!      | <cattotal1>    | <coursetotal1> |
       | Student 2          | -         | -              | -              |
     And the following should exist in the "user-grades" table:
-      | -1-                | -2-       | -3-            | -4-            |
+      | -1-                | -4-       | -5-            | -6-            |
       | Range              | Ace!–Ace! | 0.00–100.0     | 0.00–100.00    |
       | Overall average    | Ace!      | <catavg>       | <overallavg>   |
     And I navigate to "View > User report" in the course gradebook
