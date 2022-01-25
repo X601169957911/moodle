@@ -132,7 +132,7 @@ const dropdownFix = () => {
                 return;
             }
             // Down key.
-            if (trigger == 'ArrowDown') {
+            if (trigger == 'ArrowDown' || (trigger == 'Tab' && !e.shiftKey)) {
                 for (let i = 0; i < menuItems.length - 1; i++) {
                     if (menuItems[i] == e.target) {
                         next = menuItems[i + 1];
@@ -144,7 +144,7 @@ const dropdownFix = () => {
                     next = menuItems[0];
                 }
 
-            } else if (trigger == 'ArrowUp') {
+            } else if (trigger == 'ArrowUp' || (trigger == 'Tab' && e.shiftKey)) {
                 // Up key.
                 for (let i = 1; i < menuItems.length; i++) {
                     if (menuItems[i] == e.target) {

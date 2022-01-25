@@ -34,7 +34,9 @@ Feature: Verify that keyboard steps work as expected
       | username | email                        | firstname | lastname |
       | saffronr | saffron.rutledge@example.com | Saffron   | Rutledge |
     And I log in as "saffronr"
-    And I click on "User menu" "button" in the ".usermenu" "css_element"
+    And I click on ".usermenu" "css_element"
+    And I press the escape key
+    And I press the enter key
     When I press the up key
     Then the focused element is "Log out" "link"
 
