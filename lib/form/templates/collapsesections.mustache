@@ -24,8 +24,13 @@
     }
 }}
 <div class="collapsible-actions">
-    <a id="collapsesections" href="#" aria-expanded="true" class="collapseexpand collapsemenu collapsed">
+    <a id="collapsesections{{uniqid}}" href="#" aria-expanded="true" class="collapseexpand collapsemenu collapsed">
         <span class="collapseall">{{#str}}collapseall{{/str}}</span>
         <span class="expandall">{{#str}}expandall{{/str}}</span>
     </a>
 </div>
+{{#js}}
+require(['core_form/collapsesections'], function(Collapsesections) {
+    Collapsesections.init('collapsesections{{uniqid}}');
+});
+{{/js}}

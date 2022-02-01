@@ -3141,7 +3141,6 @@ class MoodleQuickForm_Renderer extends HTML_QuickForm_Renderer_Tableless{
         if (!empty($this->_collapsibleElements)) {
             if (count($this->_collapsibleElements) > 1) {
                 $this->_collapseButtons = $OUTPUT->render_from_template('core_form/collapsesections', (object)[]);
-                 $PAGE->requires->js_call_amd('core_form/collapsesections', 'init');
             }
             $PAGE->requires->yui_module('moodle-form-shortforms', 'M.form.shortforms', array(array('formid' => $formid)));
         }
@@ -3336,15 +3335,15 @@ class MoodleQuickForm_Renderer extends HTML_QuickForm_Renderer_Tableless{
 
         $id = empty($name) ? '' : ' id="' . $header->getAttribute('id') . '"';
         if (!empty($name) && isset($this->_templates[$name])) {
-            $header_html = str_replace('{header}', $header->toHtml(), $this->_templates[$name]);
+            $headerhtml = str_replace('{header}', $header->toHtml(), $this->_templates[$name]);
         } else {
-            $header_html = $OUTPUT->render_from_template('core_form/element-header',
+            $headerhtml = $OUTPUT->render_from_template('core_form/element-header',
                 (object)[
                     'header' => $header->toHtml(),
                     'id' => $header->getAttribute('id'),
                     'collapseable' => $collapseable,
                     'collapsed' => $collapsed,
-                    'helpbutton' => $header->getHelpButton()
+                    'helpbutton' => $header->getHelpButton(),
                 ]);
         }
 
@@ -3363,7 +3362,6 @@ class MoodleQuickForm_Renderer extends HTML_QuickForm_Renderer_Tableless{
             }
         }
 
-
         if (isset($this->_advancedElements[$name])){
             $fieldsetclasses[] = 'containsadvancedelements';
         }
@@ -3371,7 +3369,7 @@ class MoodleQuickForm_Renderer extends HTML_QuickForm_Renderer_Tableless{
         $openFieldsetTemplate = str_replace('{id}', $id, $this->_openFieldsetTemplate);
         $openFieldsetTemplate = str_replace('{classes}', join(' ', $fieldsetclasses), $openFieldsetTemplate);
 
-        $this->_html .= $openFieldsetTemplate . $header_html;
+        $this->_html .= $openFieldsetTemplate . $headerhtml;
         $this->_fieldsetsOpen++;
     }
 
