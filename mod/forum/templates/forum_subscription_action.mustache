@@ -65,18 +65,15 @@
         }
     }
 }}
-<div class="container-fluid">
-    <div class="row justify-content-between">
-        <div class="col-xs-6 float-left">
+<div class="container-fluid mb-3">
+    <div class="row">
         {{#viewandmanageselect}}
             {{>core/url_select}}
         {{/viewandmanageselect}}
-        </div>
-        <div class="col-sm-6 float-right">
-            {{#subscriptionoptions}}
+        {{#subscriptionoptions}}
+            <div class="ml-sm-auto mt-1 mt-sm-0">
                 {{>core/url_select}}
-            {{/subscriptionoptions}}
-        </div>
+            </div>
+        {{/subscriptionoptions}}
     </div>
 </div>
-<br>
