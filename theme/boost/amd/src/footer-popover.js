@@ -24,15 +24,47 @@
 import $ from 'jquery';
 import Popover from './popover';
 
-export const init = () => {
-    const container = document.querySelector('[data-region="footer-container-popover"]');
+const SELECTORS = {
+    FOOTERCONTAINER: '[data-region="footer-container-popover"]',
+    FOOTERCONTENT: '[data-region="footer-content-popover"]',
+    FOOTERBUTTON: '[data-action="footer-popover"]'
+};
 
-    $('[data-action="footer-popover"]').popover({
+export const init = () => {
+    const container = document.querySelector(SELECTORS.FOOTERCONTAINER);
+    const footerButton = document.querySelector(SELECTORS.FOOTERBUTTON);
+
+    // All jQuery in this code can be replaced when MDL-79179 is integrated.
+    $(footerButton).popover({
         content: getFooterContent,
         container: container,
         html: true,
         placement: 'top',
-        customClass: 'footer'
+        customClass: 'footer',
+        trigger: 'click'
+    });
+
+    document.addEventListener('focus', e => {
+        if (e.target === footerButton) {
+            $(footerButton).popover('show');
+        }
+        if (!e.target.closest(SELECTORS.FOOTERCONTAINER)) {
+            $(footerButton).popover('hide');
+        }
+    },
+    true);
+
+    document.addEventListener('click', e => {
+        if (!e.target.closest(SELECTORS.FOOTERCONTAINER)) {
+            $(footerButton).popover('hide');
+        }
+    },
+    true);
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            $(footerButton).popover('hide');
+        }
     });
 };
 
@@ -43,7 +75,7 @@ export const init = () => {
  * @private
  */
 const getFooterContent = () => {
-    return document.querySelector('[data-region="footer-content-popover"]').innerHTML;
+    return document.querySelector(SELECTORS.FOOTERCONTENT).innerHTML;
 };
 
 export {
