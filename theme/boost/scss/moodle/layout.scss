@@ -34,9 +34,7 @@
 }
 
 #page.drawers {
-    margin-top: calc(#{$navbar-height} + 2rem);
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-top: $navbar-height;
     @include thin-scrolls($gray-100);
     .main-inner {
         max-width: 100%;
@@ -45,13 +43,8 @@
         @include border-radius();
         background-color: $white;
         padding: 1.5rem 0.5rem;
-        margin-top: 3rem;
         margin-bottom: 3rem;
         flex: 1 0 auto;
-    }
-    div[role="main"] {
-        padding-left: 15px;
-        padding-right: 15px;
     }
     .activity-header {
         margin-left: 15px;
@@ -174,9 +167,17 @@
 
     // Add some padding for the drawer toggle buttons
     #page.drawers {
-        margin-top: $navbar-height;
+        margin-top: calc(#{$navbar-height} + 2rem);
         padding-left: 3rem;
         padding-right: 3rem;
+        .main-inner {
+            padding: 1.5rem 0.5rem;
+            margin-top: 3rem;
+        }
+        div[role="main"] {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
 }
 
