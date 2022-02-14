@@ -11891,7 +11891,7 @@ body.h5p-embed .h5pmessages {
 #page.drawers form#h5peditor,
 #page.drawers form#coolh5peditor,
 #page.drawers .core_contentbank_viewcontent {
-  max-width: 960px;
+  max-width: 1920px;
   margin: 0 auto; }
 
 .text-decoration-none {
@@ -20383,15 +20383,15 @@ span[data-flexitour="container"][x-placement="right"], span[data-flexitour="cont
 @media (min-width: 768px) {
   .pagelayout-standard #page.drawers .main-inner,
   body.limitedwidth #page.drawers .main-inner {
-    max-width: 830px; }
+    max-width: 1920px; }
   .pagelayout-standard #page.drawers .footer-popover,
   body.limitedwidth #page.drawers .footer-popover {
-    max-width: 830px;
+    max-width: 1920px;
     width: 100%;
     margin: 0 auto;
     border-radius: 0.5rem; }
   .header-maxwidth {
-    max-width: 830px;
+    max-width: 1920px;
     margin: 0 auto;
     padding-left: 15px;
     padding-right: 15px; }
@@ -21541,7 +21541,7 @@ div.editor_atto_toolbar button .icon {
       border-right: 0; }
 
 .secondary-navigation {
-  max-width: 830px;
+  max-width: 1920px;
   margin: 0 auto;
   padding: 0 15px 15px; }
   .secondary-navigation .navigation {
